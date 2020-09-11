@@ -1,13 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
 const Layout = ({ children }) => {
   return (
     <>
-      <main>
-        {children}
-      </main>
+      <main className="container mx-auto p-4">{children}</main>
     </>
   )
 }

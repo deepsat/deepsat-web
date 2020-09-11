@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 mx-2 rounded-full transition duration-200 ease-in-out inline-block transform;
+    &:hover,
+    &:focus {
+      @apply scale-105;
+    }
+  }
+  .btn-primary {
+    @apply bg-primary text-primary;
+    &:hover,
+    &:focus {
+      @apply bg-primary-light;
+    }
+  }
+  .btn-outline {
+    @apply border border-primary;
+    &:hover,
+    &:focus {
+      /* @apply bg-primary-dark text-primary; */
+      transform: rotateX(100%);
+    }
+  }
+  .paper {
+    @apply shadow-md rounded p-4
+  }
+}
