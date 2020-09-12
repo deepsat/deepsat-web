@@ -1,18 +1,64 @@
 @tailwind base;
 
 /* Write your own custom base styles here */
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat";
+  @apply font-bold;
+}
+body {
+  @apply bg-black;
+  scroll-behavior: smooth;
+}
+.menu {
+  @apply bg-white text-primary shadow-lg;
+}
+.menu-scrolled {
+  @apply bg-transparent text-primary-text;
+}
 /* Start purging... */
 @tailwind components;
 /* Stop purging. */
 
 /* Write you own custom component styles here */
-.btn-blue {
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+.btn {
+  @apply px-4 py-2 rounded-full font-medium transition duration-200 ease-in-out inline-block transform;
+  font-family: "Montserrat";
 }
-
+.btn:hover,
+.btn:focus {
+  @apply scale-105;
+}
+.btn-primary {
+  @apply bg-primary text-primary-text;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  @apply bg-primary-light;
+}
+.btn-outline {
+  @apply border border-primary text-primary;
+}
+.paper {
+  @apply shadow-lg rounded bg-white;
+}
 /* Start purging... */
 @tailwind utilities;
 /* Stop purging. */
 
 /* Your own custom utilities */
+.transition-default {
+  @apply transition duration-200 ease-in-out;
+}
+.p-default {
+  @apply px-8 py-16;
+}
+@screen md {
+  .p-default {
+    @apply px-16;
+  }
+}

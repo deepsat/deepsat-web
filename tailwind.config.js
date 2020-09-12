@@ -2,14 +2,25 @@ module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
   },
-  purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
+  purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        'accent-1': '#333',
+        primary: {
+          default: "#420cbd",
+          light: "#7d42f1",
+          dark: "#00008b",
+          text: "#ffffff",
+        },
+      },
+      fontFamily: {
+        sans: "Open Sans",
+      },
+      inset: {
+        full: "100%",
       },
     },
   },
   variants: {},
   plugins: [],
-}
+};
