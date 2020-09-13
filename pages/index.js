@@ -8,7 +8,7 @@ export default function IndexPage(props) {
   const posts_data = props.data.data ?? null;
   return (
     <Layout>
-      <Section heading="Aktualności" id="news" className="my-56">
+      <Section heading="Aktualności" id="news" className="my-48">
         <div className="flex flex-wrap -mx-4 mb-8">
           {posts_data
             ? posts_data.map((post_data) => (
