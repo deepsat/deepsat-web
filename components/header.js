@@ -23,7 +23,7 @@ export default function Header({ links }) {
   return (
     <div
       className={`fixed z-50 top-0 w-full transition-default ${
-        top ? "menu-scrolled" : "menu"
+        top ? "menu-top" : "menu"
       }`}
     >
       <div
@@ -39,11 +39,11 @@ export default function Header({ links }) {
         </button>
         <ul
           className={`absolute top-full inset-x-0 md:static transition-default md:transition-none transform md:transform-none origin-top ${
-            open ? "" : "scale-y-0"
-          } flex flex-col px-16 py-8 md:p-0 bg-white shadow-lg md:shadow-none text-primary md:bg-transparent md:text-current md:flex-row md:ml-auto gap-8 md:w-auto`}
+            open ? "" : "scale-y-0 "
+          } flex  flex-col px-16 py-8 md:p-0 bg-white shadow-lg md:shadow-none text-primary md:bg-transparent md:text-current md:flex-row md:ml-auto gap-8 md:w-auto`}
         >
           {links.map((link) => (
-            <li>
+            <li key={link.label}>
               <Link href={link.href}>
                 <a className="whitespace-no-wrap">{link.label}</a>
               </Link>

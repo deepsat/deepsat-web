@@ -7,7 +7,7 @@ const siteDescription = "Lorem ipsum";
 const links = [
   { href: "/#news", label: "Aktualności" },
   { href: "/#about", label: "O nas" },
-  { href: "/#kontakt", label: "Kontakt" },
+  { href: "/#contact", label: "Kontakt" },
 ];
 
 export default function Layout({ children }) {

@@ -15,16 +15,26 @@ body {
   scroll-behavior: smooth;
 }
 .menu {
-  @apply bg-white text-primary shadow-lg;
+  @apply bg-white text-black shadow-lg;
 }
-.menu-scrolled {
-  @apply bg-transparent text-primary-text;
+.menu h1 {
+  @apply text-primary;
+}
+.menu-top {
+  @apply bg-transparent text-primary-text ;
 }
 /* Start purging... */
 @tailwind components;
 /* Stop purging. */
 
 /* Write you own custom component styles here */
+.link {
+  @apply text-primary transition duration-200 ease-in-out;
+}
+.link:hover,
+.link:active {
+  @apply text-primary-light;
+}
 .btn {
   @apply px-4 py-2 rounded-full font-medium transition duration-200 ease-in-out inline-block transform;
   font-family: "Montserrat";
@@ -53,12 +63,4 @@ body {
 /* Your own custom utilities */
 .transition-default {
   @apply transition duration-200 ease-in-out;
-}
-.p-default {
-  @apply px-8 py-16;
-}
-@screen md {
-  .p-default {
-    @apply px-16;
-  }
 }
