@@ -8,7 +8,7 @@ export default function IndexPage(props) {
   const posts_data = props.data.data ?? null;
   return (
     <Layout>
-      <Section className="mt-32">
+      <Section className="mt-56">
         <div className="flex items-center">
           <div className="w-6/12">
             <p className="mb-8">
