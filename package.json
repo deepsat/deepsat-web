@@ -13,11 +13,11 @@
     "fontsource-montserrat": "^3.0.5",
     "fontsource-open-sans": "^3.0.3",
     "next": "^9.5.3",
+    "postcss-flexbugs-fixes": "4.2.1",
+    "postcss-preset-env": "^6.7.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-obfuscate": "^3.6.7",
-    "postcss-flexbugs-fixes": "4.2.1",
-    "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^1.7.4"
   },
   "devDependencies": {}
