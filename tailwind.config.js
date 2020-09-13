@@ -1,5 +1,8 @@
 module.exports = {
-  purge: ["./src/**/*.js", "./src/**/*.jsx", "./src/**/*.ts", "./src/**/*.tsx"],
+  future: {
+    removeDeprecatedGapUtilities: true,
+  },
+  purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -7,21 +10,17 @@ module.exports = {
           default: "#420cbd",
           light: "#7d42f1",
           dark: "#00008b",
+          text: "#ffffff",
         },
       },
-      textColor: {
-        base: "#000000",
-        primary: {
-          default: "#ffffff",
-          background: {
-            default: "#420cbd",
-            light: "#7d42f1",
-            dark: "#00008b",
-          },
-        },
+      fontFamily: {
+        sans: "Open Sans",
+      },
+      inset: {
+        full: "100%",
       },
     },
   },
   variants: {},
   plugins: [],
-}
+};
