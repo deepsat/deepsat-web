@@ -12,7 +12,7 @@
     "@fortawesome/react-fontawesome": "^0.1.11",
     "fontsource-montserrat": "^3.0.5",
     "fontsource-open-sans": "^3.0.3",
-    "next": "latest",
+    "next": "^9.5.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-obfuscate": "^3.6.7",
