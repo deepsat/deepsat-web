@@ -43,7 +43,7 @@ export default function Header({ links }) {
         >
           {links.map((link) => (
             <li key={link.label}>
-              <Link href={link.href} >
+              <Link href={link.href}>
                 <a className="whitespace-no-wrap">{link.label}</a>
               </Link>
             </li>

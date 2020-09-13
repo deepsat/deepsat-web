@@ -11,9 +11,12 @@ h6,
   font-family: "Montserrat";
   @apply font-bold;
 }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: theme("spacing.32");
+}
 body {
   @apply bg-black;
-  scroll-behavior: smooth;
 }
 .menu {
   @apply bg-white text-black shadow-lg;
@@ -25,7 +28,7 @@ body {
   @apply bg-transparent text-primary-text;
 }
 .menu-top .brand {
-  @apply transform origin-left scale-150;
+  /* @apply transform origin-left scale-150; */
 }
 /* Start purging... */
 @tailwind components;
