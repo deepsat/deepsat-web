@@ -18,7 +18,6 @@ export default function Header({ links }) {
 
   const toggle = () => {
     setOpen(!open);
-    console.log(open);
   };
   return (
     <div
@@ -30,7 +29,7 @@ export default function Header({ links }) {
         className={`container mx-auto h-24 px-16 md:px-32 flex flex-wrap items-center`}
       >
         <Link href="/">
-          <a className="text-4xl mr-8">
+          <a className="text-4xl mr-8 brand">
             <h1>DeepSat</h1>
           </a>
         </Link>
@@ -44,7 +43,7 @@ export default function Header({ links }) {
         >
           {links.map((link) => (
             <li key={link.label}>
-              <Link href={link.href}>
+              <Link href={link.href} >
                 <a className="whitespace-no-wrap">{link.label}</a>
               </Link>
             </li>
