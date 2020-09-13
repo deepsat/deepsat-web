@@ -8,28 +8,7 @@ export default function IndexPage(props) {
   const posts_data = props.data.data ?? null;
   return (
     <Layout>
-      <Section className="mt-56">
-        <div className="flex items-center">
-          <div className="w-6/12">
-            <p className="mb-8">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac
-              commodo ex. Proin sit amet nisl in lorem sollicitudin luctus.
-              Etiam bibendum dignissim ligula, a pulvinar justo vestibulum sed.
-              Morbi semper molestie libero ac pretium. In pulvinar auctor nisi.
-              Maecenas id porta ex. Donec tempus tristique mattis. Praesent sit
-              amet.
-            </p>
-          </div>
-          <div className="text-center flex-auto">tu duże logo???</div>
-        </div>
-        <Link href="/#news">
-          <a className="btn btn-primary text-lg mb-4 mr-4">Aktualności</a>
-        </Link>
-        <Link href="/#contact">
-          <a className="btn btn-outline text-lg">Kontakt</a>
-        </Link>
-      </Section>
-      <Section heading="Aktualności" id="news">
+      <Section heading="Aktualności" id="news" className="my-56">
         <div className="flex flex-wrap -mx-4 mb-8">
           {posts_data
             ? posts_data.map((post_data) => (
@@ -45,7 +24,7 @@ export default function IndexPage(props) {
             target="_blank"
             rel="norefferer"
           >
-            Zobacz więcej na Facebooku
+            Przejdź do Facebooka
           </a>
         </Link>
       </Section>
@@ -69,12 +48,12 @@ export default function IndexPage(props) {
 
 export async function getServerSideProps() {
   const data = await fetch(
-    `https://graph.facebook.com/v8.0/kalamburska/posts/?fields=attachments%2Cpermalink_url&limit=3&access_token=${process.env.FB_TOKEN}`
+    `https://graph.facebook.com/v8.0/deepsatpl/posts/?fields=attachments%2Cpermalink_url&limit=3&access_token=${process.env.FB_TOKEN}`
   )
     .then((response) => response.json())
     .catch((error) => {
       console.log(error);
       return;
     });
-  return { props: { data } };
+  return { props: {data} };
 }
