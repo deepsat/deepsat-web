@@ -26,6 +26,7 @@ export default function Layout({ children }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+      <div className="bgimage"/>
       <Header links={links} />
       <div className="container mx-auto px-8 md:px-16 mt-24">{children}</div>
     </>
