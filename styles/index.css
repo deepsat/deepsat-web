@@ -1,6 +1,5 @@
 @tailwind base;
 
-/* Write your own custom base styles here */
 @layer base {
   h1,
   h2,
@@ -32,11 +31,9 @@
     /* @apply transform origin-left scale-150; */
   }
 }
-/* Start purging... */
-@tailwind components;
-/* Stop purging. */
 
-/* Write you own custom component styles here */
+@tailwind components;
+
 @layer components {
   .link {
     @apply text-primary transition duration-200 ease-in-out;
@@ -67,11 +64,9 @@
     @apply shadow-lg rounded bg-white;
   }
 }
-/* Start purging... */
-@tailwind utilities;
-/* Stop purging. */
 
-/* Your own custom utilities */
+@tailwind utilities;
+
 @layer utilities {
   .transition-default {
     @apply transition duration-200 ease-in-out;
