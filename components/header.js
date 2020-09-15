@@ -33,7 +33,7 @@ export default function Header({ links }) {
             <h1>DeepSat</h1>
           </a>
         </Link>
-        <button onClick={toggle} className="w-4 h-4 ml-auto md:hidden">
+        <button aria-label="menu" onClick={toggle} className="w-4 h-4 ml-auto md:hidden">
           <FontAwesomeIcon icon={faBars} />
         </button>
         <ul

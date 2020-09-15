@@ -22,7 +22,7 @@ export default function IndexPage(props) {
           <a
             className="btn btn-outline text-lg"
             target="_blank"
-            rel="norefferer"
+            rel="noreferrer"
           >
             Przejdź do Facebooka
           </a>

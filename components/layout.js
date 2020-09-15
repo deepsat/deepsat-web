@@ -32,6 +32,8 @@ export default function Layout({ children }) {
         src={background.src}
         srcSet={background.srcSet}
         className="bgimage"
+        aria-hidden="true"
+        alt=""
       />
       <Header links={links} />
       <div className="container mx-auto px-8 md:px-16 mt-24">{children}</div>
