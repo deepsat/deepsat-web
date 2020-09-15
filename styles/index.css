@@ -1,73 +1,79 @@
 @tailwind base;
 
 /* Write your own custom base styles here */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.heading {
-  font-family: "Montserrat";
-  @apply font-bold;
-}
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: theme("spacing.32");
-}
-body {
-  @apply bg-black;
-}
-.menu {
-  @apply bg-white text-black shadow-lg;
-}
-.menu h1 {
-  @apply text-primary;
-}
-.menu-top {
-  @apply bg-transparent text-primary-text;
-}
-.menu-top .brand {
-  /* @apply transform origin-left scale-150; */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .heading {
+    font-family: "Montserrat";
+    @apply font-bold;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: theme("spacing.32");
+  }
+  body {
+    @apply bg-black;
+  }
+  .menu {
+    @apply bg-white text-black shadow-lg;
+  }
+  .menu h1 {
+    @apply text-primary;
+  }
+  .menu-top {
+    @apply bg-transparent text-primary-text;
+  }
+  .menu-top .brand {
+    /* @apply transform origin-left scale-150; */
+  }
 }
 /* Start purging... */
 @tailwind components;
 /* Stop purging. */
 
 /* Write you own custom component styles here */
-.link {
-  @apply text-primary transition duration-200 ease-in-out;
-}
-.link:hover,
-.link:active {
-  @apply text-primary-light;
-}
-.btn {
-  @apply px-4 py-2 rounded-full font-medium transition duration-200 ease-in-out inline-block transform;
-  font-family: "Montserrat";
-}
-.btn:hover,
-.btn:focus {
-  @apply scale-105;
-}
-.btn-primary {
-  @apply bg-primary text-primary-text;
-}
-.btn-primary:hover,
-.btn-primary:focus {
-  @apply bg-primary-light;
-}
-.btn-outline {
-  @apply border border-primary text-primary;
-}
-.paper {
-  @apply shadow-lg rounded bg-white;
+@layer components {
+  .link {
+    @apply text-primary transition duration-200 ease-in-out;
+  }
+  .link:hover,
+  .link:active {
+    @apply text-primary-light;
+  }
+  .btn {
+    @apply px-4 py-2 rounded-full font-medium transition duration-200 ease-in-out inline-block transform;
+    font-family: "Montserrat";
+  }
+  .btn:hover,
+  .btn:focus {
+    @apply scale-105;
+  }
+  .btn-primary {
+    @apply bg-primary text-primary-text;
+  }
+  .btn-primary:hover,
+  .btn-primary:focus {
+    @apply bg-primary-light;
+  }
+  .btn-outline {
+    @apply border border-primary text-primary;
+  }
+  .paper {
+    @apply shadow-lg rounded bg-white;
+  }
 }
 /* Start purging... */
 @tailwind utilities;
 /* Stop purging. */
 
 /* Your own custom utilities */
-.transition-default {
-  @apply transition duration-200 ease-in-out;
+@layer utilities {
+  .transition-default {
+    @apply transition duration-200 ease-in-out;
+  }
 }
