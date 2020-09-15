@@ -4,6 +4,8 @@ import Header from "./header";
 const siteTitle = "DeepSat";
 const siteDescription = "Lorem ipsum";
 
+const background = require("../images/background.jpg?resize");
+
 const links = [
   { href: "/#news", label: "Aktualności" },
   { href: "/#about", label: "O nas" },
@@ -26,7 +28,11 @@ export default function Layout({ children }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <div className="bgimage"/>
+      <img
+        src={background.src}
+        srcSet={background.srcSet}
+        className="bgimage"
+      />
       <Header links={links} />
       <div className="container mx-auto px-8 md:px-16 mt-24">{children}</div>
     </>

@@ -29,20 +29,14 @@
     /* @apply transform origin-left scale-150; */
   }
   .bgimage {
-    position: fixed;
-    right: 0;
+    @apply object-cover object-center fixed;
     bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    margin: 0;
-    background: url("/background.jpg") center center no-repeat;
-    background-size: cover;
+    left: 0;
+    right: 0;
+    height: 125%;
+    z-index: -10;
   }
 }
-
 @tailwind components;
 
 @layer components {
