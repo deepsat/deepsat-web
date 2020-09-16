@@ -4,7 +4,8 @@ import Header from "./header";
 const siteTitle = "DeepSat";
 const siteDescription = "Lorem ipsum";
 
-const background = require("../images/background.jpg?resize");
+const background = require("../images/background_horizontal.jpg?resize");
+const backgroundVertical = require("../images/background_vertical.jpg?resize");
 
 const links = [
   { href: "/#news", label: "Aktualności" },
@@ -21,9 +22,7 @@ export default function Layout({ children }) {
         <meta name="description" content={siteDescription} />
         <meta
           property="og:image"
-          content={`https://og-image.now.sh/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+          content={`https://og-image.now.sh/**DeepSat**.jpeg?theme=light&md=1&fontSize=225px`}
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
@@ -32,6 +31,13 @@ export default function Layout({ children }) {
         src={background.src}
         srcSet={background.srcSet}
         className="bgimage"
+        aria-hidden="true"
+        alt=""
+      />
+      <img
+        src={backgroundVertical.src}
+        srcSet={backgroundVertical.srcSet}
+        className="bgimage vertical"
         aria-hidden="true"
         alt=""
       />

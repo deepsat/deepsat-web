@@ -29,12 +29,23 @@
     /* @apply transform origin-left scale-150; */
   }
   .bgimage {
-    @apply object-cover object-center fixed;
+    @apply object-cover object-center fixed invisible w-full;
     bottom: 0;
     left: 0;
     right: 0;
     height: 100vh;
     z-index: -10;
+  }
+  .bgimage.vertical {
+    @apply visible;
+  }
+  @media (min-aspect-ratio: 1/1) {
+    .bgimage {
+      @apply visible;
+    }
+    .bgimage.vertical {
+      @apply invisible;
+    }
   }
 }
 @tailwind components;
