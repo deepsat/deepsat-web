@@ -1,8 +1,7 @@
 import Head from "next/head";
 import Header from "./header";
-
-const siteTitle = "DeepSat";
-const siteDescription = "Lorem ipsum";
+import { DefaultSeo } from "next-seo";
+import seoConfig from "../next-seo.config";
 
 const background = require("../images/background_horizontal.jpg?resize");
 const backgroundVertical = require("../images/background_vertical.jpg?resize");
@@ -16,17 +15,7 @@ const links = [
 export default function Layout({ children }) {
   return (
     <>
-      <Head>
-        <title>{siteTitle}</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content={siteDescription} />
-        <meta
-          property="og:image"
-          content={`https://og-image.now.sh/**DeepSat**.jpeg?theme=light&md=1&fontSize=225px`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
+      <DefaultSeo {...seoConfig} />
       <img
         src={background.src}
         srcSet={background.srcSet}

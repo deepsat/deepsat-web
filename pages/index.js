@@ -2,22 +2,19 @@ import Layout from "../components/layout";
 import Link from "next/link";
 import Obfuscate from "react-obfuscate";
 import Section from "../components/section";
-import Post from "../components/fb_post";
+import FB from "../components/fb";
 
-export default function IndexPage(props) {
-  const posts_data = props.data.data ?? null;
+export default function IndexPage({ appId, posts }) {
   return (
     <Layout>
       <Section heading="Aktualności" id="news" className="my-48">
-        <div className="flex flex-wrap -mx-4 mb-8">
-          {posts_data
-            ? posts_data.map((post_data) => (
-                <div className="md:w-1/3 p-4 self-stretch">
-                  <Post post_data={post_data} />
-                </div>
-              ))
-            : null}
-        </div>
+        <FB
+          posts={posts}
+          appId={appId}
+          postClassName="shadow-lg"
+          postWidth={350}
+          className="flex flex-wrap gap-8 mb-8"
+        />
         <Link href="https://www.facebook.com/deepsatpl">
           <a
             className="btn btn-outline text-lg"
@@ -46,14 +43,13 @@ export default function IndexPage(props) {
   );
 }
 
-export async function getServerSideProps() {
-  const data = await fetch(
-    `https://graph.facebook.com/v8.0/deepsatpl/posts/?fields=attachments%2Cpermalink_url&limit=3&access_token=${process.env.FB_TOKEN}`
-  )
-    .then((response) => response.json())
-    .catch((error) => {
-      console.log(error);
-      return;
-    });
-  return { props: {data} };
+export async function getStaticProps(context) {
+  const post_urls = [];
+  const appId = process.env.FB_APP_ID;
+  return {
+    props: {
+      appId: appId,
+      posts: post_urls,
+    },
+  };
 }
