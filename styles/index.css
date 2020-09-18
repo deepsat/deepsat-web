@@ -25,9 +25,6 @@
   .menu-top {
     @apply bg-transparent text-primary-text;
   }
-  .menu-top .brand {
-    /* @apply transform origin-left scale-150; */
-  }
   .bgimage {
     @apply object-cover object-center fixed invisible w-full;
     bottom: 0;

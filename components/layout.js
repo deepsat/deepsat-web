@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Header from "./header";
 import { DefaultSeo } from "next-seo";
 import seoConfig from "../next-seo.config";

@@ -1,10 +1,4 @@
-import {
-  FacebookProvider,
-  Initialize,
-  Page,
-  EmbeddedPost,
-  Feed,
-} from "react-facebook";
+import { FacebookProvider, EmbeddedPost } from "react-facebook";
 
 export default function FB({
   appId,
