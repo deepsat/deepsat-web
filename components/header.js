@@ -33,23 +33,31 @@ export default function Header({ links }) {
             <h1>DeepSat</h1>
           </a>
         </Link>
-        <button aria-label="menu" onClick={toggle} className="w-4 h-4 ml-auto md:hidden">
+        <button
+          aria-label="menu"
+          onClick={toggle}
+          className="w-4 h-4 ml-auto md:hidden"
+        >
           <FontAwesomeIcon icon={faBars} />
         </button>
-        <ul
+        <div
           aria-hidden={!open}
-          className={`absolute top-full inset-x-0 md:static transition-default md:transition-none transform md:transform-none origin-top ${
+          className={`absolute md:static inset-x-0 top-full md:ml-auto bg-white md:bg-transparent shadow-lg md:shadow-none transition-default md:transition-none transform md:transform-none origin-top ${
             open ? "" : "scale-y-0 "
-          } flex  flex-col px-16 py-8 md:p-0 bg-white shadow-lg md:shadow-none text-primary md:bg-transparent md:text-current md:flex-row md:ml-auto gap-8 md:w-auto`}
+          }`}
         >
-          {links.map((link) => (
-            <li key={link.label}>
-              <Link href={link.href}>
-                <a className="whitespace-no-wrap">{link.label}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
+          <ul
+            className={`container mx-auto flex flex-col md:flex-row gap-8 px-16 py-8 md:p-0 text-primary md:text-current`}
+          >
+            {links.map((link) => (
+              <li key={link.label}>
+                <Link href={link.href}>
+                  <a className="whitespace-no-wrap">{link.label}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
