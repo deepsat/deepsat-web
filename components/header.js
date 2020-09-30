@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 
+const logo = require("../images/deepsat_logo.png?resize");
+
 export default function Header({ links }) {
   const [top, setTop] = useState(true);
   const [open, setOpen] = useState(false);
@@ -29,8 +31,15 @@ export default function Header({ links }) {
         className={`container mx-auto h-24 px-16 md:px-32 flex flex-wrap items-center`}
       >
         <Link href="/">
-          <a className="text-4xl mr-8 brand">
-            <h1>DeepSat</h1>
+          <a className=" mr-8 brand">
+            <h1 className="text-4xl">
+              DeepSat
+              <img
+                src={logo}
+                srcSet={logo.srcSet}
+                className="logo"
+              />
+            </h1>
           </a>
         </Link>
         <button

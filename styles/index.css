@@ -25,6 +25,15 @@
   .menu-top {
     @apply bg-transparent text-primary-text;
   }
+  .brand {
+  }
+  .logo {
+    @apply h-10 inline-block logo ml-4 align-middle transform -translate-y-1;
+  }
+  .menu-top .logo {
+    filter: brightness(0) invert(1);
+  }
+
   .bgimage {
     @apply object-cover object-center fixed invisible w-full;
     bottom: 0;
@@ -82,6 +91,7 @@
 
 @layer utilities {
   .transition-default {
-    @apply transition duration-200 ease-in-out;
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-filter;
+    @apply duration-200 ease-in-out;
   }
 }
