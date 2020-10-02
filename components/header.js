@@ -28,7 +28,7 @@ export default function Header({ links }) {
       }`}
     >
       <div
-        className={`container mx-auto h-24 px-16 md:px-32 flex flex-wrap items-center`}
+        className={`container mx-auto h-24 px-16 md:px-32 flex flex-no-wrap items-center`}
       >
         <Link href="/">
           <a className=" mr-8 brand">
