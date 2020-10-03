@@ -25,11 +25,6 @@
   .menu-top {
     @apply bg-transparent text-primary-text;
   }
-  .brand {
-  }
-  .logo {
-    @apply h-10 inline-block logo ml-4 align-middle transform -translate-y-1;
-  }
   .menu-top .logo {
     filter: brightness(0) invert(1);
   }

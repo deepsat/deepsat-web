@@ -31,15 +31,13 @@ export default function Header({ links }) {
         className={`container mx-auto h-24 px-16 md:px-32 flex flex-no-wrap items-center`}
       >
         <Link href="/">
-          <a className=" mr-8 brand">
-            <h1 className="text-4xl">
-              DeepSat
-              <img
-                src={logo}
-                srcSet={logo.srcSet}
-                className="logo"
-              />
-            </h1>
+          <a className="md:mr-8 flex flex-no-wrap items-center">
+            <h1 className="text-2xl md:text-4xl block">DeepSat</h1>
+            <img
+              src={logo}
+              srcSet={logo.srcSet}
+              className="logo ml-2 h-8 md:h-12 align-baseline"
+            />
           </a>
         </Link>
         <button
@@ -47,7 +45,7 @@ export default function Header({ links }) {
           onClick={toggle}
           className="w-4 h-4 ml-auto md:hidden"
         >
-          <FontAwesomeIcon icon={faBars} />
+          <FontAwesomeIcon icon={faBars} className="my-auto" />
         </button>
         <div
           aria-hidden={!open}
