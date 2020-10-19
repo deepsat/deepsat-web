@@ -10,12 +10,14 @@ export default function Header({ links }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    document.addEventListener("scroll", () => {
+    let onscroll = () => {
       const current = window.scrollY < 5;
       if (current !== top) {
         setTop(current);
       }
-    });
+    };
+    document.addEventListener("load", onscroll);
+    document.addEventListener("scroll", onscroll);
   });
 
   const toggle = () => {
