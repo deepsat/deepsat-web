@@ -7,7 +7,17 @@ import FB from "../components/fb";
 export default function IndexPage({ appId, posts }) {
   return (
     <Layout>
-      <Section heading="Aktualności" id="news" className="my-48">
+      <Section heading="O projekcie" id="about" className="my-48">
+        Jesteśmy grupą uczniów z XIV Liceum Ogólnokształcącego im. Stanisława
+        Staszica w Warszawie. W ramach konkursu CanSat 2020/2021 budujemy
+        miniaturowego „satelitę” wielkości puszki po napoju. Nasz projekt
+        stanowi demonstrację oraz ma na celu zbadanie możliwości i ograniczeń
+        technologii, które mogą zostać wykorzystane w misjach kosmicznych w
+        odległych rejonach układu słonecznego. Wykorzystujemy uczenie maszynowe
+        w celu dokonywania detekcji poszczególnych obiektów na ziemi oraz
+        mapowania terenu na podstawie obrazu z kamery i danych z czujników.
+      </Section>
+      <Section heading="Aktualności" id="news">
         <FB
           posts={posts}
           appId={appId}
@@ -25,7 +35,6 @@ export default function IndexPage({ appId, posts }) {
           </a>
         </Link>
       </Section>
-      <Section heading="O nas" id="about"></Section>
       <Section heading="Kontakt" id="contact">
         <ul className="mb-8">
           <li>

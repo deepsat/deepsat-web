@@ -6,8 +6,8 @@ const background = require("../images/background_horizontal.jpg?resize");
 const backgroundVertical = require("../images/background_vertical.jpg?resize");
 
 const links = [
+  { href: "/#about", label: "O projekcie" },
   { href: "/#news", label: "Aktualności" },
-  { href: "/#about", label: "O nas" },
   { href: "/#contact", label: "Kontakt" },
 ];
 
