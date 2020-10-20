@@ -35,6 +35,19 @@ export default function IndexPage({ feed }) {
           </a>
         </Link>
       </Section>
+      <Section heading="Zespół">
+        <ul className="list-disc list-inside">
+          {[
+            "Jakub Bachurski",
+            "Piotr Grynfelder",
+            "Kajetan Knopp",
+            "Krzysztof Kwiatkowski",
+            "Jan Zając",
+          ].map((name) => (
+            <li>{name}</li>
+          ))}
+        </ul>
+      </Section>
       <Section heading="Kontakt" id="contact">
         <ul className="mb-8">
           <li>
