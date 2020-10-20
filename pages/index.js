@@ -18,9 +18,9 @@ export default function IndexPage({ feed }) {
         mapowania terenu na podstawie obrazu z kamery i danych z czujników.
       </Section>
       <Section heading="Aktualności" id="news">
-        <div className="flex -m-4 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           {feed.map((post) => (
-            <div className="w-full p-4 md:w-1/3">
+            <div className="w-full">
               <FBPost post={post}></FBPost>
             </div>
           ))}
@@ -31,7 +31,7 @@ export default function IndexPage({ feed }) {
             target="_blank"
             rel="noreferrer"
           >
-            Przejdź do Facebooka
+            Zobacz wszystko na naszym Facebooku
           </a>
         </Link>
       </Section>
@@ -66,9 +66,10 @@ export default function IndexPage({ feed }) {
 }
 
 export async function getStaticProps(context) {
+  const limit = 4;
   const access_token = process.env.FB_TOKEN;
   const { data: feed } = await fetch(
-    `https://graph.facebook.com/v8.0/deepsatpl/feed?fields=story%2Cattachments%2Cpermalink_url&limit=3&access_token=${access_token}`
+    `https://graph.facebook.com/v8.0/deepsatpl/feed?fields=story%2Cattachments%2Cpermalink_url&limit=${limit}&access_token=${access_token}`
   ).then((response) => response.json());
   return {
     props: {
