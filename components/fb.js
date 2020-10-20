@@ -1,22 +1,14 @@
-import { FacebookProvider, EmbeddedPost } from "react-facebook";
-
-export default function FB({
-  appId,
-  posts,
-  className,
-  postClassName,
-  postWidth,
-}) {
-  const width = postWidth ?? "";
+const FBPost = ({ post }) => {
+  const permalink = post.permalink_url;
+  const src = post.attachments.data[0].media.image.src;
   return (
-    <FacebookProvider appId={appId}>
-      <div className={className}>
-        {posts.map((post) => (
-          <div className={postClassName} style={{ width }}>
-            <EmbeddedPost href={post} width={width} />
-          </div>
-        ))}
-      </div>
-    </FacebookProvider>
+    <div className="paper p-4">
+      <img src={src} className="mb-4 paper"></img>
+      <a href={permalink} className="link" rel="noreferrer">
+        Zobacz więcej...
+      </a>
+    </div>
   );
-}
+};
+
+export default FBPost;

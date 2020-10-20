@@ -2,9 +2,9 @@ import Layout from "../components/layout";
 import Link from "next/link";
 import Obfuscate from "react-obfuscate";
 import Section from "../components/section";
-import FB from "../components/fb";
+import FBPost from "../components/fb";
 
-export default function IndexPage({ appId, posts }) {
+export default function IndexPage({ feed }) {
   return (
     <Layout>
       <Section heading="O projekcie" id="about" className="my-48">
@@ -18,13 +18,13 @@ export default function IndexPage({ appId, posts }) {
         mapowania terenu na podstawie obrazu z kamery i danych z czujników.
       </Section>
       <Section heading="Aktualności" id="news">
-        <FB
-          posts={posts}
-          appId={appId}
-          postClassName="shadow-lg"
-          postWidth={350}
-          className="flex flex-wrap gap-8 mb-8"
-        />
+        <div className="flex mb-4">
+          {feed.map((post) => (
+            <div className="w-1/3">
+              <FBPost post={post}></FBPost>
+            </div>
+          ))}
+        </div>
         <Link href="https://www.facebook.com/deepsatpl">
           <a
             className="btn btn-outline text-lg"
@@ -53,12 +53,13 @@ export default function IndexPage({ appId, posts }) {
 }
 
 export async function getStaticProps(context) {
-  const post_urls = [];
-  const appId = process.env.FB_APP_ID;
+  const access_token = process.env.FB_TOKEN;
+  const { data: feed } = await fetch(
+    `https://graph.facebook.com/v8.0/deepsatpl/feed?fields=story%2Cattachments%2Cpermalink_url&limit=3&access_token=${access_token}`
+  ).then((response) => response.json());
   return {
     props: {
-      appId: appId,
-      posts: post_urls,
+      feed,
     },
   };
 }
