@@ -18,9 +18,9 @@ export default function IndexPage({ feed }) {
         mapowania terenu na podstawie obrazu z kamery i danych z czujników.
       </Section>
       <Section heading="Aktualności" id="news">
-        <div className="flex mb-4">
+        <div className="flex -m-4 mb-4">
           {feed.map((post) => (
-            <div className="w-1/3">
+            <div className="w-full p-4 md:w-1/3">
               <FBPost post={post}></FBPost>
             </div>
           ))}
