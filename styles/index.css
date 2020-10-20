@@ -60,12 +60,8 @@
     @apply text-primary-light;
   }
   .btn {
-    @apply px-4 py-2 rounded-full font-medium transition duration-200 ease-in-out inline-block transform;
+    @apply px-4 py-2 rounded-full font-medium transition duration-200 ease-in-out inline-block;
     font-family: "Montserrat";
-  }
-  .btn:hover,
-  .btn:focus {
-    @apply scale-105;
   }
   .btn-primary {
     @apply bg-primary text-primary-text;
@@ -77,6 +73,10 @@
   .btn-outline {
     @apply border border-primary text-primary;
   }
+  .btn-outline:hover,
+  .btn-outline:focus {
+    @apply bg-primary-light text-primary-text;
+  }
   .paper {
     @apply shadow-lg rounded bg-white;
   }
@@ -86,7 +86,8 @@
 
 @layer utilities {
   .transition-default {
-    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-filter;
+    transition-property: background-color, border-color, color, fill, stroke,
+      opacity, box-shadow, transform, filter, -webkit-filter;
     @apply duration-200 ease-in-out;
   }
 }
