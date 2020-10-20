@@ -31,7 +31,7 @@ export default function IndexPage({ feed }) {
             target="_blank"
             rel="noreferrer"
           >
-            Zobacz wszystko na naszym Facebooku
+            Zobacz więcej na naszym Facebooku
           </a>
         </Link>
       </Section>
