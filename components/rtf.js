@@ -11,6 +11,6 @@ const options = {
 };
 
 const RTF = ({ document }) => {
-  return <div class="rtf">{documentToReactComponents(document, options)}</div>;
+  return <div className="rtf">{documentToReactComponents(document, options)}</div>;
 };
 export default RTF;
