@@ -38,6 +38,7 @@ export default function IndexPage({ feed }) {
           {[
             "Jakub Bachurski",
             "Piotr Grynfelder",
+            "Szymon Kotarba",
             "Kajetan Knopp",
             "Krzysztof Kwiatkowski",
             "Jan Zając",
