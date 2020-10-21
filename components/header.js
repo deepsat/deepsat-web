@@ -25,28 +25,26 @@ export default function Header({ links }) {
   };
   return (
     <div
-      className={`fixed z-50 top-0 w-full transition-default ${
-        top ? "menu-top" : "menu"
+      className={`header ${
+        top ? "isTop" : ""
       }`}
     >
       <div
         className={`container mx-auto h-24 px-16 md:px-32 flex flex-no-wrap items-center`}
       >
-        <Link href="/">
-          <a className="md:mr-8 flex flex-no-wrap items-center">
-            <img
-              src={logo}
-              srcSet={logo.srcSet}
-              className="logo ml-2 h-8 md:h-12 align-baseline"
-            />
-          </a>
+        <Link className="md:mr-8" href="/">
+          <img
+            src={logo}
+            srcSet={logo.srcSet}
+            className="logo ml-2 h-8 md:h-12 align-baseline"
+          />
         </Link>
         <button
           aria-label="menu"
           onClick={toggle}
           className="w-4 h-4 ml-auto md:hidden"
         >
-          <FontAwesomeIcon icon={faBars} className="my-auto" />
+          <FontAwesomeIcon icon={faBars} className="menu-toggle" />
         </button>
         <div
           aria-hidden={!open}
@@ -55,12 +53,12 @@ export default function Header({ links }) {
           }`}
         >
           <ul
-            className={`container mx-auto flex flex-col md:flex-row gap-8 px-16 py-8 md:p-0 text-primary md:text-current`}
+            className={`container mx-auto flex flex-col md:flex-row gap-8 px-16 py-8 md:p-0`}
           >
             {links.map((link) => (
               <li key={link.label}>
                 <Link href={link.href}>
-                  <a className="whitespace-no-wrap">{link.label}</a>
+                  <a className="whitespace-no-wrap link">{link.label}</a>
                 </Link>
               </li>
             ))}

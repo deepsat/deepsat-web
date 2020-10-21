@@ -16,18 +16,6 @@
     scroll-padding-top: theme("spacing.32");
     @apply bg-black;
   }
-  .menu {
-    @apply bg-white text-black shadow-lg;
-  }
-  .menu h1 {
-    @apply text-primary;
-  }
-  .menu-top {
-    @apply bg-transparent text-primary-text;
-  }
-  .menu-top .logo {
-    filter: brightness(0) invert(1);
-  }
 
   .bgimage {
     @apply object-cover object-center fixed invisible w-full;
@@ -52,12 +40,33 @@
 @tailwind components;
 
 @layer components {
+  .header {
+    @apply fixed z-50 top-0 w-full transition-default bg-white text-black shadow-lg;
+    &.isTop {
+      @apply bg-transparent;
+      & .logo {
+        filter: brightness(0) invert(1);
+      }
+      & .menu-toggle {
+        @apply text-white;
+      }
+    }
+  }
+  @screen md {
+    .header.isTop .link {
+      @apply text-white;
+      &:hover,
+      &:active {
+        @apply text-white;
+      }
+    }
+  }
   .link {
     @apply text-primary transition duration-200 ease-in-out;
-  }
-  .link:hover,
-  .link:active {
-    @apply text-primary-light;
+    &:hover,
+    &:active {
+      @apply text-primary-light;
+    }
   }
   .btn {
     @apply px-4 py-2 rounded-full font-medium transition duration-200 ease-in-out inline-block;
@@ -65,17 +74,17 @@
   }
   .btn-primary {
     @apply bg-primary text-primary-text;
-  }
-  .btn-primary:hover,
-  .btn-primary:focus {
-    @apply bg-primary-light;
+    &:hover,
+    &:focus {
+      @apply bg-primary-light;
+    }
   }
   .btn-outline {
     @apply border border-primary text-primary;
-  }
-  .btn-outline:hover,
-  .btn-outline:focus {
-    @apply bg-primary-light text-primary-text;
+    &:hover,
+    &:focus {
+      @apply bg-primary-light text-primary-text;
+    }
   }
   .paper {
     @apply shadow-lg rounded bg-white;
@@ -86,8 +95,9 @@
 
 @layer utilities {
   .transition-default {
+    transition-duration: 200ms;
     transition-property: background-color, border-color, color, fill, stroke,
       opacity, box-shadow, transform, filter, -webkit-filter;
-    @apply duration-200 ease-in-out;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }

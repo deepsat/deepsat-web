@@ -7,7 +7,7 @@ import FBPost from "../components/fb";
 export default function IndexPage({ feed }) {
   return (
     <Layout>
-      <Section heading="O projekcie" id="about" className="my-48">
+      <Section heading="" id="about" className="my-48">
         Jesteśmy grupą uczniów z XIV Liceum Ogólnokształcącego im. Stanisława
         Staszica w Warszawie. W ramach konkursu CanSat 2020/2021 budujemy
         miniaturowego „satelitę” wielkości puszki po napoju. Nasz projekt
@@ -20,7 +20,7 @@ export default function IndexPage({ feed }) {
       <Section heading="Aktualności" id="news">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           {feed.map((post) => (
-            <FBPost post={post}></FBPost>
+            <FBPost key={post.id} post={post}></FBPost>
           ))}
         </div>
         <Link href="https://www.facebook.com/deepsatpl">
@@ -42,7 +42,7 @@ export default function IndexPage({ feed }) {
             "Krzysztof Kwiatkowski",
             "Jan Zając",
           ].map((name) => (
-            <li>{name}</li>
+            <li key={name}>{name}</li>
           ))}
         </ul>
       </Section>
