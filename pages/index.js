@@ -65,7 +65,7 @@ export default function IndexPage({ feed }) {
   );
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const limit = 4;
   const access_token = process.env.FB_TOKEN;
   const { data: feed } = await fetch(
