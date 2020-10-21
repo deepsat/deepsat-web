@@ -2,8 +2,9 @@ const FBPost = ({ post }) => {
   const permalink = post.permalink_url;
   const src = post.attachments.data[0].media.image.src;
   const text = post.message;
+  const id = post.id;
   return (
-    <div className="paper p-4 flex items-center">
+    <div key={id} className="paper p-4 flex items-center">
       <div className="mb-4 md:mb-0 md:mr-4 h-64">
         <img src={src} className="paper max-h-full"></img>
       </div>

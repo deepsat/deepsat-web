@@ -20,9 +20,7 @@ export default function IndexPage({ feed }) {
       <Section heading="Aktualności" id="news">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           {feed.map((post) => (
-            <div className="w-full">
-              <FBPost post={post}></FBPost>
-            </div>
+            <FBPost post={post}></FBPost>
           ))}
         </div>
         <Link href="https://www.facebook.com/deepsatpl">
@@ -71,6 +69,7 @@ export async function getServerSideProps(context) {
   const { data: feed } = await fetch(
     `https://graph.facebook.com/v8.0/deepsatpl/feed?fields=story%2Cattachments%2Cpermalink_url&limit=${limit}&access_token=${access_token}`
   ).then((response) => response.json());
+  // console.log(feed)
   return {
     props: {
       feed,

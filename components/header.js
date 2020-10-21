@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 
-const logo = require("../images/deepsat_logo.png?resize");
+const logo = require("../images/logo_horizontal.png?resize");
 
 export default function Header({ links }) {
   const [top, setTop] = useState(true);
@@ -34,7 +34,6 @@ export default function Header({ links }) {
       >
         <Link href="/">
           <a className="md:mr-8 flex flex-no-wrap items-center">
-            <h1 className="text-2xl md:text-4xl block">DeepSat</h1>
             <img
               src={logo}
               srcSet={logo.srcSet}
