@@ -26,27 +26,29 @@ export default function Header({ links }) {
   return (
     <div className={`header ${top ? "isTop" : ""}`}>
       <div
-        className={`container mx-auto h-24 px-16 md:px-32 flex flex-no-wrap items-center`}
+        className={`container mx-auto h-24 px-16 md:px-32 flex flex-wrap justify-center items-center`}
       >
-        <Link className="md:mr-8" href="/">
-          <a>
-            <img
-              src={logo}
-              srcSet={logo.srcSet}
-              className="logo ml-2 h-8 md:h-12 align-baseline"
-            />
-          </a>
-        </Link>
+        <div className="mr-auto">
+          <Link href="/">
+            <a>
+              <img
+                src={logo}
+                srcSet={logo.srcSet}
+                className="logo h-8 md:h-10 align-baseline"
+              />
+            </a>
+          </Link>
+        </div>
         <button
           aria-label="menu"
           onClick={toggle}
-          className="w-4 h-4 ml-auto md:hidden"
+          className="md:hidden menu-toggle"
         >
-          <FontAwesomeIcon icon={faBars} className="menu-toggle" />
+          <FontAwesomeIcon icon={faBars} />
         </button>
         <div
           aria-hidden={!open}
-          className={`absolute md:static inset-x-0 top-full md:ml-auto bg-white md:bg-transparent shadow-lg md:shadow-none transition-default md:transition-none transform md:transform-none origin-top ${
+          className={`absolute md:static md:ml-auto inset-x-0 top-full bg-white md:bg-transparent shadow-lg md:shadow-none transition-default md:transition-none transform md:transform-none origin-top ${
             open ? "" : "scale-y-0 "
           }`}
         >

@@ -61,6 +61,12 @@
       }
     }
   }
+  .menu-toggle {
+    @apply w-4 h-4 ml-auto;
+    & svg {
+      @apply align-top;
+    }
+  }
   .link {
     @apply text-primary transition duration-200 ease-in-out;
     &:hover,
