@@ -95,12 +95,16 @@
   .paper {
     @apply shadow-lg rounded bg-white;
   }
+  .list-item p {
+    @apply inline-block;
+  }
 }
 
 @tailwind utilities;
 
 @layer utilities {
   .transition-default {
+    @apply transition-all duration-200 ease-in-out;
     transition-duration: 200ms;
     transition-property: background-color, border-color, color, fill, stroke,
       opacity, box-shadow, transform, filter, -webkit-filter;

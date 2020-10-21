@@ -3,19 +3,14 @@ import Link from "next/link";
 import Obfuscate from "react-obfuscate";
 import Section from "../components/section";
 import FBPost from "../components/fb";
+import { createClient } from "contentful";
+import RTF from "../components/rtf";
 
-export default function IndexPage({ feed }) {
+export default function IndexPage({ feed, hero, team }) {
   return (
     <Layout>
       <Section heading="" id="about" className="my-48">
-        Jesteśmy grupą uczniów z XIV Liceum Ogólnokształcącego im. Stanisława
-        Staszica w Warszawie. W ramach konkursu CanSat 2020/2021 budujemy
-        miniaturowego „satelitę” wielkości puszki po napoju. Nasz projekt
-        stanowi demonstrację oraz ma na celu zbadanie możliwości i ograniczeń
-        technologii, które mogą zostać wykorzystane w misjach kosmicznych w
-        odległych rejonach układu słonecznego. Wykorzystujemy uczenie maszynowe
-        w celu dokonywania detekcji poszczególnych obiektów na ziemi oraz
-        mapowania terenu na podstawie obrazu z kamery i danych z czujników.
+        <RTF document={hero} />
       </Section>
       <Section heading="Aktualności" id="news">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -34,18 +29,7 @@ export default function IndexPage({ feed }) {
         </Link>
       </Section>
       <Section heading="Zespół">
-        <ul className="list-disc list-inside">
-          {[
-            "Jakub Bachurski",
-            "Piotr Grynfelder",
-            "Szymon Kotarba",
-            "Kajetan Knopp",
-            "Krzysztof Kwiatkowski",
-            "Jan Zając",
-          ].map((name) => (
-            <li key={name}>{name}</li>
-          ))}
-        </ul>
+        <RTF document={team} />
       </Section>
       <Section heading="Kontakt" id="contact">
         <ul className="mb-8">
@@ -64,16 +48,37 @@ export default function IndexPage({ feed }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
+  // fb
   const limit = 4;
   const access_token = process.env.FB_TOKEN;
   const { data: feed } = await fetch(
     `https://graph.facebook.com/v8.0/deepsatpl/feed?fields=story%2Cattachments%2Cpermalink_url&limit=${limit}&access_token=${access_token}`
   ).then((response) => response.json());
-  // console.log(feed)
+
+  // contentful
+  let client = createClient({
+    space: process.env.CONTENTFUL_SPACE,
+    accessToken: process.env.CONTENTFUL_TOKEN,
+  });
+  let hero = await client
+    .getEntries({
+      "fields.key": "hero",
+      content_type: "static",
+    })
+    .then((entries) => entries.items.map((entry) => entry.fields.content));
+  let team = await client
+    .getEntries({
+      "fields.key": "team",
+      content_type: "static",
+    })
+    .then((entries) => entries.items.map((entry) => entry.fields.content));
   return {
     props: {
       feed,
+      hero: hero[0],
+      team: team[0],
     },
+    revalidate: 60,
   };
 }
