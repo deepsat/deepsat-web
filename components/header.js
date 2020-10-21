@@ -24,20 +24,18 @@ export default function Header({ links }) {
     setOpen(!open);
   };
   return (
-    <div
-      className={`header ${
-        top ? "isTop" : ""
-      }`}
-    >
+    <div className={`header ${top ? "isTop" : ""}`}>
       <div
         className={`container mx-auto h-24 px-16 md:px-32 flex flex-no-wrap items-center`}
       >
         <Link className="md:mr-8" href="/">
-          <img
-            src={logo}
-            srcSet={logo.srcSet}
-            className="logo ml-2 h-8 md:h-12 align-baseline"
-          />
+          <a>
+            <img
+              src={logo}
+              srcSet={logo.srcSet}
+              className="logo ml-2 h-8 md:h-12 align-baseline"
+            />
+          </a>
         </Link>
         <button
           aria-label="menu"
