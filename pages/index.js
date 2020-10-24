@@ -6,11 +6,11 @@ import FBPost from "../components/fb";
 import { createClient } from "contentful";
 import RTF from "../components/rtf";
 
-export default function IndexPage({ feed, hero, team }) {
+export default function IndexPage({ feed, hero, team, contact }) {
   return (
     <Layout>
-      <Section heading="" id="about" className="my-48">
-        <RTF document={hero} />
+      <Section heading={hero.heading} id="about" className="my-48">
+        <RTF rtf={hero.content} />
       </Section>
       <Section heading="Aktualności" id="news">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -28,21 +28,11 @@ export default function IndexPage({ feed, hero, team }) {
           </a>
         </Link>
       </Section>
-      <Section heading="Zespół">
-        <RTF document={team} />
+      <Section heading={team.heading}>
+        <RTF rtf={team.content} />
       </Section>
-      <Section heading="Kontakt" id="contact">
-        <ul className="mb-8">
-          <li>
-            Email: <Obfuscate className="link" email="kontakt@deepsat.pl" />
-          </li>
-          <li>
-            Facebook:{" "}
-            <a href="https://www.facebook.com/deepsatpl" className="link">
-              @deepsatpl
-            </a>
-          </li>
-        </ul>
+      <Section heading={contact.heading} id="contact">
+        <RTF rtf={contact.content} />
       </Section>
     </Layout>
   );
@@ -61,24 +51,25 @@ export async function getStaticProps(context) {
     space: process.env.CONTENTFUL_SPACE,
     accessToken: process.env.CONTENTFUL_TOKEN,
   });
-  let hero = await client
-    .getEntries({
-      "fields.key": "hero",
-      content_type: "static",
-    })
-    .then((entries) => entries.items.map((entry) => entry.fields.content));
-  let team = await client
-    .getEntries({
-      "fields.key": "team",
-      content_type: "static",
-    })
-    .then((entries) => entries.items.map((entry) => entry.fields.content));
-  return {
+  const sections = ["hero", "team", "contact"];
+  const sections_mapped = Object.fromEntries(
+    await Promise.all(
+      sections.map(async (section) => {
+        const entries = await client.getEntries({
+          "fields.key": section,
+          content_type: "static",
+        });
+        return entries.items.map((entry) => entry.fields);
+      })
+    ).then((result) => result.map((entry) => [entry[0].key, entry[0]]))
+  );
+  console.log(sections_mapped);
+  const to_return = {
     props: {
       feed,
-      hero: hero[0],
-      team: team[0],
+      ...sections_mapped,
     },
     revalidate: 60,
   };
+  return to_return;
 }
