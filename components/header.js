@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
+import { MdMenu } from "react-icons/md";
 const logo = require("../images/logo_horizontal.png?resize");
 
 export default function Header({ menu }) {
@@ -39,7 +38,7 @@ export default function Header({ menu }) {
           onClick={toggle}
           className="md:hidden menu-toggle"
         >
-          <FontAwesomeIcon icon={faBars} />
+          <MdMenu></MdMenu>
         </button>
         <div
           aria-hidden={!open}

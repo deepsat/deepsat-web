@@ -1,6 +1,5 @@
 import Layout from "../components/layout";
 import Link from "next/link";
-import Obfuscate from "react-obfuscate";
 import Section from "../components/section";
 import FBPost from "../components/fb";
 import { createClient } from "contentful";

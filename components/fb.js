@@ -1,3 +1,5 @@
+import { MdArrowForward } from "react-icons/md";
+
 const FBPost = ({ post }) => {
   const permalink = post.permalink_url;
   const src = post.attachments.data[0].media.image.src;
@@ -8,10 +10,10 @@ const FBPost = ({ post }) => {
       <div className="mb-4 lg:mb-0 lg:mr-4 lg:h-64">
         <img src={src} className="paper max-h-full"></img>
       </div>
-      <div>
+      <div className="flex self-stretch flex-grow">
         <p>{text}</p>
-        <a href={permalink} className="link" rel="noreferrer">
-          Czytaj dalej&hellip;
+        <a href={permalink} className="block ml-auto mt-auto link" rel="noreferrer">
+          <MdArrowForward className="inline text-xl" />
         </a>
       </div>
     </div>
