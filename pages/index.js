@@ -7,11 +7,16 @@ import { createClient } from "contentful";
 import RTF from "../components/rtf";
 
 export default function IndexPage({ statics, sections, feed, team }) {
+  const links = [
+    { href: "/#about", label: "O projekcie" },
+    { href: "/#news", label: "Aktualności" },
+    { href: "/#contact", label: "Kontakt" },
+  ];
   team = team ?? [];
   sections = sections ?? {};
   statics = statics ?? {};
   return (
-    <Layout>
+    <Layout links={links}>
       <Section heading={sections.hero.title} id="about" className="my-48">
         <RTF rtf={sections.hero.content} />
       </Section>
@@ -47,6 +52,7 @@ export default function IndexPage({ statics, sections, feed, team }) {
 
 export async function getStaticProps(context) {
   // fb
+  const locale = "pl";
   const limit = 4;
   const access_token = process.env.FB_TOKEN;
   const { data: feed } = await fetch(
@@ -62,6 +68,7 @@ export async function getStaticProps(context) {
     .getEntries({
       "fields.slug": ["hero", "contact"],
       content_type: "post",
+      locale: locale,
     })
     .then((result) =>
       result.items.map((item) => [item.fields.slug, item.fields])
@@ -72,6 +79,7 @@ export async function getStaticProps(context) {
     .getEntries({
       "fields.key": ["team"],
       content_type: "static",
+      locale: locale,
     })
     .then((result) =>
       result.items.map((item) => [item.fields.key, item.fields.content])
@@ -82,6 +90,7 @@ export async function getStaticProps(context) {
     .getEntries({
       content_type: "teamMember",
       order: "fields.order",
+      locale: locale,
     })
     .then((result) => result.items.map((item) => item.fields));
   console.log(team);

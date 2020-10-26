@@ -5,13 +5,7 @@ import seoConfig from "../next-seo.config";
 const background = require("../images/background_horizontal.jpg?resize");
 const backgroundVertical = require("../images/background_vertical.jpg?resize");
 
-const links = [
-  { href: "/#about", label: "O projekcie" },
-  { href: "/#news", label: "Aktualności" },
-  { href: "/#contact", label: "Kontakt" },
-];
-
-export default function Layout({ children }) {
+export default function Layout({ children, links }) {
   return (
     <>
       <DefaultSeo {...seoConfig} />
