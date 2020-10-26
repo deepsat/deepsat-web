@@ -6,21 +6,16 @@ import FBPost from "../components/fb";
 import { createClient } from "contentful";
 import RTF from "../components/rtf";
 
-export default function IndexPage({ statics, sections, feed, team }) {
-  const links = [
-    { href: "/#about", label: "O projekcie" },
-    { href: "/#news", label: "Aktualności" },
-    { href: "/#contact", label: "Kontakt" },
-  ];
+export default function IndexPage({ statics, sections, feed, team, menu }) {
   team = team ?? [];
   sections = sections ?? {};
   statics = statics ?? {};
   return (
-    <Layout links={links}>
+    <Layout menu={menu}>
       <Section heading={sections.hero.title} id="about" className="my-48">
         <RTF rtf={sections.hero.content} />
       </Section>
-      <Section heading="Aktualności" id="news">
+      <Section heading={statics.news} id="news">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           {feed.map((post) => (
             <FBPost key={post.id} post={post}></FBPost>
@@ -32,7 +27,7 @@ export default function IndexPage({ statics, sections, feed, team }) {
             target="_blank"
             rel="noreferrer"
           >
-            Zobacz więcej na naszym Facebooku
+            {statics["visit fb"]}
           </a>
         </Link>
       </Section>
@@ -50,9 +45,8 @@ export default function IndexPage({ statics, sections, feed, team }) {
   );
 }
 
-export async function getStaticProps(context) {
+export async function getContent(locale) {
   // fb
-  const locale = "pl";
   const limit = 4;
   const access_token = process.env.FB_TOKEN;
   const { data: feed } = await fetch(
@@ -77,7 +71,7 @@ export async function getStaticProps(context) {
 
   const statics = await client
     .getEntries({
-      "fields.key": ["team"],
+      "fields.key": ["team", "news", "visit fb"],
       content_type: "static",
       locale: locale,
     })
@@ -93,13 +87,28 @@ export async function getStaticProps(context) {
       locale: locale,
     })
     .then((result) => result.items.map((item) => item.fields));
-  console.log(team);
+
+  const menu = await client
+    .getEntries({
+      content_type: "menu",
+      "fields.name": "Main",
+      locale: locale,
+    })
+    .then((result) => result.items.map((item) => item.fields));
+  console.log(menu);
+  return {
+    feed,
+    sections,
+    statics,
+    team,
+    menu: menu[0].content,
+  };
+}
+
+export async function getStaticProps(context) {
   return {
     props: {
-      feed,
-      sections,
-      statics,
-      team,
+      ...(await getContent("pl")),
     },
     revalidate: 60,
   };

@@ -5,7 +5,7 @@ import seoConfig from "../next-seo.config";
 const background = require("../images/background_horizontal.jpg?resize");
 const backgroundVertical = require("../images/background_vertical.jpg?resize");
 
-export default function Layout({ children, links }) {
+export default function Layout({ children, menu }) {
   return (
     <>
       <DefaultSeo {...seoConfig} />
@@ -23,7 +23,7 @@ export default function Layout({ children, links }) {
         aria-hidden="true"
         alt=""
       />
-      <Header links={links} />
+      <Header menu={menu} />
       <div className="container mx-auto px-8 md:px-16 mt-24">{children}</div>
     </>
   );

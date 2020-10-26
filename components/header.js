@@ -2,10 +2,9 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
-
 const logo = require("../images/logo_horizontal.png?resize");
 
-export default function Header({ links }) {
+export default function Header({ menu }) {
   const [top, setTop] = useState(true);
   const [open, setOpen] = useState(false);
 
@@ -29,15 +28,11 @@ export default function Header({ links }) {
         className={`container mx-auto h-24 px-16 md:px-32 flex flex-wrap justify-center items-center`}
       >
         <div className="mr-auto">
-          <Link href="/">
-            <a>
-              <img
-                src={logo}
-                srcSet={logo.srcSet}
-                className="logo h-8 md:h-10 align-baseline"
-              />
-            </a>
-          </Link>
+          <img
+            src={logo}
+            srcSet={logo.srcSet}
+            className="logo h-8 md:h-10 align-baseline"
+          />
         </div>
         <button
           aria-label="menu"
@@ -55,10 +50,10 @@ export default function Header({ links }) {
           <ul
             className={`container mx-auto flex flex-col md:flex-row gap-8 px-16 py-8 md:p-0`}
           >
-            {links.map((link) => (
-              <li key={link.label}>
-                <Link href={link.href}>
-                  <a className="whitespace-no-wrap link">{link.label}</a>
+            {menu.map((item) => (
+              <li key={item.label}>
+                <Link href={item.url}>
+                  <a className="whitespace-no-wrap link">{item.label}</a>
                 </Link>
               </li>
             ))}
