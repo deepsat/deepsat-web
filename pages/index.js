@@ -7,6 +7,9 @@ import { createClient } from "contentful";
 import RTF from "../components/rtf";
 
 export default function IndexPage({ statics, sections, feed, team }) {
+  team = team ?? [];
+  sections = sections ?? {};
+  statics = statics ?? {};
   return (
     <Layout>
       <Section heading={sections.hero.title} id="about" className="my-48">
@@ -28,7 +31,13 @@ export default function IndexPage({ statics, sections, feed, team }) {
           </a>
         </Link>
       </Section>
-      <Section heading={statics.team}></Section>
+      <Section heading={statics.team}>
+        <ul className="list-inside list-disc">
+          {team.map((member) => (
+            <li>{member.name}</li>
+          ))}
+        </ul>
+      </Section>
       <Section heading={sections.contact.title} id="contact">
         <RTF rtf={sections.contact.content} />
       </Section>
@@ -68,12 +77,20 @@ export async function getStaticProps(context) {
       result.items.map((item) => [item.fields.key, item.fields.content])
     )
     .then((result) => Object.fromEntries(result));
-  console.log(statics);
+
+  const team = await client
+    .getEntries({
+      content_type: "teamMember",
+      order: "fields.order",
+    })
+    .then((result) => result.items.map((item) => item.fields));
+  console.log(team);
   return {
     props: {
       feed,
       sections,
       statics,
+      team,
     },
     revalidate: 60,
   };
