@@ -30,7 +30,7 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
           </a>
         </Link>
       </Section>
-      <Section heading={statics.team}>
+      <Section heading={statics.team} id="team">
         <ul className="list-inside list-disc">
           {team.map((member) => (
             <li>{member.name}</li>
