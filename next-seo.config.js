@@ -8,8 +8,7 @@ export default {
     site_name: "DeepSat",
     images: [
       {
-        url:
-          "https://og-image.vercel.app/**DeepSat**.png?theme=dark&md=1&fontSize=225px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-white.svg&widths=50&heights=50",
+        url: "http://deepsat.pl/og.png",
         width: 2048,
         height: 1170,
         alt: "DeepSat OG image",
