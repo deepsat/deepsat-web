@@ -36,15 +36,24 @@
       @apply invisible;
     }
   }
+
+  .transition-default {
+    @apply transition-all duration-200 ease-in-out;
+  }
 }
 @tailwind components;
 
 @layer components {
   .header {
     @apply fixed z-50 top-0 w-full transition-default bg-white text-black shadow-lg;
+    & .logo {
+      @apply h-8 align-baseline;
+      transition: height 400ms;
+    }
     &.isTop {
       @apply bg-transparent;
       & .logo {
+        @apply h-10;
         filter: brightness(0) invert(1);
       }
       & .menu-toggle {
@@ -52,15 +61,27 @@
       }
     }
   }
-  @screen md {
-    .header.isTop .link {
-      @apply text-white;
-      &:hover,
-      &:active {
-        @apply text-white;
+  @screen lg {
+    .header {
+      & .logo {
+        @apply h-10;
+      }
+      &.isTop {
+        & .link {
+          @apply text-white;
+          &:hover,
+          &:active {
+            @apply text-white;
+          }
+        }
+
+        & .logo {
+          @apply h-12;
+        }
       }
     }
   }
+
   .menu-toggle {
     @apply w-4 h-4 ml-auto;
     & svg {
@@ -68,14 +89,14 @@
     }
   }
   .link {
-    @apply text-primary transition duration-200 ease-in-out;
+    @apply text-primary transition-default;
     &:hover,
     &:active {
       @apply text-primary-light;
     }
   }
   .btn {
-    @apply px-4 py-2 rounded-full font-medium transition duration-200 ease-in-out inline-block;
+    @apply px-4 py-2 rounded-full font-medium transition-default inline-block;
     font-family: "Montserrat";
   }
   .btn-primary {
@@ -103,11 +124,4 @@
 @tailwind utilities;
 
 @layer utilities {
-  .transition-default {
-    @apply transition-all duration-200 ease-in-out;
-    transition-duration: 200ms;
-    transition-property: background-color, border-color, color, fill, stroke,
-      opacity, box-shadow, transform, filter, -webkit-filter;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
 }

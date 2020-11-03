@@ -22,32 +22,32 @@ export default function Header({ menu }) {
     setOpen(!open);
   };
   return (
-    <div className={`header ${top ? "isTop" : ""}`}>
+    <div className={`header h-24 ${top ? "isTop" : ""}`}>
       <div
-        className={`container mx-auto h-24 px-16 md:px-32 flex flex-wrap justify-center items-center`}
+        className={`container mx-auto h-full px-16 lg:px-32 flex flex-wrap justify-center items-center`}
       >
         <div className="mr-auto">
           <img
             src={logo}
             srcSet={logo.srcSet}
-            className="logo h-8 md:h-10 align-baseline"
+            className="logo"
           />
         </div>
         <button
           aria-label="menu"
           onClick={toggle}
-          className="md:hidden menu-toggle"
+          className="lg:hidden menu-toggle"
         >
           <MdMenu></MdMenu>
         </button>
         <div
           aria-hidden={!open}
-          className={`absolute md:static md:ml-auto inset-x-0 top-full bg-white md:bg-transparent shadow-lg md:shadow-none transition-default md:transition-none transform md:transform-none origin-top ${
+          className={`absolute lg:static lg:ml-auto inset-x-0 top-full bg-white lg:bg-transparent shadow-lg lg:shadow-none transition-default lg:transition-none transform lg:transform-none origin-top ${
             open ? "" : "scale-y-0 "
           }`}
         >
           <ul
-            className={`container mx-auto flex flex-col md:flex-row gap-8 px-16 py-8 md:p-0`}
+            className={`container mx-auto flex flex-col lg:flex-row gap-8 px-16 py-8 lg:p-0`}
           >
             {menu.map((item) => (
               <li key={item.label}>

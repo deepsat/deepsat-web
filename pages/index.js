@@ -15,7 +15,7 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
         <RTF rtf={sections.hero.content} />
       </Section>
       <Section heading={statics.news} id="news">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
           {feed.map((post) => (
             <FBPost key={post.id} post={post}></FBPost>
           ))}
@@ -94,7 +94,7 @@ export async function getContent(locale) {
       locale: locale,
     })
     .then((result) => result.items.map((item) => item.fields));
-  console.log(menu);
+  // console.log(menu);
   return {
     feed,
     sections,
