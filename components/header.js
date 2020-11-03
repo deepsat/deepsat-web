@@ -24,7 +24,7 @@ export default function Header({ menu }) {
   return (
     <div className={`header h-24 ${top ? "isTop" : ""}`}>
       <div
-        className={`container mx-auto h-full px-16 lg:px-32 flex flex-wrap justify-center items-center`}
+        className={`container mx-auto h-full px-8 lg:px-32 flex flex-wrap justify-center items-center`}
       >
         <div className="mr-auto">
           <img src={logo} srcSet={logo.srcSet} className="logo" />
@@ -32,7 +32,7 @@ export default function Header({ menu }) {
         <button
           aria-label="menu"
           onClick={toggle}
-          className="lg:hidden menu-toggle"
+          className="lg:hidden menu-mobile-toggle"
         >
           <MdMenu></MdMenu>
         </button>
