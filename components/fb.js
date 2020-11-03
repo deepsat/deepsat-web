@@ -6,7 +6,6 @@ const FBPost = ({ post }) => {
   const src = post.attachments.data[0].media.image.src;
   const text = post.attachments.data[0].description;
   const id = post.id;
-  console.log(post);
   return (
     <div className="paper p-4 flex flex-col lg:flex-row items-center">
       <div className="mb-4 lg:mb-0 lg:mr-4 lg:w-64 flex-shrink-0">
