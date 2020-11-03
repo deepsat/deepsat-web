@@ -107,7 +107,7 @@
   }
   @screen lg {
     .menu-mobile {
-      @apply block;
+      @apply hidden;
     }
   }
 
