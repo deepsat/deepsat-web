@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { MdMenu } from "react-icons/md";
 const logo = require("../images/logo_horizontal.png?resize");
 
-export default function Header({ menu }) {
+export default function Header({ menu, logoHref }) {
   const [top, setTop] = useState(true);
   const [open, setOpen] = useState(false);
 
@@ -27,7 +27,11 @@ export default function Header({ menu }) {
         className={`container mx-auto h-full px-16 lg:px-32 flex justify-center items-center`}
       >
         <div className="mr-auto">
-          <img src={logo} srcSet={logo.srcSet} className="logo" />
+          <Link href={logoHref}>
+            <a>
+              <img src={logo} srcSet={logo.srcSet} className="logo" />
+            </a>
+          </Link>
         </div>
         <button
           aria-label="menu"

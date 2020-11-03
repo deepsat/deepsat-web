@@ -4,13 +4,16 @@ import Section from "../components/section";
 import FBPost from "../components/fb";
 import { createClient } from "contentful";
 import RTF from "../components/rtf";
+import { DefaultSeo } from "next-seo";
+import seoConfig from "../next-seo.config";
 
 export default function IndexPage({ statics, sections, feed, team, menu }) {
   team = team ?? [];
   sections = sections ?? {};
   statics = statics ?? {};
   return (
-    <Layout menu={menu}>
+    <Layout menu={menu} logoHref={statics.indexurl}>
+      <DefaultSeo {...seoConfig} canonical={statics.indexurl} />
       <Section heading={sections.hero.title} id="about" className="my-48">
         <RTF rtf={sections.hero.content} />
       </Section>

@@ -3,14 +3,14 @@ const url = "https://deepsat.pl";
 export default {
   openGraph: {
     type: "website",
-    locale: "pl_PL",
+    locale: "pl",
     url: url,
     site_name: "DeepSat",
     images: [
       {
         url: "http://deepsat.pl/og.png",
-        width: 2048,
-        height: 1170,
+        width: 1200,
+        height: 224,
         alt: "DeepSat OG image",
       },
     ],
