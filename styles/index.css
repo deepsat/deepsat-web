@@ -88,6 +88,29 @@
       @apply align-top;
     }
   }
+  .menu {
+    @apply hidden;
+    & ul {
+      @apply mx-auto flex gap-8;
+    }
+  }
+  @screen lg {
+    .menu {
+      @apply block;
+    }
+  }
+  .menu-mobile {
+    @apply absolute inset-x-0 top-full bg-white shadow-lg transition-default transform origin-top;
+    & ul {
+      @apply mx-auto flex flex-col gap-8 px-16 py-8;
+    }
+  }
+  @screen lg {
+    .menu-mobile {
+      @apply block;
+    }
+  }
+
   .link {
     @apply text-primary transition-default;
     &:hover,

@@ -27,11 +27,7 @@ export default function Header({ menu }) {
         className={`container mx-auto h-full px-16 lg:px-32 flex flex-wrap justify-center items-center`}
       >
         <div className="mr-auto">
-          <img
-            src={logo}
-            srcSet={logo.srcSet}
-            className="logo"
-          />
+          <img src={logo} srcSet={logo.srcSet} className="logo" />
         </div>
         <button
           aria-label="menu"
@@ -40,15 +36,22 @@ export default function Header({ menu }) {
         >
           <MdMenu></MdMenu>
         </button>
+        <div className={"menu"}>
+          <ul className="container">
+            {menu.map((item) => (
+              <li key={item.label}>
+                <Link href={item.url}>
+                  <a className="whitespace-no-wrap link">{item.label}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
         <div
           aria-hidden={!open}
-          className={`absolute lg:static lg:ml-auto inset-x-0 top-full bg-white lg:bg-transparent shadow-lg lg:shadow-none transition-default lg:transition-none transform lg:transform-none origin-top ${
-            open ? "" : "scale-y-0 "
-          }`}
+          className={`menu-mobile ${open ? "" : "scale-y-0 "}`}
         >
-          <ul
-            className={`container mx-auto flex flex-col lg:flex-row gap-8 px-16 py-8 lg:p-0`}
-          >
+          <ul className="container">
             {menu.map((item) => (
               <li key={item.label}>
                 <Link href={item.url}>
