@@ -52,7 +52,7 @@ export async function getContent(locale) {
   const limit = 4;
   const access_token = process.env.FB_TOKEN;
   const { data: feed } = await fetch(
-    `https://graph.facebook.com/v8.0/deepsatpl/feed?fields=story%2Cattachments%2Cpermalink_url&limit=${limit}&access_token=${access_token}`
+    `https://graph.facebook.com/v8.0/deepsatpl/posts?fields=message%2Cattachments%7Bmedia%2Cdescription%7D%2Cpermalink_url&limit=${limit}&access_token=${access_token}`
   ).then((response) => response.json());
 
   // contentful
@@ -97,7 +97,7 @@ export async function getContent(locale) {
       locale: locale,
     })
     .then((result) => result.items.map((item) => item.fields));
-  // console.log(menu);
+
   return {
     feed,
     sections,
