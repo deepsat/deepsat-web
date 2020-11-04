@@ -9,7 +9,7 @@ const FBPost = ({ post }) => {
   console.log(post.attachments.data);
   return (
     <div className="paper p-4 flex flex-col xl:flex-row items-center">
-      <div className="mb-8 xl:mb-0 xl:mr-4 flex-shrink-0 h-64 w-full xl:w-64 relative">
+      <div className="mb-8 xl:mb-0 xl:mr-4 flex-shrink-0 h-32 xl:h-64 w-full xl:w-64 relative">
         <img
           src={src}
           className="paper absolute top-0 bottom-0 left-0 right-0 m-auto max-w-full max-h-full"
