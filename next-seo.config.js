@@ -10,7 +10,7 @@ export default {
       {
         url: "http://deepsat.pl/og.png",
         width: 1200,
-        height: 224,
+        height: 630,
         alt: "DeepSat OG image",
       },
     ],
