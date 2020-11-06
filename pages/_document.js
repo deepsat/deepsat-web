@@ -35,7 +35,7 @@ class MyDocument extends Document {
               href="/safari-pinned-tab.svg?v=1"
               color="#000000"
             />
-            <link rel="shortcut icon" href="/favicon/favicon.ico?v=1" />
+            <link rel="shortcut icon" href="/favicon.ico?v=1" />
             <meta name="msapplication-TileColor" content="#000000" />
             <meta
               name="msapplication-config"
