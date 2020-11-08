@@ -29,9 +29,9 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
       color: "#fff",
     },
     {
-      href: "mailto:kontakt@deepsat.pl",
+      href: `mailto:${statics.email}`,
       icon: <MdEmail />,
-      text: "kontakt@deepsat.pl",
+      text: `${statics.email}`,
       color: "#666"
     },
   ];
