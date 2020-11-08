@@ -32,7 +32,7 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
       href: `mailto:${statics.email}`,
       icon: <MdEmail />,
       text: `${statics.email}`,
-      color: "#666"
+      color: "#666",
     },
   ];
   return (
@@ -87,7 +87,11 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
           ))}
         </ul>
       </Section>
-      <Section heading={sections.contact.title} id="contact" className="mt-32 mb-64">
+      <Section
+        heading={sections.contact.title}
+        id="contact"
+        className="mt-32 mb-64"
+      >
         <RTF rtf={sections.contact.content} />
       </Section>
     </Layout>
@@ -109,7 +113,6 @@ export async function getContent(locale) {
   });
   const sections = await client
     .getEntries({
-      "fields.slug": ["hero", "contact"],
       content_type: "post",
       locale: locale,
     })
@@ -120,7 +123,6 @@ export async function getContent(locale) {
 
   const statics = await client
     .getEntries({
-      "fields.key": ["team", "news", "visit fb"],
       content_type: "static",
       locale: locale,
     })
