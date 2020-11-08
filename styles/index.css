@@ -129,6 +129,12 @@
       @apply bg-primary-light;
     }
   }
+  .btn-generic {
+    &:hover,
+    &:focus {
+      filter: brightness(80%);
+    }
+  }
   .btn-outline {
     @apply border border-primary text-primary;
     &:hover,
@@ -136,11 +142,32 @@
       @apply bg-primary-light text-primary-text;
     }
   }
+  .btn-enlarge {
+    @apply transform transition-default;
+    &:hover,
+    &:focus {
+      @apply scale-150;
+    }
+  }
   .paper {
     @apply shadow-lg rounded bg-white;
   }
   .list-item p {
     @apply inline-block;
+  }
+
+  .scrolldown {
+    & svg {
+      @apply animate-bounce;
+    }
+    &:hover {
+      & svg {
+        animation-play-state: paused;
+      }
+    }
+  }
+  .icon-button svg {
+    @apply inline-block text-4xl mr-2;
   }
 }
 

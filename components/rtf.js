@@ -19,7 +19,11 @@ const options = {
   },
 };
 
-const RTF = ({ rtf }) => {
-  return <div className="rtf">{documentToReactComponents(rtf, options)}</div>;
+const RTF = ({ rtf, className }) => {
+  return (
+    <div className={"rtf " + className}>
+      {documentToReactComponents(rtf, options)}
+    </div>
+  );
 };
 export default RTF;

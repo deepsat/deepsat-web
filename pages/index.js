@@ -6,18 +6,55 @@ import { createClient } from "contentful";
 import RTF from "../components/rtf";
 import { DefaultSeo } from "next-seo";
 import seoConfig from "../next-seo.config";
+import { MdExpandMore } from "react-icons/md";
+import { FaFacebook, FaGithub } from "react-icons/fa";
+import IconButton from "../components/icon-button";
 
 export default function IndexPage({ statics, sections, feed, team, menu }) {
   team = team ?? [];
   sections = sections ?? {};
   statics = statics ?? {};
+  const socials = [
+    {
+      href: "https://facebook.com/deepsatpl",
+      icon: <FaFacebook />,
+      color: "#1877f2",
+      text: "@deepsatpl",
+    },
+    {
+      href: "https://github.com/deepsat",
+      icon: <FaGithub />,
+      textColor: "#24292e",
+      text: "deepsat",
+      color: "#fff"
+    },
+  ];
   return (
     <Layout menu={menu} logoHref={statics.indexurl}>
       <DefaultSeo {...seoConfig} canonical={statics.indexurl} />
-      <Section heading={sections.hero.title} id="about" className="my-48">
-        <RTF rtf={sections.hero.content} />
-      </Section>
-      <Section heading={statics.news} id="news">
+      <div className="min-h-screen flex flex-col">
+        <Section heading={sections.hero.title} id="about" className="mt-48 mb-4">
+          <RTF rtf={sections.hero.content} />
+        </Section>
+        <ul className="flex justify-center">
+          {socials.map((item) => (
+            <li className="mr-4 mb-4">
+              <IconButton {...item} />
+            </li>
+          ))}
+        </ul>
+        <div className="mt-auto mb-4 flex justify-center">
+          <p className="text-white text-6xl">
+            <Link href="#start">
+              <a className="scrolldown">
+                <MdExpandMore />
+              </a>
+            </Link>
+          </p>
+        </div>
+      </div>
+      <div id="start"></div>
+      <Section heading={statics.news} id="news" className="mt-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           {feed.map((post) => (
             <FBPost key={post.id} post={post}></FBPost>

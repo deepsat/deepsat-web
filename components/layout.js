@@ -21,7 +21,7 @@ export default function Layout({ children, menu, logoHref }) {
         alt=""
       />
       <Header menu={menu} logoHref={logoHref} />
-      <div className="container mx-auto px-8 lg:px-16 mt-24">{children}</div>
+      <div className="container mx-auto px-8 lg:px-16">{children}</div>
     </>
   );
 }
