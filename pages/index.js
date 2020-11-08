@@ -46,7 +46,7 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
         >
           <RTF rtf={sections.hero.content} />
         </Section>
-        <ul className="mt-auto flex justify-center">
+        <ul className="mt-auto flex flex-wrap justify-center">
           {socials.map((item) => (
             <li className="mr-4 mb-4">
               <IconButton {...item} />
