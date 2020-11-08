@@ -6,7 +6,7 @@ import { createClient } from "contentful";
 import RTF from "../components/rtf";
 import { DefaultSeo } from "next-seo";
 import seoConfig from "../next-seo.config";
-import { MdExpandMore } from "react-icons/md";
+import { MdEmail, MdExpandMore } from "react-icons/md";
 import { FaFacebook, FaGithub } from "react-icons/fa";
 import IconButton from "../components/icon-button";
 
@@ -26,17 +26,27 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
       icon: <FaGithub />,
       textColor: "#24292e",
       text: "deepsat",
-      color: "#fff"
+      color: "#fff",
+    },
+    {
+      href: "mailto:kontakt@deepsat.pl",
+      icon: <MdEmail />,
+      text: "kontakt@deepsat.pl",
+      color: "#666"
     },
   ];
   return (
     <Layout menu={menu} logoHref={statics.indexurl}>
       <DefaultSeo {...seoConfig} canonical={statics.indexurl} />
       <div className="min-h-screen flex flex-col">
-        <Section heading={sections.hero.title} id="about" className="mt-48 mb-4">
+        <Section
+          heading={sections.hero.title}
+          id="about"
+          className="mt-48 mb-4"
+        >
           <RTF rtf={sections.hero.content} />
         </Section>
-        <ul className="flex justify-center">
+        <ul className="mt-auto flex justify-center">
           {socials.map((item) => (
             <li className="mr-4 mb-4">
               <IconButton {...item} />
@@ -77,7 +87,7 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
           ))}
         </ul>
       </Section>
-      <Section heading={sections.contact.title} id="contact">
+      <Section heading={sections.contact.title} id="contact" className="mt-32 mb-64">
         <RTF rtf={sections.contact.content} />
       </Section>
     </Layout>
