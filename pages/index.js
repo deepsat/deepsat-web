@@ -51,7 +51,7 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
             </li>
           ))}
         </ul>
-        <div className="mt-auto flex justify-center mb-16">
+        <div className="mt-auto flex justify-center mb-4">
           <Link href="#about">
             <a className="btn btn-enlarge text-white text-6xl">
               <MdExpandMore className="animate-bounce" />
