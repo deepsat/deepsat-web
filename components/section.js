@@ -1,15 +1,14 @@
-export default function Section(props) {
-  const className = props.className ?? "mt-32";
+const Section = ({ className, children, heading, ...props }) => {
   return (
-    <div {...props} className={className}>
+    <div className={className} {...props}>
       <div className="paper px-8 py-16 lg:px-16">
-        {props.heading ? (
-          <h1 className="text-3xl mb-8">{props.heading}</h1>
-        ) : (
-          ""
-        )}
-        {props.children}
+        {heading ? <h1 className="text-3xl mb-8">{heading}</h1> : ""}
+        {children}
       </div>
     </div>
   );
-}
+};
+Section.defaultProps = {
+  className: "mt-32",
+};
+export default Section;

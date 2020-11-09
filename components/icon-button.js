@@ -1,5 +1,4 @@
 const IconButton = ({ icon, href, color: bgColor, textColor, text }) => {
-  textColor = textColor ?? "#fff";
   return (
     <a
       href={href}
@@ -15,5 +14,7 @@ const IconButton = ({ icon, href, color: bgColor, textColor, text }) => {
     </a>
   );
 };
-
+IconButton.defaultProps = {
+  textColor: "#fff",
+};
 export default IconButton;

@@ -26,4 +26,8 @@ const RTF = ({ rtf, className }) => {
     </div>
   );
 };
+
+RTF.defaultProps = {
+  className: "",
+};
 export default RTF;

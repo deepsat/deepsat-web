@@ -1,5 +1,4 @@
 const Excerpt = ({ text, limit }) => {
-  text = text ?? "";
   var filter = text.replace(/\s+/g, " ");
   var wordsarr = filter.split(" ");
 
@@ -15,5 +14,9 @@ const Excerpt = ({ text, limit }) => {
     result += "…";
     return <>{result}</>;
   }
+};
+Excerpt.defaultProps = {
+  text: "",
+  limit: 30,
 };
 export default Excerpt;
