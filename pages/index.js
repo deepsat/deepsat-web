@@ -65,7 +65,7 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
       <Section heading={statics.news} id="news" className="snap mt-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           {feed.map((post) => (
-            <FBPost snap={true} key={post.id} post={post}></FBPost>
+            <FBPost key={post.id} post={post}></FBPost>
           ))}
         </div>
         <Link href="https://www.facebook.com/deepsatpl">
