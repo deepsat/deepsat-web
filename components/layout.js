@@ -3,7 +3,7 @@ import Header from "./header";
 const background = require("../images/background_horizontal.jpg?resize");
 const backgroundVertical = require("../images/background_vertical.jpg?resize");
 
-export default function Layout({ children, menu, logoHref }) {
+export default function Layout({ children, menu }) {
   return (
     <>
       <img
@@ -20,7 +20,7 @@ export default function Layout({ children, menu, logoHref }) {
         aria-hidden="true"
         alt=""
       />
-      <Header menu={menu} logoHref={logoHref} />
+      <Header menu={menu} />
       <div className="container mx-auto px-8 lg:px-16">{children}</div>
     </>
   );

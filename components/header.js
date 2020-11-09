@@ -3,7 +3,19 @@ import { useState, useEffect } from "react";
 import { MdMenu } from "react-icons/md";
 const logo = require("../images/logo_horizontal.png?resize");
 
-export default function Header({ menu, logoHref }) {
+const MenuItem = ({ locale, href, label }) => (
+  <li key={href}>
+    <Link href={href} locale={locale}>
+      <a className="whitespace-no-wrap link">{label}</a>
+    </Link>
+  </li>
+);
+MenuItem.defaultProps = {
+  href: "",
+  label: "",
+};
+
+export default function Header({ menu }) {
   const [top, setTop] = useState(true);
   const [open, setOpen] = useState(false);
 
@@ -27,9 +39,9 @@ export default function Header({ menu, logoHref }) {
         className={`container mx-auto h-full px-16 lg:px-32 flex justify-center items-center`}
       >
         <div className="mr-auto">
-          <Link href={logoHref}>
-            <a>
-              <img src={logo} srcSet={logo.srcSet} className="logo" />
+          <Link href="/">
+            <a className="logo">
+              <img src={logo} srcSet={logo.srcSet} />
             </a>
           </Link>
         </div>
@@ -43,11 +55,7 @@ export default function Header({ menu, logoHref }) {
         <div className={"menu"}>
           <ul className="container">
             {menu.map((item) => (
-              <li key={item.label}>
-                <Link href={item.url}>
-                  <a className="whitespace-no-wrap link">{item.label}</a>
-                </Link>
-              </li>
+              <MenuItem {...item} />
             ))}
           </ul>
         </div>
@@ -57,11 +65,7 @@ export default function Header({ menu, logoHref }) {
         >
           <ul className="container">
             {menu.map((item) => (
-              <li key={item.label}>
-                <Link href={item.url}>
-                  <a className="whitespace-no-wrap link">{item.label}</a>
-                </Link>
-              </li>
+              <MenuItem {...item} />
             ))}
           </ul>
         </div>

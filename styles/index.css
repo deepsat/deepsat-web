@@ -51,12 +51,19 @@
   .header {
     @apply fixed z-50 top-0 w-full transition-default bg-white text-black shadow-lg;
     & .logo {
-      @apply h-8 align-baseline transition-default transform;
+      @apply block h-8 align-baseline;
+      transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+        visibility 0s 0ms;
+      & img {
+        @apply max-h-full;
+      }
     }
     &.isTop {
       @apply bg-transparent;
       & .logo {
-        @apply opacity-0;
+        @apply opacity-0 invisible;
+        transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+          visibility 0s 200ms;
       }
       & .menu-mobile-toggle {
         @apply text-white;
