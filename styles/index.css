@@ -123,27 +123,27 @@
   .btn-primary {
     @apply bg-primary text-primary-text;
     &:hover,
-    &:focus {
+    &:active {
       @apply bg-primary-light;
     }
   }
   .btn-generic {
     &:hover,
-    &:focus {
+    &:active {
       filter: brightness(80%);
     }
   }
   .btn-outline {
     @apply border border-primary text-primary;
     &:hover,
-    &:focus {
+    &:active {
       @apply bg-primary-light text-primary-text;
     }
   }
   .btn-enlarge {
     @apply transform transition-default;
     &:hover,
-    &:focus {
+    &:active {
       @apply scale-125;
     }
   }
