@@ -154,10 +154,10 @@ export async function getContent(locale) {
   };
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await getContent("pl")),
+      ...(await getContent(locale)),
     },
     revalidate: 60,
   };
