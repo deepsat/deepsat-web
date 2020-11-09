@@ -47,14 +47,12 @@
   .header {
     @apply fixed z-50 top-0 w-full transition-default bg-white text-black shadow-lg;
     & .logo {
-      @apply h-8 align-baseline;
-      transition: height 400ms;
+      @apply h-8 align-baseline transition-default transform;
     }
     &.isTop {
       @apply bg-transparent;
       & .logo {
-        @apply h-10;
-        filter: brightness(0) invert(1);
+        @apply opacity-0;
       }
       & .menu-mobile-toggle {
         @apply text-white;
@@ -73,10 +71,6 @@
           &:active {
             @apply text-white;
           }
-        }
-
-        & .logo {
-          @apply h-12;
         }
       }
     }
@@ -146,7 +140,7 @@
     @apply transform transition-default;
     &:hover,
     &:focus {
-      @apply scale-150;
+      @apply scale-125;
     }
   }
   .paper {
@@ -156,18 +150,16 @@
     @apply inline-block;
   }
 
-  .scrolldown {
-    & svg {
-      @apply animate-bounce;
-    }
-    &:hover {
-      & svg {
-        animation-play-state: paused;
-      }
-    }
-  }
   .icon-button svg {
     @apply inline-block text-4xl mr-2;
+  }
+  .hero-logo {
+    filter: brightness(0) invert(1);
+  }
+  .snap {
+    scroll-snap-align: start;
+    scroll-snap-type: y proximity;
+    scroll-padding: 6rem;
   }
 }
 

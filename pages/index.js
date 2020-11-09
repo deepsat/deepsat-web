@@ -9,6 +9,7 @@ import seoConfig from "../next-seo.config";
 import { MdEmail, MdExpandMore } from "react-icons/md";
 import { FaFacebook, FaGithub } from "react-icons/fa";
 import IconButton from "../components/icon-button";
+const logo = require("../images/logo_horizontal.png?resize");
 
 export default function IndexPage({ statics, sections, feed, team, menu }) {
   team = team ?? [];
@@ -39,13 +40,9 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
     <Layout menu={menu} logoHref={statics.indexurl}>
       <DefaultSeo {...seoConfig} canonical={statics.indexurl} />
       <div className="min-h-screen flex flex-col">
-        <Section
-          heading={sections.hero.title}
-          id="about"
-          className="mt-48 mb-4"
-        >
-          <RTF rtf={sections.hero.content} />
-        </Section>
+        <div className="mt-48">
+          <img src={logo} srcSet={logo.srcSet} className="hero-logo" />
+        </div>
         <ul className="mt-auto flex flex-wrap justify-center">
           {socials.map((item) => (
             <li className="mr-4 mb-4">
@@ -53,18 +50,18 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
             </li>
           ))}
         </ul>
-        <div className="mt-auto mb-4 flex justify-center">
-          <p className="text-white text-6xl">
-            <Link href="#start">
-              <a className="scrolldown">
-                <MdExpandMore />
-              </a>
-            </Link>
-          </p>
+        <div className="mt-auto flex justify-center">
+          <Link href="#about">
+            <a className="btn btn-enlarge text-white text-6xl">
+              <MdExpandMore className="animate-bounce" />
+            </a>
+          </Link>
         </div>
       </div>
-      <div id="start"></div>
-      <Section heading={statics.news} id="news" className="mt-16">
+      <Section heading={sections.hero.title} id="about">
+        <RTF rtf={sections.hero.content} />
+      </Section>
+      <Section heading={statics.news} id="news" className="mt-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           {feed.map((post) => (
             <FBPost key={post.id} post={post}></FBPost>

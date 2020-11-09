@@ -9,7 +9,7 @@ export default function Header({ menu, logoHref }) {
 
   useEffect(() => {
     let onscroll = () => {
-      const current = window.scrollY < 5;
+      const current = window.scrollY < 10;
       if (current !== top) {
         setTop(current);
       }
