@@ -14,6 +14,7 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: theme("spacing.32");
+    scroll-snap-type: y proximity;
     @apply bg-black;
   }
 
@@ -39,6 +40,9 @@
 
   .transition-default {
     @apply transition-all duration-200 ease-in-out;
+  }
+  .snap {
+    scroll-snap-align: start;
   }
 }
 @tailwind components;
@@ -155,11 +159,6 @@
   }
   .hero-logo {
     filter: brightness(0) invert(1);
-  }
-  .snap {
-    scroll-snap-align: start;
-    scroll-snap-type: y proximity;
-    scroll-padding: 6rem;
   }
 }
 

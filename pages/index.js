@@ -40,7 +40,8 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
     <Layout menu={menu} logoHref={statics.indexurl}>
       <DefaultSeo {...seoConfig} canonical={statics.indexurl} />
       <div className="min-h-screen flex flex-col">
-        <div className="mt-48">
+        <div className="mt-32" />
+        <div className="mt-auto">
           <img src={logo} srcSet={logo.srcSet} className="hero-logo" />
         </div>
         <ul className="mt-auto flex flex-wrap justify-center">
@@ -58,13 +59,13 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
           </Link>
         </div>
       </div>
-      <Section heading={sections.hero.title} id="about">
+      <Section heading={sections.hero.title} id="about" className="snap mt-16">
         <RTF rtf={sections.hero.content} />
       </Section>
-      <Section heading={statics.news} id="news" className="mt-32">
+      <Section heading={statics.news} id="news" className="snap mt-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           {feed.map((post) => (
-            <FBPost key={post.id} post={post}></FBPost>
+            <FBPost snap={true} key={post.id} post={post}></FBPost>
           ))}
         </div>
         <Link href="https://www.facebook.com/deepsatpl">
@@ -77,7 +78,7 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
           </a>
         </Link>
       </Section>
-      <Section heading={statics.team} id="team">
+      <Section heading={statics.team} id="team" className="snap mt-32">
         <ul className="list-inside list-disc">
           {team.map((member) => (
             <li>{member.name}</li>
@@ -87,7 +88,7 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
       <Section
         heading={sections.contact.title}
         id="contact"
-        className="mt-32 mb-64"
+        className="snap mt-32 mb-64"
       >
         <RTF rtf={sections.contact.content} />
       </Section>
