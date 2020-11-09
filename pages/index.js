@@ -41,7 +41,7 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
       <DefaultSeo {...seoConfig} canonical={statics.indexurl} />
       <div className="min-h-screen flex flex-col">
         <div className="mt-32" />
-        <div className="mt-auto">
+        <div className="mt-auto mb-8">
           <img src={logo} srcSet={logo.srcSet} className="hero-logo" />
         </div>
         <ul className="mt-auto flex flex-wrap justify-center">
@@ -51,7 +51,7 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
             </li>
           ))}
         </ul>
-        <div className="mt-auto flex justify-center mb-4">
+        <div className="mt-auto flex justify-center mb-16 lg:mb-0">
           <Link href="#about">
             <a className="btn btn-enlarge text-white text-6xl">
               <MdExpandMore className="animate-bounce" />
