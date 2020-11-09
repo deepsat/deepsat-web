@@ -59,10 +59,10 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
           </Link>
         </div>
       </div>
-      <Section heading={sections.hero.title} id="about" className="snap mt-16">
+      <Section heading={sections.hero.title} id="about" className="mt-16">
         <RTF rtf={sections.hero.content} />
       </Section>
-      <Section heading={statics.news} id="news" className="snap mt-32">
+      <Section heading={statics.news} id="news" className="mt-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           {feed.map((post) => (
             <FBPost key={post.id} post={post}></FBPost>
@@ -78,7 +78,7 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
           </a>
         </Link>
       </Section>
-      <Section heading={statics.team} id="team" className="snap mt-32">
+      <Section heading={statics.team} id="team" className="mt-32">
         <ul className="list-inside list-disc">
           {team.map((member) => (
             <li>{member.name}</li>
@@ -88,7 +88,7 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
       <Section
         heading={sections.contact.title}
         id="contact"
-        className="snap mt-32 mb-64"
+        className="mt-32 mb-64"
       >
         <RTF rtf={sections.contact.content} />
       </Section>
