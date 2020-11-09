@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { MdMenu } from "react-icons/md";
+import { useRouter } from "next/router";
 const logo = require("../images/logo_horizontal.png?resize");
 
 const MenuItem = ({ locale, href, label }) => (
@@ -13,6 +14,25 @@ const MenuItem = ({ locale, href, label }) => (
 MenuItem.defaultProps = {
   href: "",
   label: "",
+};
+
+const LanguageSwitcher = () => {
+  const router = useRouter();
+
+  return router.locales.map((locale) =>
+    locale == router.locale ? null : (
+      <a
+        href={router.pathname}
+        className="link"
+        onClick={(e) => {
+          e.preventDefault();
+          router.push(router.pathname, router.pathname, { locale: locale });
+        }}
+      >
+        {locale.toLocaleUpperCase()}
+      </a>
+    )
+  );
 };
 
 export default function Header({ menu }) {
@@ -57,6 +77,9 @@ export default function Header({ menu }) {
             {menu.map((item) => (
               <MenuItem {...item} />
             ))}
+            <li>
+              <LanguageSwitcher />
+            </li>
           </ul>
         </div>
         <div
@@ -67,6 +90,9 @@ export default function Header({ menu }) {
             {menu.map((item) => (
               <MenuItem {...item} />
             ))}
+            <li>
+              <LanguageSwitcher />
+            </li>
           </ul>
         </div>
       </div>
