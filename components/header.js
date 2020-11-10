@@ -15,13 +15,12 @@ MenuItem.defaultProps = {
   href: "",
   label: "",
 };
-
 const LanguageSwitcher = () => {
   const router = useRouter();
   // console.log(router);
   return router.locales.map((locale) =>
     locale == router.locale ? null : (
-      <a href={`/${locale}`} className="link">
+      <a href={`/${locale}${router.asPath}`} className="link">
         {locale.toLocaleUpperCase()}
       </a>
     )
