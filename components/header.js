@@ -21,9 +21,9 @@ const LanguageSwitcher = () => {
   // console.log(router);
   return router.locales.map((locale) =>
     locale == router.locale ? null : (
-      <Link href={`/${locale}`} locale={locale} scroll={false}>
-        <a className="link">{locale.toLocaleUpperCase()}</a>
-      </Link>
+      <a href={`/${locale}`} className="link">
+        {locale.toLocaleUpperCase()}
+      </a>
     )
   );
 };
