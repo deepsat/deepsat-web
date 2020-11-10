@@ -21,16 +21,17 @@ const LanguageSwitcher = () => {
 
   return router.locales.map((locale) =>
     locale == router.locale ? null : (
-      <a
-        href={router.pathname}
-        className="link"
-        onClick={(e) => {
-          e.preventDefault();
-          router.push(router.pathname, router.pathname, { locale: locale });
-        }}
-      >
-        {locale.toLocaleUpperCase()}
-      </a>
+      <Link href={router.pathname} locale={locale}>
+        <a
+          className="link"
+          // onClick={(e) => {
+          //   e.preventDefault();
+          //   router.push(router.pathname, router.pathname, { locale: locale });
+          // }}
+        >
+          {locale.toLocaleUpperCase()}
+        </a>
+      </Link>
     )
   );
 };
