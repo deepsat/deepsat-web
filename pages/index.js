@@ -46,7 +46,7 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
         </div>
         <ul className="mt-auto flex flex-wrap justify-center">
           {socials.map((item) => (
-            <li className="mr-4 mb-4">
+            <li key={item.text} className="mr-4 mb-4">
               <IconButton {...item} />
             </li>
           ))}

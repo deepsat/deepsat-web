@@ -172,4 +172,11 @@
 @tailwind utilities;
 
 @layer utilities {
+  .animateMount {
+    opacity: 0;
+    &.mounted {
+      transition: opacity 1s ease-in;
+      opacity: 1;
+    }
+  }
 }

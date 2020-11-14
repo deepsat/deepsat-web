@@ -1,11 +1,15 @@
+import Zoom from "react-reveal/Zoom"
+
 const Section = ({ className, children, heading, ...props }) => {
   return (
-    <div className={className} {...props}>
-      <div className="paper px-8 py-16 lg:px-16">
-        {heading ? <h1 className="text-3xl mb-8">{heading}</h1> : ""}
-        {children}
+    <Zoom bottom>
+      <div className={className} {...props}>
+        <div className="paper px-8 py-16 lg:px-16">
+          {heading ? <h1 className="text-3xl mb-8">{heading}</h1> : ""}
+          {children}
+        </div>
       </div>
-    </div>
+    </Zoom>
   );
 };
 Section.defaultProps = {
