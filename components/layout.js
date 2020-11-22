@@ -1,10 +1,15 @@
 import { Image } from "@chakra-ui/image";
+import { useMediaQuery } from "@chakra-ui/react";
 import Header from "./header";
 import ResponsiveContainer from "./responsiveContainer";
 
 const background = require("../images/background_horizontal.jpg?resize&webp");
+const background_vertical = require("../images/background_vertical.jpg?resize&webp");
 
 export default function Layout({ children, menu }) {
+  const [isHorizontal] = useMediaQuery("(min-aspect-ratio: 1/1)");
+  console.log(isHorizontal);
+  const bgimage = isHorizontal ? background : background_vertical;
   return (
     <>
       <Image
@@ -17,8 +22,8 @@ export default function Layout({ children, menu }) {
         objectFit="cover"
         objectPosition="center"
         zIndex="-1"
-        src={background.src}
-        srcSet={background.srcSet}
+        src={bgimage.src}
+        srcSet={bgimage.srcSet}
         className=""
         aria-hidden="true"
         alt=""
