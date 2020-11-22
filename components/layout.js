@@ -1,27 +1,30 @@
+import { Image } from "@chakra-ui/image";
 import Header from "./header";
+import ResponsiveContainer from "./responsiveContainer";
 
-const background = require("../images/background_horizontal.jpg?resize");
-const backgroundVertical = require("../images/background_vertical.jpg?resize");
+const background = require("../images/background_horizontal.jpg?resize&webp");
 
 export default function Layout({ children, menu }) {
   return (
     <>
-      <img
+      <Image
+        position="fixed"
+        bottom="0"
+        left="0"
+        right="0"
+        h="100vh"
+        w="full"
+        objectFit="cover"
+        objectPosition="center"
+        zIndex="-1"
         src={background.src}
         srcSet={background.srcSet}
-        className="bgimage"
+        className=""
         aria-hidden="true"
         alt=""
       />
-      <img
-        src={backgroundVertical.src}
-        srcSet={backgroundVertical.srcSet}
-        className="bgimage vertical"
-        aria-hidden="true"
-        alt=""
-      />
-      <Header menu={menu} />
-      <div className="container mx-auto px-8 lg:px-16">{children}</div>
+      <Header menu={menu}></Header>
+      <ResponsiveContainer>{children}</ResponsiveContainer>
     </>
   );
 }

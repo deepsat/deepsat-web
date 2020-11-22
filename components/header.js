@@ -1,93 +1,100 @@
-import Link from "next/link";
-import { useState, useEffect } from "react";
+import { Box, chakra, Flex, Link, Spacer, Image, Icon } from "@chakra-ui/react";
+import ResponsiveContainer from "./responsiveContainer";
+import NextLink from "next/link";
+import { useEffect, useState } from "react";
 import { MdMenu } from "react-icons/md";
-import { useRouter } from "next/router";
-const logo = require("../images/logo_horizontal.png?resize");
+const logo = require("../images/logo_horizontal.png?resize&webp");
 
-const MenuItem = ({ locale, href, label }) => (
-  <li key={href}>
-    <Link href={href} locale={locale}>
-      <a className="whitespace-no-wrap link">{label}</a>
-    </Link>
-  </li>
-);
-MenuItem.defaultProps = {
-  href: "",
-  label: "",
-};
-const LanguageSwitcher = () => {
-  const router = useRouter();
-  // console.log(router);
-  return router.locales.map((locale) =>
-    locale == router.locale ? null : (
-      <a href={`/${locale}${router.asPath}`} className="link">
-        {locale.toLocaleUpperCase()}
-      </a>
-    )
+const MenuItem = ({ href, label, locale, ...props }) => {
+  return (
+    <NextLink key={href} href={href} locale={locale}>
+      <Link href={href} {...props}>
+        {label}
+      </Link>
+    </NextLink>
   );
 };
+MenuItem.defaultProps = {
+  locale: "",
+  display: "block",
+};
 
-export default function Header({ menu }) {
-  const [top, setTop] = useState(true);
-  const [open, setOpen] = useState(false);
+const Header = ({ menu }) => {
+  const [isTop, setTop] = useState(true);
+
+  const [isOpen, setOpen] = useState(false);
+  const toggleOpen = () => setOpen(!isOpen);
 
   useEffect(() => {
-    let onscroll = () => {
-      const current = window.scrollY < 10;
-      if (current !== top) {
-        setTop(current);
+    if (window.scrollY <= 10) {
+      setTop(true);
+    } else {
+      setTop(false);
+    }
+    window.addEventListener("scroll", () => {
+      if (window.scrollY <= 5) {
+        setTop(true);
+      } else {
+        setTop(false);
       }
-    };
-    document.addEventListener("load", onscroll);
-    document.addEventListener("scroll", onscroll);
+    });
   });
 
-  const toggle = () => {
-    setOpen(!open);
-  };
   return (
-    <div className={`header h-24 ${top ? "isTop" : ""}`}>
-      <div
-        className={`container mx-auto h-full px-16 lg:px-32 flex justify-center items-center`}
-      >
-        <div className="mr-auto">
-          <Link href="/">
-            <a className="logo">
-              <img src={logo} srcSet={logo.srcSet} />
-            </a>
-          </Link>
-        </div>
-        <button
-          aria-label="menu"
-          onClick={toggle}
-          className="lg:hidden menu-mobile-toggle"
-        >
-          <MdMenu></MdMenu>
-        </button>
-        <div className={"menu"}>
-          <ul className="container">
+    <Box
+      pos="fixed"
+      top="0"
+      left="0"
+      right="0"
+      bg={isTop ? "transparent" : "white"}
+    >
+      <ResponsiveContainer>
+        <Flex align="center" h="24" pos="relative">
+          <Image
+            h="12"
+            src={logo}
+            srcSet={logo.srcSet}
+            transition="opacity ease-in-out 200ms"
+            opacity={isTop ? "0" : ""}
+          />
+          <Spacer />
+          <Icon
+            onClick={toggleOpen}
+            as={MdMenu}
+            w="6"
+            h="6"
+            display={{ base: "block", md: "none" }}
+            color={isTop ? "white" : null}
+          ></Icon>
+          <Flex
+            as="nav"
+            direction={{ base: "column", md: "row" }}
+            position={{ base: "absolute", md: "static" }}
+            left="0"
+            right="0"
+            top="100%"
+            bg={{ base: "white", md: "none" }}
+            overflowY={{ base: "hidden", md: "initial" }}
+            transform={{ base: isOpen ? null : "scaleY(0)", md: "initial" }}
+            transformOrigin="top"
+            aria-hidden={!isOpen}
+            transition="transform ease-in-out 200ms"
+          >
             {menu.map((item) => (
-              <MenuItem {...item} />
+              <MenuItem
+                {...item}
+                ml={{ md: "4" }}
+                pl={{ base: "8", md: "none" }}
+                pt="4"
+                pb="4"
+                color={{ base: null, md: isTop ? "white" : null }}
+              ></MenuItem>
             ))}
-            <li>
-              <LanguageSwitcher />
-            </li>
-          </ul>
-        </div>
-        <div
-          aria-hidden={!open}
-          className={`menu-mobile ${open ? "" : "scale-y-0 "}`}
-        >
-          <ul className="container">
-            {menu.map((item) => (
-              <MenuItem {...item} />
-            ))}
-            <li>
-              <LanguageSwitcher />
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+          </Flex>
+        </Flex>
+      </ResponsiveContainer>
+    </Box>
   );
-}
+};
+
+export default Header;

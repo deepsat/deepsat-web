@@ -9,9 +9,9 @@ import seoConfig from "../next-seo.config";
 import { MdEmail, MdExpandMore } from "react-icons/md";
 import { FaFacebook, FaGithub } from "react-icons/fa";
 import IconButton from "../components/icon-button";
-const logo = require("../images/logo_horizontal.png?resize");
+import { Box } from "@chakra-ui/react";
 
-export default function IndexPage({ statics, sections, feed, team, menu }) {
+export default function Index({ statics, sections, feed, team, menu }) {
   team = team ?? [];
   sections = sections ?? {};
   statics = statics ?? {};
@@ -39,59 +39,6 @@ export default function IndexPage({ statics, sections, feed, team, menu }) {
   return (
     <Layout menu={menu} logoHref={statics.indexurl}>
       <DefaultSeo {...seoConfig} canonical={statics.indexurl} />
-      <div className="min-h-screen flex flex-col">
-        <div className="mt-32" />
-        <div className="mt-auto mb-8">
-          <img src={logo} srcSet={logo.srcSet} className="hero-logo" />
-        </div>
-        <ul className="mt-auto flex flex-wrap justify-center">
-          {socials.map((item) => (
-            <li key={item.text} className="mr-4 mb-4">
-              <IconButton {...item} />
-            </li>
-          ))}
-        </ul>
-        <div className="mt-auto flex justify-center mb-16 lg:mb-0">
-          <Link href="#about">
-            <a className="btn btn-enlarge text-white text-6xl">
-              <MdExpandMore className="animate-bounce" />
-            </a>
-          </Link>
-        </div>
-      </div>
-      <Section heading={sections.hero.title} id="about" className="mt-16">
-        <RTF rtf={sections.hero.content} />
-      </Section>
-      <Section heading={statics.news} id="news" className="mt-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          {feed.map((post) => (
-            <FBPost key={post.id} post={post}></FBPost>
-          ))}
-        </div>
-        <Link href="https://www.facebook.com/deepsatpl">
-          <a
-            className="btn btn-outline text-lg"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {statics["visit fb"]}
-          </a>
-        </Link>
-      </Section>
-      <Section heading={statics.team} id="team" className="mt-32">
-        <ul className="list-inside list-disc">
-          {team.map((member) => (
-            <li>{member.name}</li>
-          ))}
-        </ul>
-      </Section>
-      <Section
-        heading={sections.contact.title}
-        id="contact"
-        className="mt-32 mb-64"
-      >
-        <RTF rtf={sections.contact.content} />
-      </Section>
     </Layout>
   );
 }

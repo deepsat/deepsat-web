@@ -1,32 +1,33 @@
 {
   "name": "deepsat-web",
-  "version": "1.0.0",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^14.1.1",
-    "contentful": "^7.14.8",
-    "fontsource-montserrat": "^3.0.5",
-    "fontsource-open-sans": "^3.0.3",
+    "@chakra-ui/react": "^1.0.1",
+    "@contentful/rich-text-react-renderer": "^14.1.2",
+    "@emotion/react": "^11.1.1",
+    "@emotion/styled": "^11.0.0",
+    "contentful": "^7.14.14",
+    "fontsource-montserrat": "^3.0.9",
+    "fontsource-open-sans": "^3.0.9",
+    "framer-motion": "^2.9.4",
     "imagemin-mozjpeg": "^9.0.0",
-    "next": "^10",
-    "next-compose-plugins": "^2.2.0",
+    "imagemin-optipng": "^8.0.0",
+    "next": "10.0.2",
+    "next-compose-plugins": "^2.2.1",
     "next-optimized-images": "^2.6.2",
-    "next-seo": "^4.7.3",
-    "postcss-flexbugs-fixes": "4.2.1",
-    "postcss-nesting": "^7.0.1",
-    "postcss-preset-env": "^6.7.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "next-seo": "^4.17.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
     "react-icons": "^3.11.0",
-    "react-obfuscate": "^3.6.7",
-    "react-reveal": "^1.2.2",
-    "responsive-loader": "^2.1.1",
-    "sharp": "^0.26.0",
-    "tailwindcss": "^1.7.4"
+    "responsive-loader": "^2.2.0",
+    "sharp": "^0.26.3",
+    "webp-loader": "^0.6.0"
   },
   "devDependencies": {}
 }

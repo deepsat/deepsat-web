@@ -1,14 +1,13 @@
 import { MdArrowForward } from "react-icons/md";
 import Excerpt from "./excerpt";
 
-const FBPost = ({ post, className, snap }) => {
+const FBPost = ({ post, className }) => {
   const permalink = post.permalink_url ?? "";
   const src = post.attachments.data[0].media.image.src ?? "";
   const text = post.message ?? post.attachments.data[0].description ?? "";
   const id = post.id;
-  const snapClass = snap ? "snap" : "";
   return (
-    <div className={`paper p-4 flex flex-col xl:flex-row items-center ${snapClass}`}>
+    <div className={`paper p-4 flex flex-col xl:flex-row items-center`}>
       <div className="mb-8 xl:mb-0 xl:mr-4 flex-shrink-0 h-32 xl:h-64 w-full xl:w-64 relative">
         <img
           src={src}
