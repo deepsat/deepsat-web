@@ -1,5 +1,7 @@
+import { Box, Link } from "@chakra-ui/react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import NextLink from "next/link";
 
 const options = {
   renderNode: {
@@ -11,23 +13,15 @@ const options = {
     ),
     [INLINES.HYPERLINK]: (node, children) => {
       return (
-        <a href={node.data.uri} target="_blank" className="link">
-          {children}
-        </a>
+        <NextLink href={node.data.uri} target="_blank">
+          <Link>{children}</Link>
+        </NextLink>
       );
     },
   },
 };
-
-const RTF = ({ rtf, className }) => {
-  return (
-    <div className={"rtf " + className}>
-      {documentToReactComponents(rtf, options)}
-    </div>
-  );
+const RTF = ({ rtf, ...props }) => {
+  return <Box {...props}>{documentToReactComponents(rtf, options)}</Box>;
 };
 
-RTF.defaultProps = {
-  className: "",
-};
 export default RTF;

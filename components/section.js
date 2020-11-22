@@ -1,15 +1,12 @@
-const Section = ({ className, children, heading, ...props }) => {
-  return (
-    <div className={className} {...props}>
-      <div className="paper px-8 py-16 lg:px-16">
-        {heading ? <h1 className="text-3xl mb-8">{heading}</h1> : ""}
-        {children}
-      </div>
-    </div>
+import { Box, Heading, useStyleConfig } from "@chakra-ui/react";
 
+const Section = ({ children, heading, size, variant, ...props }) => {
+  const styles = useStyleConfig("Section", { size, variant });
+  return (
+    <Box {...props} sx={styles}>
+      {heading ? <Heading mb="8">{heading}</Heading> : null}
+      {children}
+    </Box>
   );
-};
-Section.defaultProps = {
-  className: "mt-32",
 };
 export default Section;

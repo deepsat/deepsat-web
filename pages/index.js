@@ -1,5 +1,5 @@
 import Layout from "../components/layout";
-import Link from "next/link";
+import NextLink from "next/link";
 import Section from "../components/section";
 import FBPost from "../components/fb";
 import { createClient } from "contentful";
@@ -8,9 +8,35 @@ import { DefaultSeo } from "next-seo";
 import seoConfig from "../next-seo.config";
 import { MdEmail, MdExpandMore } from "react-icons/md";
 import { FaFacebook, FaGithub } from "react-icons/fa";
-import IconButton from "../components/icon-button";
-import { Box } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  HStack,
+  Icon,
+  Image,
+  keyframes,
+} from "@chakra-ui/react";
+import CustomLink from "../components/link";
 
+const logo = require("../images/logo_horizontal.png?resize&webp");
+const bounce = keyframes`
+from, 20%, 53%, 80%, to {
+  transform: translate3d(0,0,0);
+}
+
+40%, 43% {
+  transform: translate3d(0, -16px, 0);
+}
+
+70% {
+  transform: translate3d(0, -8px, 0);
+}
+
+90% {
+  transform: translate3d(0,-2px,0);
+}
+`;
 export default function Index({ statics, sections, feed, team, menu }) {
   team = team ?? [];
   sections = sections ?? {};
@@ -19,26 +45,75 @@ export default function Index({ statics, sections, feed, team, menu }) {
     {
       href: "https://facebook.com/deepsatpl",
       icon: <FaFacebook />,
-      color: "#1877f2",
+      bgColor: "#1877f2",
+      color: "#fff",
       text: "@deepsatpl",
     },
     {
       href: "https://github.com/deepsat",
       icon: <FaGithub />,
-      textColor: "#24292e",
+      color: "#24292e",
       text: "deepsat",
-      color: "#fff",
+      bgColor: "#fff",
     },
     {
       href: `mailto:${statics.email}`,
       icon: <MdEmail />,
       text: `${statics.email}`,
-      color: "#666",
+      bgColor: "#666",
+      color: "#fff",
     },
   ];
+
   return (
     <Layout menu={menu} logoHref={statics.indexurl}>
       <DefaultSeo {...seoConfig} canonical={statics.indexurl} />
+      <Flex minHeight="100vh" direction="column" align="center">
+        <Box h="32" />
+        <Image
+          src={logo}
+          srcSet={logo.srcSet}
+          filter="brightness(0) invert(1)"
+          my="auto"
+        />
+        <HStack spacing="4" my="auto" flexWrap="wrap" justify="center">
+          {socials.map(({ href, icon, bgColor, color, text }) => (
+            <NextLink href={href} passHref>
+              <Button
+                target="_blank"
+                as="a"
+                leftIcon={icon}
+                color={color}
+                bgColor={bgColor}
+                variant="custom"
+                mb="4"
+              >
+                {text}
+              </Button>
+            </NextLink>
+          ))}
+        </HStack>
+        <CustomLink
+          display="block"
+          href="#about"
+          mt="auto"
+          mb="16"
+          transition="transform ease-in-out 200ms"
+          _hover={{ transform: "scale(1.25)" }}
+        >
+          <Icon
+            as={MdExpandMore}
+            w="16"
+            h="16"
+            color="white"
+            display="block"
+            animation={`${bounce} 2s ease infinite`}
+          />
+        </CustomLink>
+      </Flex>
+      <Section heading={sections.hero.title} id="about">
+        <RTF rtf={sections.hero.content}></RTF>
+      </Section>
     </Layout>
   );
 }
