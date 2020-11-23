@@ -1,8 +1,9 @@
-import { Box, chakra, Flex, Spacer, Image, Icon } from "@chakra-ui/react";
+import { Box, Link, Flex, Spacer, Image, Icon } from "@chakra-ui/react";
 import ResponsiveContainer from "./responsiveContainer";
 import { useEffect, useState } from "react";
 import { MdMenu } from "react-icons/md";
 import CustomLink from "./link";
+import { useRouter } from "next/router";
 const logo = require("../images/logo_horizontal.png?resize&webp");
 
 const MenuItem = ({ href, label, locale, ...props }) => {
@@ -12,8 +13,17 @@ const MenuItem = ({ href, label, locale, ...props }) => {
     </CustomLink>
   );
 };
-MenuItem.defaultProps = {
-  locale: "",
+MenuItem.defaultProps = {};
+
+const LanguageSwitcher = (props) => {
+  const router = useRouter();
+  return router.locales.map((locale) =>
+    locale == router.locale ? null : (
+      <Link href={`/${locale}${router.asPath}`} {...props}>
+        {locale.toLocaleUpperCase()}
+      </Link>
+    )
+  );
 };
 
 const Header = ({ menu }) => {
@@ -23,18 +33,14 @@ const Header = ({ menu }) => {
   const toggleOpen = () => setOpen(!isOpen);
 
   useEffect(() => {
-    if (window.scrollY <= 10) {
-      setTop(true);
-    } else {
-      setTop(false);
-    }
-    window.addEventListener("scroll", () => {
-      if (window.scrollY <= 5) {
-        setTop(true);
-      } else {
-        setTop(false);
+    let onscroll = () => {
+      const current = window.scrollY < 10;
+      if (current !== isTop) {
+        setTop(current);
       }
-    });
+    };
+    document.addEventListener("scroll", onscroll);
+    onscroll();
   });
 
   return (
@@ -96,6 +102,14 @@ const Header = ({ menu }) => {
                 display="block"
               ></MenuItem>
             ))}
+            <LanguageSwitcher
+              ml={{ md: "8" }}
+              pl={{ base: "8", md: "0" }}
+              pt="4"
+              pb="4"
+              color={{ base: null, md: isTop ? "white" : null }}
+              display="block"
+            />
           </Flex>
         </Flex>
       </ResponsiveContainer>
