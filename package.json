@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start"
   },
-  "engine": {
+  "engines": {
     "node": "14.x"
   },
   "dependencies": {
