@@ -6,7 +6,7 @@ import { createClient } from "contentful";
 import RTF from "../components/rtf";
 import { DefaultSeo } from "next-seo";
 import seoConfig from "../next-seo.config";
-import { MdEmail, MdExpandMore, MdPerson } from "react-icons/md";
+import { MdEmail, MdExpandMore } from "react-icons/md";
 import { FaFacebook, FaGithub } from "react-icons/fa";
 import {
   Box,
@@ -16,12 +16,10 @@ import {
   Icon,
   Image,
   keyframes,
-  List,
-  ListIcon,
-  ListItem,
   SimpleGrid,
 } from "@chakra-ui/react";
 import CustomLink from "../components/link";
+import TeamMember from "../components/teamMember";
 
 const logo = require("../images/logo_horizontal.png?resize");
 const bounce = keyframes`
@@ -132,14 +130,11 @@ export default function Index({ statics, sections, feed, team, menu }) {
         </NextLink>
       </Section>
       <Section heading={statics["team"]} id="team">
-        <List>
-          {team.map(({ name, image }) => (
-            <ListItem>
-              <ListIcon as={MdPerson} />
-              {name}
-            </ListItem>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing="4">
+          {team.map((member) => (
+            <TeamMember {...member} />
           ))}
-        </List>
+        </SimpleGrid>
       </Section>
       <Section heading={sections.contact.title} id="contact">
         <RTF>{sections.contact.content}</RTF>
