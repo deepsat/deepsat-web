@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { MdMenu } from "react-icons/md";
 import CustomLink from "./link";
 import { useRouter } from "next/router";
-const logo = require("../images/logo_horizontal.png?resize&webp");
+const logo = require("../images/logo_horizontal.png?resize");
 
 const MenuItem = ({ href, label, locale, ...props }) => {
   return (

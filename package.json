@@ -8,7 +8,8 @@
     "start": "next start"
   },
   "engines": {
-    "node": "14.x"
+    "node": "14.15.0",
+    "yarn": "1.22.10"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.0.1",
@@ -29,8 +30,7 @@
     "react-dom": "17.0.1",
     "react-icons": "^3.11.0",
     "responsive-loader": "^2.2.0",
-    "sharp": "^0.26.3",
-    "webp-loader": "^0.6.0"
+    "sharp": "^0.26.3"
   },
   "devDependencies": {}
 }

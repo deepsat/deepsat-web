@@ -23,7 +23,7 @@ import {
 } from "@chakra-ui/react";
 import CustomLink from "../components/link";
 
-const logo = require("../images/logo_horizontal.png?resize&webp");
+const logo = require("../images/logo_horizontal.png?resize");
 const bounce = keyframes`
 from, 20%, 53%, 80%, to {
   transform: translate3d(0,0,0);

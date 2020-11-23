@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import Header from "./header";
 import ResponsiveContainer from "./responsiveContainer";
 
-const background = require("../images/background_horizontal.jpg?resize&webp");
-const background_vertical = require("../images/background_vertical.jpg?resize&webp");
+const background = require("../images/background_horizontal.jpg?resize");
+const background_vertical = require("../images/background_vertical.jpg?resize");
 
 export default function Layout({ children, menu }) {
   const [isHorizontal, setHorizontal] = useState(false);
