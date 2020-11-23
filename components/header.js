@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { MdMenu } from "react-icons/md";
 import CustomLink from "./link";
 import { useRouter } from "next/router";
-const logo = require("../images/logo_horizontal.png?resize");
+const logo = require("../images/logo_horizontal.png?resize&webp");
 
 const MenuItem = ({ href, label, locale, ...props }) => {
   return (
@@ -47,9 +47,9 @@ const Header = ({ menu }) => {
     <Box
       pos="fixed"
       top="0"
-      left="0"
-      right="0"
+      insetX="0"
       bg={isTop ? "transparent" : "white"}
+      shadow={isTop ? null : "lg"}
       transition="background-color ease-in-out 200ms"
       zIndex="sticky"
     >

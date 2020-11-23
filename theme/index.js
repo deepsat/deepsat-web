@@ -24,6 +24,7 @@ const theme = extendTheme({
       },
     },
   },
+shadows: { outline: "0 0 0 2px #9F5FFF99" },
   components: {
     Link: {
       baseStyle: {
@@ -42,6 +43,9 @@ const theme = extendTheme({
       },
     },
     Button: {
+      baseStyle: {
+        whiteSpace: "initial",
+      },
       variants: {
         custom: {
           fontFamily: "Montserrat",
