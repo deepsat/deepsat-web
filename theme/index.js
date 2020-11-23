@@ -40,9 +40,6 @@ const theme = extendTheme({
         paddingLeft: 8,
         paddingRight: 8,
       },
-      defaultProps: {
-        maxWidth: ["full", "sm", "md", "lg", "xl"],
-      },
     },
     Button: {
       variants: {
@@ -70,7 +67,8 @@ const theme = extendTheme({
           borderRadius: "full",
           py: "0.5rem",
           px: "1rem",
-          transition: "background-color ease-in-out 200ms, color ease-in-out 200ms, border-color ease-in-out 200ms",
+          transition:
+            "background-color ease-in-out 200ms, color ease-in-out 200ms, border-color ease-in-out 200ms",
           border: "1px",
           borderColor: "brand.primary",
           color: "brand.primary",
