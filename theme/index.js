@@ -9,7 +9,8 @@ const theme = extendTheme({
     brand: {
       default: "#420cbd",
       primary: "#420cbd",
-      accent: "#7d42f1",
+      accent: "#9F5FFF",
+      family: ["#420CBD", "#7239E7", "#9F5FFF", "#CB86FF", "#F8AFFF"],
     },
   },
   styles: {
@@ -19,7 +20,7 @@ const theme = extendTheme({
       },
       html: {
         scrollBehavior: "smooth",
-        scrollPaddingTop: "24rem",
+        scrollPaddingTop: "8rem",
       },
     },
   },
@@ -27,32 +28,20 @@ const theme = extendTheme({
     Link: {
       baseStyle: {
         transition: "color ease-in-out 200ms",
+        color: "brand.default",
         "&:hover, &:focus": {
           color: "brand.accent",
           textDecoration: "none",
         },
       },
     },
-    CTA: {
-      parts: ["button", "icon"],
+    ResponsiveContainer: {
       baseStyle: {
-        button: {
-          fontFamily: "Montserrat",
-          fontWeight: 500,
-          borderRadius: "full",
-          py: 2,
-          px: 4,
-          transition: "filter ease-in-out 200ms",
-          bgColor: "brand.primary",
-          color: "white",
-          "&:hover, &:focus": {
-            filter: "brightness(0.8)",
-          },
-        },
-        icon: {
-          mr: "0.5rem",
-          fontSize: "2.25rem",
-        },
+        paddingLeft: 8,
+        paddingRight: 8,
+      },
+      defaultProps: {
+        maxWidth: ["full", "sm", "md", "lg", "xl"],
       },
     },
     Button: {
@@ -75,16 +64,38 @@ const theme = extendTheme({
             fontSize: "2.25rem",
           },
         },
+        brand: {
+          fontFamily: "Montserrat",
+          fontWeight: 500,
+          borderRadius: "full",
+          py: "0.5rem",
+          px: "1rem",
+          transition: "background-color ease-in-out 200ms, color ease-in-out 200ms, border-color ease-in-out 200ms",
+          border: "1px",
+          borderColor: "brand.primary",
+          color: "brand.primary",
+          height: "auto",
+          "&:hover, &:focus": {
+            color: "white",
+            borderColor: "brand.accent",
+            bgColor: "brand.accent",
+          },
+          "& svg": {
+            mr: "0.25rem",
+            fontSize: "2.25rem",
+          },
+        },
       },
     },
     Section: {
       baseStyle: {
-        marginTop: 32,
+        mt: 32,
+        mb: 32,
         px: { base: 8, md: 16 },
         py: 16,
         bg: "white",
         boxShadow: "lg",
-        borderRadius: "sm",
+        borderRadius: "base",
       },
     },
   },

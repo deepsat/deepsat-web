@@ -1,33 +1,52 @@
+import { Box, Flex, Icon, Image, Stack, Text } from "@chakra-ui/react";
 import { MdArrowForward } from "react-icons/md";
 import Excerpt from "./excerpt";
+import CustomLink from "./link";
 
-const FBPost = ({ post, className }) => {
+const FBPost = ({ post, ...props }) => {
   const permalink = post.permalink_url ?? "";
   const src = post.attachments.data[0].media.image.src ?? "";
   const text = post.message ?? post.attachments.data[0].description ?? "";
   const id = post.id;
   return (
-    <div className={`paper p-4 flex flex-col xl:flex-row items-center`}>
-      <div className="mb-8 xl:mb-0 xl:mr-4 flex-shrink-0 h-32 xl:h-64 w-full xl:w-64 relative">
-        <img
+    <Stack
+      shadow="lg"
+      align="center"
+      p="4"
+      spacing="4"
+      direction={{ base: "column", xl: "row" }}
+    >
+      <Box
+        w={{ base: "full", xl: 64 }}
+        h={{ base: 32, xl: 64 }}
+        flexShrink="0"
+        position="relative"
+      >
+        <Image
           src={src}
-          className="paper absolute top-0 bottom-0 left-0 right-0 m-auto max-w-full max-h-full"
-        ></img>
-      </div>
-      <div className="flex relative self-stretch flex-grow">
-        <p>
-          <Excerpt text={text} limit={30}></Excerpt>
-        </p>
-        <a
+          shadow="lg"
+          position="absolute"
+          inset="0"
+          maxH="full"
+          maxW="full"
+          m="auto"
+        />
+      </Box>
+      <Text alignSelf="stretch" w="full" pos="relative">
+        <Excerpt text={text} limit={30}></Excerpt>
+        <CustomLink
           href={permalink}
-          className="absolute bottom-0 right-0 block link"
+          float="right"
           rel="noreferrer"
           target="_blank"
+          pos="absolute"
+          bottom="0"
+          right="0"
         >
-          <MdArrowForward className="inline text-xl" />
-        </a>
-      </div>
-    </div>
+          <Icon as={MdArrowForward} h="6" w="6" />
+        </CustomLink>
+      </Text>
+    </Stack>
   );
 };
 

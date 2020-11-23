@@ -89,6 +89,8 @@ const Header = ({ menu }) => {
             transform={{ base: isOpen ? null : "scaleY(0)", md: "initial" }}
             transformOrigin="top"
             aria-hidden={!isOpen}
+            boxShadow={{ base: "lg", md: "none" }}
+            borderRadius="base"
             transition="transform ease-in-out 200ms"
           >
             {menu.map((item) => (

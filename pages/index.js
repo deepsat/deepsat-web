@@ -6,7 +6,7 @@ import { createClient } from "contentful";
 import RTF from "../components/rtf";
 import { DefaultSeo } from "next-seo";
 import seoConfig from "../next-seo.config";
-import { MdEmail, MdExpandMore } from "react-icons/md";
+import { MdEmail, MdExpandMore, MdPerson } from "react-icons/md";
 import { FaFacebook, FaGithub } from "react-icons/fa";
 import {
   Box,
@@ -16,6 +16,10 @@ import {
   Icon,
   Image,
   keyframes,
+  List,
+  ListIcon,
+  ListItem,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import CustomLink from "../components/link";
 
@@ -74,9 +78,10 @@ export default function Index({ statics, sections, feed, team, menu }) {
           src={logo}
           srcSet={logo.srcSet}
           filter="brightness(0) invert(1)"
-          my="auto"
+          mt="auto"
+          mb="8"
         />
-        <HStack spacing="4" my="auto" flexWrap="wrap" justify="center">
+        <HStack spacing="4" mt="auto" flexWrap="wrap" justify="center">
           {socials.map(({ href, icon, bgColor, color, text }) => (
             <NextLink href={href} passHref>
               <Button
@@ -112,8 +117,34 @@ export default function Index({ statics, sections, feed, team, menu }) {
         </CustomLink>
       </Flex>
       <Section heading={sections.hero.title} id="about">
-        <RTF rtf={sections.hero.content}></RTF>
+        <RTF>{sections.hero.content}</RTF>
       </Section>
+      <Section heading={statics["news"]} id="news">
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing="4" mb="8">
+          {feed.map((post) => (
+            <FBPost post={post} />
+          ))}
+        </SimpleGrid>
+        <NextLink href="https://www.facebook.com/deepsatpl" passHref>
+          <Button as="a" variant="brand" target="_blank">
+            {statics["visit fb"]}
+          </Button>
+        </NextLink>
+      </Section>
+      <Section heading={statics["team"]} id="team">
+        <List>
+          {team.map(({ name, image }) => (
+            <ListItem>
+              <ListIcon as={MdPerson} />
+              {name}
+            </ListItem>
+          ))}
+        </List>
+      </Section>
+      <Section heading={sections.contact.title} id="contact">
+        <RTF>{sections.contact.content}</RTF>
+      </Section>
+      <Box height="100vh" />
     </Layout>
   );
 }
