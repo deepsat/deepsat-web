@@ -54,7 +54,7 @@ const Header = ({ menu }) => {
       zIndex="sticky"
     >
       <ResponsiveContainer>
-        <Flex px="16" align="center" h="24" pos="relative">
+        <Flex px={{ base: 8, md: 16 }} align="center" h="24" pos="relative">
           <CustomLink
             href="/"
             passHref
