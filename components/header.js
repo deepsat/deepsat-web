@@ -17,13 +17,13 @@ MenuItem.defaultProps = {};
 
 const LanguageSwitcher = (props) => {
   const router = useRouter();
-  return router.locales.map((locale) =>
-    locale == router.locale ? null : (
-      <Link href={`/${locale}/${router.asPath}`} {...props}>
+  return router.locales.map((locale) => {
+    return locale == router.locale ? null : (
+      <Link href={`/${locale}${router.asPath}`} {...props}>
         {locale.toLocaleUpperCase()}
       </Link>
-    )
-  );
+    );
+  });
 };
 
 const Header = ({ menu }) => {
