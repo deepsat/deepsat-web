@@ -102,7 +102,10 @@ export default function Index({ statics, sections, feed, team, menu }) {
           mt="auto"
           mb="16"
           transition="transform ease-in-out 200ms"
-          _hover={{ transform: "scale(1.25)" }}
+          _hover={{
+            transform: "scale(1.25)",
+            "& svg": { animationPlayState: "paused" },
+          }}
         >
           <Icon
             as={MdExpandMore}

@@ -73,6 +73,7 @@ const Header = ({ menu }) => {
             }
             visibility={isTop ? "hidden" : "initial"}
             opacity={isTop ? "0" : "1"}
+            flexShrink="0"
           >
             <Image h="10" src={logo} srcSet={logo.srcSet} />
           </CustomLink>
