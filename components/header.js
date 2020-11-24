@@ -1,4 +1,12 @@
-import { Box, Link, Flex, Spacer, Image, Icon } from "@chakra-ui/react";
+import {
+  Box,
+  Link,
+  Flex,
+  Spacer,
+  Image,
+  Icon,
+  IconButton,
+} from "@chakra-ui/react";
 import ResponsiveContainer from "./responsiveContainer";
 import { useEffect, useState } from "react";
 import { MdMenu } from "react-icons/md";
@@ -69,14 +77,15 @@ const Header = ({ menu }) => {
             <Image h="10" src={logo} srcSet={logo.srcSet} />
           </CustomLink>
           <Spacer />
-          <Icon
+          <IconButton
+            minW="auto"
+            minH="auto"
+            variant="link"
             onClick={toggleOpen}
-            as={MdMenu}
-            w="6"
-            h="6"
-            display={{ base: "block", md: "none" }}
+            icon={<Icon as={MdMenu} w="6" h="6" />}
+            display={{ md: "none" }}
             color={isTop ? "white" : "brand.default"}
-          ></Icon>
+          ></IconButton>
           <Flex
             as="nav"
             direction={{ base: "column", md: "row" }}

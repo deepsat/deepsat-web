@@ -29,6 +29,7 @@ const TeamMember = ({ name, image, description, job }) => {
   const clickable = useClickable({
     transition: "transform ease-in-out 200ms",
     _hover: { transform: "scale(1.1)", zIndex: "docked" },
+    _active: { transform: "scale(1.1)", zIndex: "docked" },
     onClick: onOpen,
   });
   return (

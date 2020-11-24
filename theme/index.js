@@ -24,13 +24,13 @@ const theme = extendTheme({
       },
     },
   },
-shadows: { outline: "0 0 0 2px #9F5FFF99" },
+  shadows: { outline: "0 0 0 2px #9F5FFF99" },
   components: {
     Link: {
       baseStyle: {
         transition: "color ease-in-out 200ms",
         color: "brand.default",
-        "&:hover, &:focus": {
+        "&:hover": {
           color: "brand.accent",
           textDecoration: "none",
         },
@@ -47,6 +47,14 @@ shadows: { outline: "0 0 0 2px #9F5FFF99" },
         whiteSpace: "initial",
       },
       variants: {
+        link: {
+          transition: "color ease-in-out 200ms",
+          color: "brand.default",
+          "&:hover": {
+            color: "brand.accent",
+            textDecoration: "none",
+          },
+        },
         custom: {
           fontFamily: "Montserrat",
           fontWeight: 500,
@@ -57,7 +65,7 @@ shadows: { outline: "0 0 0 2px #9F5FFF99" },
           bgColor: "brand.primary",
           color: "#fff",
           height: "auto",
-          "&:hover, &:focus": {
+          "&:hover": {
             filter: "brightness(0.8)",
           },
           "& svg": {
@@ -77,7 +85,7 @@ shadows: { outline: "0 0 0 2px #9F5FFF99" },
           borderColor: "brand.primary",
           color: "brand.primary",
           height: "auto",
-          "&:hover, &:focus": {
+          "&:hover": {
             color: "white",
             borderColor: "brand.accent",
             bgColor: "brand.accent",
