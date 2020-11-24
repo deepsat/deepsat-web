@@ -47,14 +47,6 @@ const theme = extendTheme({
         whiteSpace: "initial",
       },
       variants: {
-        link: {
-          transition: "color ease-in-out 200ms",
-          color: "brand.default",
-          "&:hover": {
-            color: "brand.accent",
-            textDecoration: "none",
-          },
-        },
         custom: {
           fontFamily: "Montserrat",
           fontWeight: 500,
