@@ -19,7 +19,7 @@ const LanguageSwitcher = (props) => {
   const router = useRouter();
   return router.locales.map((locale) =>
     locale == router.locale ? null : (
-      <Link href={`/${locale}${router.asPath}`} {...props}>
+      <Link href={`/${locale}/${router.asPath}`} {...props}>
         {locale.toLocaleUpperCase()}
       </Link>
     )
