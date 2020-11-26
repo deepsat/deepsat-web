@@ -71,7 +71,7 @@ const Header = ({ menu }) => {
                 ? "opacity ease-in-out 200ms, visibility 0s 200ms"
                 : "opacity ease-in-out 200ms, visibility 0s 0s"
             }
-            visibility={isTop ? "hidden" : "initial"}
+            visibility={isTop ? "hidden" : "unset"}
             opacity={isTop ? "0" : "1"}
             flexShrink="0"
           >
@@ -95,13 +95,18 @@ const Header = ({ menu }) => {
             right="0"
             top="100%"
             bg={{ base: "white", md: "none" }}
-            overflowY={{ base: "hidden", md: "initial" }}
-            transform={{ base: isOpen ? null : "scaleY(0)", md: "initial" }}
+            overflowY={{ base: "hidden", md: "unset" }}
+            transform={{ base: isOpen ? null : "scaleY(0)", md: "unset" }}
             transformOrigin="top"
             aria-hidden={!isOpen}
             boxShadow={{ base: "lg", md: "none" }}
             borderRadius="base"
-            transition="transform ease-in-out 200ms"
+            transition={
+              isOpen
+                ? "transform ease-in-out 200ms, visibility 0s 0s"
+                : "transform ease-in-out 200ms, visibility 0s 200ms"
+            }
+            visibility={{ base: isOpen ? "visible" : "hidden", md: "unset"}}
           >
             {menu.map((item) => (
               <MenuItem

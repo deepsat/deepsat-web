@@ -44,7 +44,7 @@ const theme = extendTheme({
     },
     Button: {
       baseStyle: {
-        whiteSpace: "initial",
+        whiteSpace: "unset",
       },
       variants: {
         custom: {
