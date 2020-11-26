@@ -12,11 +12,12 @@ import {
   Box,
   Button,
   Flex,
-  HStack,
   Icon,
   Image,
   keyframes,
   SimpleGrid,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
 import CustomLink from "../components/link";
 import TeamMember from "../components/teamMember";
@@ -79,23 +80,24 @@ export default function Index({ statics, sections, feed, team, menu }) {
           mt="auto"
           mb="8"
         />
-        <HStack spacing="4" mt="auto" flexWrap="wrap" justify="center">
+        <Wrap spacing="4" mt="auto" flexWrap="wrap" justify="center">
           {socials.map(({ href, icon, bgColor, color, text }) => (
-            <NextLink href={href} passHref>
-              <Button
-                target="_blank"
-                as="a"
-                leftIcon={icon}
-                color={color}
-                bgColor={bgColor}
-                variant="custom"
-                mb="4"
-              >
-                {text}
-              </Button>
-            </NextLink>
+            <WrapItem>
+              <NextLink href={href} passHref>
+                <Button
+                  target="_blank"
+                  as="a"
+                  leftIcon={icon}
+                  color={color}
+                  bgColor={bgColor}
+                  variant="custom"
+                >
+                  {text}
+                </Button>
+              </NextLink>
+            </WrapItem>
           ))}
-        </HStack>
+        </Wrap>
         <CustomLink
           display="block"
           href="#about"
