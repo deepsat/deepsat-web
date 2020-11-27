@@ -72,7 +72,7 @@ const Header = ({ menu }) => {
                 : "opacity ease-in-out 200ms, visibility 0s 0s"
             }
             visibility={isTop ? "hidden" : "unset"}
-            opacity={isTop ? "0" : "1"}
+            opacity={isTop ? "0" : "unset"}
             flexShrink="0"
           >
             <Image h="10" src={logo} srcSet={logo.srcSet} />
@@ -86,6 +86,7 @@ const Header = ({ menu }) => {
             icon={<Icon as={MdMenu} w="6" h="6" />}
             display={{ md: "none" }}
             color={isTop ? "white" : "brand.default"}
+            ml="4"
           ></IconButton>
           <Flex
             as="nav"
@@ -106,7 +107,7 @@ const Header = ({ menu }) => {
                 ? "transform ease-in-out 200ms, visibility 0s 0s"
                 : "transform ease-in-out 200ms, visibility 0s 200ms"
             }
-            visibility={{ base: isOpen ? "visible" : "hidden", md: "unset"}}
+            visibility={{ base: isOpen ? "unset" : "hidden", md: "unset" }}
           >
             {menu.map((item) => (
               <MenuItem
@@ -115,7 +116,7 @@ const Header = ({ menu }) => {
                 pl={{ base: "8", md: "0" }}
                 pt="4"
                 pb="4"
-                color={{ base: null, md: isTop ? "white" : null }}
+                color={{ md: isTop ? "white" : null }}
                 display="block"
               ></MenuItem>
             ))}
@@ -124,7 +125,7 @@ const Header = ({ menu }) => {
               pl={{ base: "8", md: "0" }}
               pt="4"
               pb="4"
-              color={{ base: null, md: isTop ? "white" : null }}
+              color={{ md: isTop ? "white" : null }}
               display="block"
             />
           </Flex>
