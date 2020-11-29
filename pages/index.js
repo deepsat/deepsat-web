@@ -95,19 +95,20 @@ export default function Index({ statics, sections, feed, team, menu }) {
           filter="brightness(0) invert(1)"
           mt="auto"
           w="64rem"
+          transform={{ base: "scale(1.1)", md: "none" }}
         />
         <Heading
           mt="auto"
           textAlign="center"
           color="white"
-          size={{ base: "md", md: "2xl" }}
-          fontsize={{ base: "md", md: "2xl" }}
+          size={{ base: "sm", md: "2xl" }}
+          fontSize={{ base: "sm", md: "2xl" }}
           bg="rgba(0,0,0,0.8)"
           borderRadius="full"
           px="1rem"
           py="0.5rem"
         >
-          ESERO-Poland CanSat 2020/2021 Competition Team
+          {statics["competition team"]}
         </Heading>
         <Wrap spacing="4" mt="auto" flexWrap="wrap" justify="center">
           {socials.map(({ href, icon, bgColor, color, text }) => (
