@@ -69,17 +69,17 @@ export default function Index({ statics, sections, feed, team, menu }) {
       bgColor: "#fff",
     },
     {
-      href: `mailto:${statics.email}`,
-      icon: <MdEmail />,
-      text: `${statics.email}`,
-      bgColor: "#666",
-      color: "#fff",
-    },
-    {
       href: "https://esero.kopernik.org.pl/konkurs-cansat/",
       icon: <FaRocket />,
       text: `${statics.competition}`,
       bgColor: "#f4792b",
+      color: "#fff",
+    },
+    {
+      href: `mailto:${statics.email}`,
+      icon: <MdEmail />,
+      text: `${statics.email}`,
+      bgColor: "#666",
       color: "#fff",
     },
   ];
@@ -100,7 +100,7 @@ export default function Index({ statics, sections, feed, team, menu }) {
           mt="auto"
           textAlign="center"
           color="white"
-          fontSize={{ base: "sm", md: "2xl" }}
+          size={{ base: "sm", md: "2xl" }}
           bg="rgba(0,0,0,0.8)"
           borderRadius="full"
           px="1rem"
