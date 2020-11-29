@@ -7,17 +7,19 @@ import RTF from "../components/rtf";
 import { DefaultSeo } from "next-seo";
 import seoConfig from "../next-seo.config";
 import { MdEmail, MdExpandMore } from "react-icons/md";
-import { FaFacebook, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaLinkedinIn, FaRocket } from "react-icons/fa";
 import {
   Box,
   Button,
   Flex,
+  Heading,
   Icon,
   Image,
   keyframes,
   SimpleGrid,
   Wrap,
   WrapItem,
+  Text,
 } from "@chakra-ui/react";
 import CustomLink from "../components/link";
 import TeamMember from "../components/teamMember";
@@ -60,6 +62,13 @@ export default function Index({ statics, sections, feed, team, menu }) {
       color: "#fff",
     },
     {
+      href: `mailto:${statics.email}`,
+      icon: <MdEmail />,
+      text: `${statics.email}`,
+      bgColor: "brand.accent",
+      color: "#fff",
+    },
+    {
       href: "https://github.com/deepsat",
       icon: <FaGithub />,
       color: "#24292e",
@@ -67,10 +76,10 @@ export default function Index({ statics, sections, feed, team, menu }) {
       bgColor: "#fff",
     },
     {
-      href: `mailto:${statics.email}`,
-      icon: <MdEmail />,
-      text: `${statics.email}`,
-      bgColor: "#666",
+      href: "https://esero.kopernik.org.pl/konkurs-cansat/",
+      icon: <FaRocket />,
+      text: `${statics.competition}`,
+      bgColor: "brand.primary",
       color: "#fff",
     },
   ];
@@ -79,14 +88,23 @@ export default function Index({ statics, sections, feed, team, menu }) {
     <Layout menu={menu} logoHref={statics.indexurl}>
       <DefaultSeo {...seoConfig} canonical={statics.indexurl} />
       <Flex minHeight="100vh" direction="column" align="center">
-        <Box h="32" />
+        <Box h={{ base: 24, md: 32 }} />
         <Image
           src={logo}
           srcSet={logo.srcSet}
           filter="brightness(0) invert(1)"
           mt="auto"
           mb="8"
+          w="64rem"
         />
+        <Text
+          textAlign="center"
+          color="white"
+          textShadow="2px 2px #000"
+          size="lg"
+        >
+          ESERO-Poland CanSat 2020/2021 Competition Team
+        </Text>
         <Wrap spacing="4" mt="auto" flexWrap="wrap" justify="center">
           {socials.map(({ href, icon, bgColor, color, text }) => (
             <WrapItem>
