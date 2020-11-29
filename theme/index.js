@@ -62,7 +62,7 @@ const theme = extendTheme({
           },
           "& svg": {
             mr: "0.25rem",
-            fontSize: "2.25rem",
+            fontSize: "1.5rem",
           },
         },
         brand: {

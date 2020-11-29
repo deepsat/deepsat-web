@@ -62,13 +62,6 @@ export default function Index({ statics, sections, feed, team, menu }) {
       color: "#fff",
     },
     {
-      href: `mailto:${statics.email}`,
-      icon: <MdEmail />,
-      text: `${statics.email}`,
-      bgColor: "brand.accent",
-      color: "#fff",
-    },
-    {
       href: "https://github.com/deepsat",
       icon: <FaGithub />,
       color: "#24292e",
@@ -76,10 +69,17 @@ export default function Index({ statics, sections, feed, team, menu }) {
       bgColor: "#fff",
     },
     {
+      href: `mailto:${statics.email}`,
+      icon: <MdEmail />,
+      text: `${statics.email}`,
+      bgColor: "#666",
+      color: "#fff",
+    },
+    {
       href: "https://esero.kopernik.org.pl/konkurs-cansat/",
       icon: <FaRocket />,
       text: `${statics.competition}`,
-      bgColor: "brand.primary",
+      bgColor: "#f4792b",
       color: "#fff",
     },
   ];
@@ -94,17 +94,22 @@ export default function Index({ statics, sections, feed, team, menu }) {
           srcSet={logo.srcSet}
           filter="brightness(0) invert(1)"
           mt="auto"
-          mb="8"
           w="64rem"
         />
-        <Text
+        <Heading
+          mt="auto"
           textAlign="center"
           color="white"
-          textShadow="2px 2px #000"
-          size="lg"
+          size="base"
+          bg="rgba(0,0,0,0.8)"
+          padding="2"
+          borderRadius="full"
+          px="1rem"
+          py="0.5rem"
+          mb="8"
         >
           ESERO-Poland CanSat 2020/2021 Competition Team
-        </Text>
+        </Heading>
         <Wrap spacing="4" mt="auto" flexWrap="wrap" justify="center">
           {socials.map(({ href, icon, bgColor, color, text }) => (
             <WrapItem>
