@@ -100,7 +100,7 @@ export default function Index({ statics, sections, feed, team, menu }) {
           mt="auto"
           textAlign="center"
           color="white"
-          size={{ base: "sm", md: "2xl" }}
+          size={{ base: "md", md: "2xl" }}
           bg="rgba(0,0,0,0.8)"
           borderRadius="full"
           px="1rem"
