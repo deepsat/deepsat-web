@@ -15,10 +15,9 @@ const FBPost = ({ post, ...props }) => {
       p="4"
       spacing="4"
       direction={{ base: "column-reverse", xl: "row" }}
-      pos="relative"
     >
       <Box
-        w={{ base: "full", xl: 64 }}
+        w={{ base: "full", xl: 48 }}
         h={{ base: 32, xl: "full" }}
         minH={{ xl: 64 }}
         flexShrink="0"
@@ -34,16 +33,13 @@ const FBPost = ({ post, ...props }) => {
           m="auto"
         />
       </Box>
-      <Text alignSelf="center" w="full" fontSize="0.875rem" pos="relative" pb="6">
+      <Text alignSelf="center" w="full" fontSize={{ base: "sm" }}>
         {text}
         <CustomLink
           href={permalink}
           float="right"
           rel="noreferrer"
           target="_blank"
-          pos="absolute"
-          bottom="0"
-          right="0"
         >
           <Icon as={MdArrowForward} h="6" w="6" />
         </CustomLink>
