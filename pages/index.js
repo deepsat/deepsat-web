@@ -100,9 +100,8 @@ export default function Index({ statics, sections, feed, team, menu }) {
           mt="auto"
           textAlign="center"
           color="white"
-          size="base"
+          fontSize={{ base: "sm", md: "2xl" }}
           bg="rgba(0,0,0,0.8)"
-          padding="2"
           borderRadius="full"
           px="1rem"
           py="0.5rem"
