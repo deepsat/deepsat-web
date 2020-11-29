@@ -180,7 +180,7 @@ export default function Index({ statics, sections, feed, team, menu }) {
 
 export async function getContent(locale) {
   // fb
-  const limit = 4;
+  const limit = 2;
   const access_token = process.env.FB_TOKEN;
   const { data: feed } = await fetch(
     `https://graph.facebook.com/v8.0/deepsatpl/posts?fields=message%2Cattachments%7Bmedia%2Cdescription%7D%2Cpermalink_url&limit=${limit}&access_token=${access_token}`

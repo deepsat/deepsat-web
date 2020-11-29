@@ -14,11 +14,13 @@ const FBPost = ({ post, ...props }) => {
       align="center"
       p="4"
       spacing="4"
-      direction={{ base: "column", xl: "row" }}
+      direction={{ base: "column-reverse", xl: "row" }}
+      pos="relative"
     >
       <Box
         w={{ base: "full", xl: 64 }}
-        h={{ base: 32, xl: 64 }}
+        h={{ base: 32, xl: "full" }}
+        minH={{ xl: 64 }}
         flexShrink="0"
         position="relative"
       >
@@ -32,8 +34,8 @@ const FBPost = ({ post, ...props }) => {
           m="auto"
         />
       </Box>
-      <Text alignSelf="stretch" w="full" pos="relative">
-        <Excerpt text={text} limit={30}></Excerpt>
+      <Text alignSelf="center" w="full" fontSize="0.875rem" pos="relative" pb="6">
+        {text}
         <CustomLink
           href={permalink}
           float="right"
