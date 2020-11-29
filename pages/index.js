@@ -7,7 +7,7 @@ import RTF from "../components/rtf";
 import { DefaultSeo } from "next-seo";
 import seoConfig from "../next-seo.config";
 import { MdEmail, MdExpandMore } from "react-icons/md";
-import { FaFacebook, FaGithub } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import {
   Box,
   Button,
@@ -51,6 +51,13 @@ export default function Index({ statics, sections, feed, team, menu }) {
       bgColor: "#1877f2",
       color: "#fff",
       text: "@deepsatpl",
+    },
+    {
+      href: "https://linkedin.com/company/deepsat",
+      text: "DeepSat",
+      icon: <FaLinkedinIn />,
+      bgColor: "#0e76a8",
+      color: "#fff",
     },
     {
       href: "https://github.com/deepsat",
