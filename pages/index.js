@@ -101,11 +101,11 @@ export default function Index({ statics, sections, feed, team, menu }) {
           textAlign="center"
           color="white"
           size={{ base: "md", md: "2xl" }}
+          fontsize={{ base: "md", md: "2xl" }}
           bg="rgba(0,0,0,0.8)"
           borderRadius="full"
           px="1rem"
           py="0.5rem"
-          mb="8"
         >
           ESERO-Poland CanSat 2020/2021 Competition Team
         </Heading>
