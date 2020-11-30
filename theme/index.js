@@ -38,8 +38,7 @@ const theme = extendTheme({
     },
     ResponsiveContainer: {
       baseStyle: {
-        paddingLeft: 8,
-        paddingRight: 8,
+        px: { base: 4, md: 8 },
       },
     },
     Button: {
@@ -91,10 +90,9 @@ const theme = extendTheme({
     },
     Section: {
       baseStyle: {
-        mt: 32,
-        mb: 32,
-        px: { base: 8, md: 16 },
-        py: 16,
+        my: 32,
+        px: { base: 4, md: 16 },
+        py: { base: 8, md: 16 },
         bg: "white",
         boxShadow: "lg",
         borderRadius: "base",

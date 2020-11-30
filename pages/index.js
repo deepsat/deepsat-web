@@ -95,7 +95,6 @@ export default function Index({ statics, sections, feed, team, menu }) {
           filter="brightness(0) invert(1)"
           mt="auto"
           w="64rem"
-          transform={{ base: "scale(1.1)", md: "none" }}
         />
         <Heading
           mt="auto"
