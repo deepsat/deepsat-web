@@ -172,7 +172,6 @@ export default function Index({ statics, sections, feed, team, menu }) {
       <Section heading={sections.contact.title} id="contact">
         <RTF>{sections.contact.content}</RTF>
       </Section>
-      <Box height="50vh" />
     </Layout>
   );
 }
