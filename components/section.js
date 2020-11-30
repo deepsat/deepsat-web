@@ -4,11 +4,7 @@ const Section = ({ children, heading, size, variant, ...props }) => {
   const styles = useStyleConfig("Section", { size, variant });
   return (
     <Box sx={styles} {...props}>
-      {heading ? (
-        <Heading mb="8" ml={{ base: 4, md: 0 }}>
-          {heading}
-        </Heading>
-      ) : null}
+      {heading ? <Heading mb="8">{heading}</Heading> : null}
       {children}
     </Box>
   );
