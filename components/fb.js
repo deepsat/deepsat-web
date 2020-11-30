@@ -1,4 +1,13 @@
-import { Box, Flex, Icon, Image, Stack, Text } from "@chakra-ui/react";
+import {
+  AspectRatio,
+  Box,
+  Flex,
+  Icon,
+  Image,
+  Spacer,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import { MdArrowForward } from "react-icons/md";
 import Excerpt from "./excerpt";
 import CustomLink from "./link";
@@ -9,42 +18,27 @@ const FBPost = ({ post, ...props }) => {
   const text = post.message ?? post.attachments.data[0].description ?? "";
   const id = post.id;
   return (
-    <Stack
+    <Flex
       shadow="lg"
       align="center"
       p="4"
-      spacing="4"
-      direction={{ base: "column-reverse", xl: "row" }}
+      direction="column"
+      justify="space-between"
     >
-      <Box
-        w={{ base: "full", xl: 48 }}
-        h={{ base: 32, xl: "full" }}
-        minH={{ xl: 64 }}
-        flexShrink="0"
-        position="relative"
-      >
-        <Image
-          src={src}
-          shadow="lg"
-          position="absolute"
-          inset="0"
-          maxH="full"
-          maxW="full"
-          m="auto"
-        />
-      </Box>
-      <Text alignSelf="center" w="full" fontSize={{ base: "sm" }}>
+      <Text w="full" fontSize={{ base: "sm" }} mb="4">
         {text}
-        <CustomLink
-          href={permalink}
-          float="right"
-          rel="noreferrer"
-          target="_blank"
-        >
-          <Icon as={MdArrowForward} h="6" w="6" />
-        </CustomLink>
       </Text>
-    </Stack>
+      <Image src={src} shadow="lg" maxW="full" maxH="64" mb="4" flexGrow="0" />
+      <CustomLink
+        href={permalink}
+        textAlign="right"
+        rel="noreferrer"
+        target="_blank"
+        ml="auto"
+      >
+        <Icon as={MdArrowForward} h="6" w="6" />
+      </CustomLink>
+    </Flex>
   );
 };
 
