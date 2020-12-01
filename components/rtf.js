@@ -13,12 +13,14 @@ const options = {
       );
     },
     "embedded-asset-block": (node) => (
-      <Img
-        src={node.data.target.fields.file.url}
-        maxW={{ base: "100%", md: "48rem" }}
-        my="8"
-        mx="auto"
-      />
+      <Box w={{ md: "48rem" }} mx="auto" maxW="100%">
+        <Img
+          src={node.data.target.fields.file.url}
+          maxW="100%"
+          my="8"
+          mx="auto"
+        />
+      </Box>
     ),
   },
 };
