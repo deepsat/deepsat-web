@@ -12,12 +12,14 @@ import { useEffect, useState } from "react";
 import { MdMenu } from "react-icons/md";
 import CustomLink from "./link";
 import { useRouter } from "next/router";
+import theme from "../theme";
+import { FaGlobeAfrica } from "react-icons/fa";
 const logo = require("../images/logo_horizontal.png?resize&webp");
 
-const MenuItem = ({ href, label, locale, ...props }) => {
+const MenuItem = ({ href, locale, children, ...props }) => {
   return (
     <CustomLink key={href} {...{ href, locale }} {...props}>
-      {label}
+      {children}
     </CustomLink>
   );
 };
@@ -27,8 +29,14 @@ const LanguageSwitcher = (props) => {
   const router = useRouter();
   return router.locales.map((locale) => {
     return locale == router.locale ? null : (
-      <Link href={`/${locale}${router.asPath}`} {...props}>
-        {locale.toLocaleUpperCase()}
+      <Link
+        {...props}
+        href={`/${locale}`}
+        display="flex"
+        alignItems="center"
+        locale={false}
+      >
+        <Icon as={FaGlobeAfrica} mr="2" /> {locale.toLocaleUpperCase()}
       </Link>
     );
   });
@@ -109,7 +117,7 @@ const Header = ({ menu }) => {
             }
             visibility={{ base: isOpen ? "unset" : "hidden", md: "unset" }}
           >
-            {menu.map((item) => (
+            {menu.map(({ label, ...item }) => (
               <MenuItem
                 {...item}
                 ml={{ md: "8" }}
@@ -118,7 +126,9 @@ const Header = ({ menu }) => {
                 pb="4"
                 color={{ md: isTop ? "white" : null }}
                 display="block"
-              ></MenuItem>
+              >
+                {label}
+              </MenuItem>
             ))}
             <LanguageSwitcher
               ml={{ md: "8" }}
