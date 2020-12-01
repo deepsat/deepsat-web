@@ -20,6 +20,9 @@ import {
   Wrap,
   WrapItem,
   Text,
+  AspectRatio,
+  Grid,
+  Img,
 } from "@chakra-ui/react";
 import CustomLink from "../components/link";
 import TeamMember from "../components/teamMember";
@@ -42,7 +45,14 @@ from, 20%, 53%, 80%, to {
   transform: translate3d(0,-2px,0);
 }
 `;
-export default function Index({ statics, sections, feed, team, menu }) {
+export default function Index({
+  statics,
+  sections,
+  feed,
+  team,
+  menu,
+  partners,
+}) {
   team = team ?? [];
   sections = sections ?? {};
   statics = statics ?? {};
@@ -147,6 +157,26 @@ export default function Index({ statics, sections, feed, team, menu }) {
           />
         </CustomLink>
       </Flex>
+      <Section heading={statics["partners"]} id="partners">
+        <Wrap spacing="4">
+          {partners.map(({ image, link }) => (
+            <CustomLink
+              href={link}
+              target="_blank"
+              transition="transform ease-in-out 200ms"
+              _hover={{ transform: "scale(1.1)", zIndex: "docked" }}
+            >
+              <Img
+                alt={image.fields.title}
+                src={image.fields.file.url}
+                w="32"
+                h="32"
+                objectFit="contain"
+              />
+            </CustomLink>
+          ))}
+        </Wrap>
+      </Section>
       <Section heading={sections.hero.title} id="about">
         <RTF>{sections.hero.content}</RTF>
       </Section>
@@ -170,7 +200,24 @@ export default function Index({ statics, sections, feed, team, menu }) {
         </SimpleGrid>
       </Section>
       <Section heading={sections.contact.title} id="contact">
-        <RTF>{sections.contact.content}</RTF>
+        <Grid
+          alignItems="center"
+          gap="4"
+          templateColumns={{ base: "1fr", md: "1fr 2fr" }}
+        >
+          <RTF>{sections.contact.content}</RTF>
+          <AspectRatio ratio={16 / 9} borderRadius="base  " overflow="hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2444.2996099716706!2d21.000510215546136!3d52.219774266187905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecceb1d68be95%3A0x4f318f2440542625!2sNowowiejska%2037A%2C%2002-010%20Warszawa!5e0!3m2!1spl!2spl!4v1606862385918!5m2!1spl!2spl"
+              width="600"
+              height="450"
+              frameborder="0"
+              allowfullscreen=""
+              aria-hidden="false"
+              tabindex="0"
+            ></iframe>
+          </AspectRatio>
+        </Grid>
       </Section>
     </Layout>
   );
@@ -217,6 +264,14 @@ export async function getContent(locale) {
     })
     .then((result) => result.items.map((item) => item.fields));
 
+  const partners = await client
+    .getEntries({
+      content_type: "partner",
+      order: "fields.order",
+      locale: locale,
+    })
+    .then((result) => result.items.map((item) => item.fields));
+
   const menu = await client
     .getEntries({
       content_type: "menu",
@@ -230,6 +285,7 @@ export async function getContent(locale) {
     sections,
     statics,
     team,
+    partners,
     menu: menu[0].content,
   };
 }
