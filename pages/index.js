@@ -206,7 +206,12 @@ export default function Index({
           templateColumns={{ base: "1fr", md: "1fr 2fr" }}
         >
           <RTF>{sections.contact.content}</RTF>
-          <AspectRatio ratio={16 / 9} borderRadius="base  " overflow="hidden">
+          <AspectRatio
+            ratio={16 / 9}
+            borderRadius="base"
+            overflow="hidden"
+            shadow="lg"
+          >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2444.2996099716706!2d21.000510215546136!3d52.219774266187905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecceb1d68be95%3A0x4f318f2440542625!2sNowowiejska%2037A%2C%2002-010%20Warszawa!5e0!3m2!1spl!2spl!4v1606862385918!5m2!1spl!2spl"
               width="600"
