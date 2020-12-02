@@ -97,6 +97,8 @@ const Header = ({ menu }) => {
             ml="4"
           ></IconButton>
           <Flex
+            wrap="wrap"
+            justify="flex-end"
             as="nav"
             direction={{ base: "column", md: "row" }}
             position={{ base: "absolute", md: "static" }}
@@ -120,7 +122,7 @@ const Header = ({ menu }) => {
             {menu.map(({ label, ...item }) => (
               <MenuItem
                 {...item}
-                ml={{ md: "8" }}
+                mx={{ md: "4" }}
                 pl={{ base: "8", md: "0" }}
                 pt="4"
                 pb="4"
@@ -131,7 +133,7 @@ const Header = ({ menu }) => {
               </MenuItem>
             ))}
             <LanguageSwitcher
-              ml={{ md: "8" }}
+              mx={{ md: "4" }}
               pl={{ base: "8", md: "0" }}
               pt="4"
               pb="4"
