@@ -100,13 +100,7 @@ export default function Index({
       <DefaultSeo {...seoConfig} canonical={statics.indexurl} />
       <Flex minHeight="100vh" direction="column" align="center">
         <Box h={{ base: 24, md: 32 }} />
-        <Image
-          src={logo}
-          srcSet={logo.srcSet}
-          filter="brightness(0) invert(1)"
-          mt="auto"
-          w="64rem"
-        />
+        <Image src={logo} srcSet={logo.srcSet} mt="auto" w="64rem" />
         <Heading
           mt="auto"
           textAlign="center"
