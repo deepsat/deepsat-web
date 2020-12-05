@@ -27,7 +27,8 @@ import {
 import CustomLink from "../components/link";
 import TeamMember from "../components/teamMember";
 
-const logo = require("../images/logo_horizontal.png?resize");
+const logo = require("../images/logo_web.svg");
+
 const bounce = keyframes`
 from, 20%, 53%, 80%, to {
   transform: translate3d(0,0,0);

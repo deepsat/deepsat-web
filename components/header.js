@@ -12,9 +12,8 @@ import { useEffect, useState } from "react";
 import { MdMenu } from "react-icons/md";
 import CustomLink from "./link";
 import { useRouter } from "next/router";
-import theme from "../theme";
 import { FaGlobeAfrica } from "react-icons/fa";
-const logo = require("../images/logo_horizontal.png?resize&webp");
+const logo = require("../images/logo_web_brand.svg");
 
 const MenuItem = ({ href, locale, children, ...props }) => {
   return (
