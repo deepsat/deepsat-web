@@ -64,7 +64,7 @@ const Header = ({ menu }) => {
       top="0"
       insetX="0"
       bg={isTop ? "transparent" : "white"}
-      shadow={isTop ? null : "lg"}
+      shadow={isTop ? undefined : "lg"}
       transition="background-color ease-in-out 200ms"
       zIndex="sticky"
     >
@@ -125,7 +125,7 @@ const Header = ({ menu }) => {
                 pl={{ base: "8", md: "0" }}
                 pt="4"
                 pb="4"
-                color={{ md: isTop ? "white" : null }}
+                color={{ md: isTop ? "white" : undefined }}
                 display="block"
               >
                 {label}
@@ -136,7 +136,7 @@ const Header = ({ menu }) => {
               pl={{ base: "8", md: "0" }}
               pt="4"
               pb="4"
-              color={{ md: isTop ? "white" : null }}
+              color={{ md: isTop ? "white" : undefined }}
               display="block"
             />
           </Flex>
