@@ -19,7 +19,6 @@ import {
   SimpleGrid,
   Wrap,
   WrapItem,
-  Text,
   AspectRatio,
   Grid,
   Img,
@@ -153,22 +152,25 @@ export default function Index({
         </CustomLink>
       </Flex>
       <Section heading={statics["partners"]} id="partners">
-        <Wrap spacing="4">
-          {partners.map(({ image, link }) => (
-            <CustomLink
-              href={link}
-              target="_blank"
-              transition="transform ease-in-out 200ms"
-              _hover={{ transform: "scale(1.1)", zIndex: "docked" }}
-            >
-              <Img
-                alt={image.fields.title}
-                src={image.fields.file.url}
-                w="32"
-                h="32"
-                objectFit="contain"
-              />
-            </CustomLink>
+        <Wrap spacing="4" justify="space-evenly">
+          {partners.map(({ image, link, title }) => (
+            <WrapItem>
+              <CustomLink
+                title={title}
+                href={link}
+                target="_blank"
+                transition="transform ease-in-out 200ms"
+                _hover={{ transform: "scale(1.1)", zIndex: "docked" }}
+              >
+                <Img
+                  alt={image.fields.title}
+                  src={image.fields.file.url}
+                  w="32"
+                  h="32"
+                  objectFit="contain"
+                />
+              </CustomLink>
+            </WrapItem>
           ))}
         </Wrap>
       </Section>
