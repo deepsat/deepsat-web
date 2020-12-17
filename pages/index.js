@@ -45,17 +45,7 @@ from, 20%, 53%, 80%, to {
   transform: translate3d(0,-2px,0);
 }
 `;
-export default function Index({
-  statics,
-  sections,
-  feed,
-  team,
-  menu,
-  partners,
-}) {
-  team = team ?? [];
-  sections = sections ?? {};
-  statics = statics ?? {};
+export default function Index({ statics, sections, team, menu, partners }) {
   const socials = [
     {
       href: "https://facebook.com/deepsatpl",
@@ -177,18 +167,6 @@ export default function Index({
       <Section heading={sections.hero.title} id="about">
         <RTF>{sections.hero.content}</RTF>
       </Section>
-      <Section heading={statics["news"]} id="news">
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing="4" mb="8">
-          {feed.map((post) => (
-            <FBPost post={post} />
-          ))}
-        </SimpleGrid>
-        <NextLink href="https://www.facebook.com/deepsatpl" passHref>
-          <Button as="a" variant="brand" target="_blank">
-            {statics["visit fb"]}
-          </Button>
-        </NextLink>
-      </Section>
       <Section heading={statics["team"]} id="team">
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing="4">
           {team.map((member) => (
@@ -219,15 +197,13 @@ export default function Index({
     </Layout>
   );
 }
+Index.defaultProps = {
+  team: [],
+  sections: {},
+  statics: {},
+};
 
 export async function getContent(locale) {
-  // fb
-  const limit = 2;
-  const access_token = process.env.FB_TOKEN;
-  const { data: feed } = await fetch(
-    `https://graph.facebook.com/v8.0/deepsatpl/posts?fields=message%2Cattachments%7Bmedia%2Cdescription%7D%2Cpermalink_url&limit=${limit}&access_token=${access_token}`
-  ).then((response) => response.json());
-
   // contentful
   let client = createClient({
     space: process.env.CONTENTFUL_SPACE,
@@ -278,7 +254,6 @@ export async function getContent(locale) {
     .then((result) => result.items.map((item) => item.fields));
 
   return {
-    feed,
     sections,
     statics,
     team,
