@@ -1,9 +1,28 @@
-import { extendTheme } from "@chakra-ui/react";
+import { extendTheme, keyframes } from "@chakra-ui/react";
 
 const theme = extendTheme({
   fonts: {
     body: "Open Sans",
     heading: "Montserrat",
+  },
+  animations: {
+    bounce: `
+    from, 20%, 53%, 80%, to {
+      transform: translate3d(0,0,0);
+    }
+    
+    40%, 43% {
+      transform: translate3d(0, -16px, 0);
+    }
+    
+    70% {
+      transform: translate3d(0, -8px, 0);
+    }
+    
+    90% {
+      transform: translate3d(0,-2px,0);
+    }
+    `,
   },
   colors: {
     brand: {

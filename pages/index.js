@@ -1,7 +1,6 @@
 import Layout from "../components/layout";
 import NextLink from "next/link";
 import Section from "../components/section";
-import FBPost from "../components/fb";
 import { createClient } from "contentful";
 import RTF from "../components/rtf";
 import { DefaultSeo } from "next-seo";
@@ -15,37 +14,24 @@ import {
   Heading,
   Icon,
   Image,
-  keyframes,
   SimpleGrid,
   Wrap,
   WrapItem,
   AspectRatio,
   Grid,
   Img,
+  useTheme,
+  keyframes,
+  chakra,
 } from "@chakra-ui/react";
 import CustomLink from "../components/link";
 import TeamMember from "../components/teamMember";
-
+import ParticlesBase from "react-tsparticles";
+import particlesConfig from "../theme/particlesjs-config.json";
 const logo = require("../images/logo_web.svg");
-
-const bounce = keyframes`
-from, 20%, 53%, 80%, to {
-  transform: translate3d(0,0,0);
-}
-
-40%, 43% {
-  transform: translate3d(0, -16px, 0);
-}
-
-70% {
-  transform: translate3d(0, -8px, 0);
-}
-
-90% {
-  transform: translate3d(0,-2px,0);
-}
-`;
+const Particles = chakra(ParticlesBase);
 export default function Index({ statics, sections, team, menu, partners }) {
+  const theme = useTheme();
   const socials = [
     {
       href: "https://facebook.com/deepsatpl",
@@ -84,10 +70,17 @@ export default function Index({ statics, sections, team, menu, partners }) {
     },
   ];
 
+  const bounce = keyframes`${theme.animations.bounce}`;
   return (
     <Layout menu={menu} logoHref={statics.indexurl}>
       <DefaultSeo {...seoConfig} canonical={statics.indexurl} />
-      <Flex minHeight="100vh" direction="column" align="center">
+      <Flex minHeight="100vh" direction="column" align="center" pos="relative">
+        <Particles
+          options={particlesConfig}
+          pos="absolute"
+          width="95vw"
+          insetY="0"
+        />
         <Box h={{ base: 24, md: 32 }} />
         <Image src={logo} srcSet={logo.srcSet} mt="auto" w="64rem" />
         <Heading
