@@ -27,7 +27,7 @@ MenuItem.defaultProps = {};
 const LanguageSwitcher = (props) => {
   const router = useRouter();
   return router.locales.map((locale) => {
-    return locale == router.locale ? null : (
+    return locale == router.locale ? undefined : (
       <Link
         {...props}
         href={`/${locale}`}
@@ -39,6 +39,10 @@ const LanguageSwitcher = (props) => {
       </Link>
     );
   });
+};
+
+const useBreakpoint = (breakpoint, value) => {
+  return Object.fromEntries([[breakpoint, value]]);
 };
 
 const Header = ({ menu }) => {
@@ -57,7 +61,7 @@ const Header = ({ menu }) => {
     document.addEventListener("scroll", onscroll);
     onscroll();
   });
-
+  const bp = "lg";
   return (
     <Box
       pos="fixed"
@@ -91,7 +95,7 @@ const Header = ({ menu }) => {
             variant="link"
             onClick={toggleOpen}
             icon={<Icon as={MdMenu} w="6" h="6" />}
-            display={{ md: "none" }}
+            display={useBreakpoint(bp, "none")}
             color={isTop ? "white" : "brand.default"}
             ml="4"
           ></IconButton>
@@ -99,44 +103,56 @@ const Header = ({ menu }) => {
             wrap="wrap"
             justify="flex-end"
             as="nav"
-            direction={{ base: "column", md: "row" }}
-            position={{ base: "absolute", md: "static" }}
+            direction={{
+              base: "column",
+              ...useBreakpoint(bp, "row"),
+            }}
+            position={{ base: "absolute", ...useBreakpoint(bp, "static") }}
             left="0"
             right="0"
             top="100%"
-            bg={{ base: "white", md: "none" }}
-            overflowY={{ base: "hidden", md: "unset" }}
-            transform={{ base: isOpen ? null : "scaleY(0)", md: "unset" }}
+            bg={{ base: "white", ...useBreakpoint(bp, "none") }}
+            overflowY={{
+              base: "hidden",
+              ...useBreakpoint(bp, undefined),
+            }}
+            transform={{
+              base: isOpen ? null : "scaleY(0)",
+              ...useBreakpoint(bp, "unset"),
+            }}
             transformOrigin="top"
             aria-hidden={!isOpen}
-            boxShadow={{ base: "lg", md: "none" }}
+            boxShadow={{ base: "lg", ...useBreakpoint(bp, "none") }}
             borderRadius="base"
             transition={
               isOpen
                 ? "transform ease-in-out 200ms, visibility 0s 0s"
                 : "transform ease-in-out 200ms, visibility 0s 200ms"
             }
-            visibility={{ base: isOpen ? "unset" : "hidden", md: "unset" }}
+            visibility={{
+              base: isOpen ? "unset" : "hidden",
+              ...useBreakpoint(bp, "unset"),
+            }}
           >
             {menu.map(({ label, ...item }) => (
               <MenuItem
                 {...item}
-                mx={{ md: "4" }}
-                pl={{ base: "8", md: "0" }}
+                mx={useBreakpoint(bp, "4")}
+                pl={{ base: "8", ...useBreakpoint(bp, "0") }}
                 pt="4"
                 pb="4"
-                color={{ md: isTop ? "white" : undefined }}
+                color={useBreakpoint(bp, isTop ? "white" : undefined)}
                 display="block"
               >
                 {label}
               </MenuItem>
             ))}
             <LanguageSwitcher
-              mx={{ md: "4" }}
-              pl={{ base: "8", md: "0" }}
+              mx={useBreakpoint(bp, "4")}
+              pl={{ base: "8", ...useBreakpoint(bp, "0") }}
               pt="4"
               pb="4"
-              color={{ md: isTop ? "white" : undefined }}
+              color={useBreakpoint(bp, isTop ? "white" : undefined)}
               display="block"
             />
           </Flex>
