@@ -122,7 +122,7 @@ export default function Index({ statics, sections, team, menu, partners }) {
         </Wrap>
         <CustomLink
           display="block"
-          href="#about"
+          href="#partners"
           mt="auto"
           mb="16"
           transition="transform ease-in-out 200ms"
