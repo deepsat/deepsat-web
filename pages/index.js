@@ -74,7 +74,7 @@ export default function Index({ statics, sections, team, menu, partners }) {
   return (
     <Layout menu={menu} logoHref={statics.indexurl}>
       <DefaultSeo {...seoConfig} canonical={statics.indexurl} />
-      <Flex minHeight="100vh" direction="column" align="center" pos="relative">
+      <Flex minHeight="100vh" direction="column" align="center" pos="relative" id="hero">
         <Particles
           options={particlesConfig}
           pos="absolute"

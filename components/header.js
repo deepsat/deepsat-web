@@ -75,7 +75,7 @@ const Header = ({ menu }) => {
       <ResponsiveContainer>
         <Flex px={{ base: 8, md: 16 }} align="center" h="24" pos="relative">
           <CustomLink
-            href="/"
+            href="/#hero"
             passHref
             transition={
               isTop
