@@ -6,7 +6,13 @@ import RTF from "../components/rtf";
 import { DefaultSeo } from "next-seo";
 import seoConfig from "../next-seo.config";
 import { MdEmail, MdExpandMore } from "react-icons/md";
-import { FaFacebook, FaGithub, FaLinkedinIn, FaRocket } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaGithub,
+  FaInstagramSquare,
+  FaLinkedinIn,
+  FaRocket,
+} from "react-icons/fa";
 import {
   Box,
   Button,
@@ -74,7 +80,13 @@ export default function Index({ statics, sections, team, menu, partners }) {
   return (
     <Layout menu={menu} logoHref={statics.indexurl}>
       <DefaultSeo {...seoConfig} canonical={statics.indexurl} />
-      <Flex minHeight="100vh" direction="column" align="center" pos="relative" id="hero">
+      <Flex
+        minHeight="100vh"
+        direction="column"
+        align="center"
+        pos="relative"
+        id="hero"
+      >
         <Particles
           options={particlesConfig}
           pos="absolute"
@@ -139,7 +151,7 @@ export default function Index({ statics, sections, team, menu, partners }) {
           {partners.map(({ image, link, title }) => (
             <WrapItem>
               <CustomLink
-                title={title}
+                title={title ?? undefined}
                 href={link}
                 target="_blank"
                 transition="transform ease-in-out 200ms"
