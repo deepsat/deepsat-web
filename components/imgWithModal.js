@@ -20,7 +20,7 @@ const ImgWithModal = (props) => {
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
         <ModalContent maxW="95vw" maxH="95vh">
-          <ModalCloseButton />
+          <ModalCloseButton top="-3em" color="white" />
           <Img src={props.src} alt={props.alt} />
         </ModalContent>
       </Modal>
