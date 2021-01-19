@@ -42,7 +42,7 @@ const LanguageSwitcher = (props) => {
 };
 
 const useBreakpoint = (breakpoint, value) => {
-  return Object.fromEntries([[breakpoint, value]]);
+  return { [breakpoint]: value };
 };
 
 const Header = ({ menu }) => {
