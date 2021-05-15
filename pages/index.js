@@ -267,11 +267,9 @@ export async function getContent(locale) {
   };
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps() {
   return {
-    props: {
-      ...(await getContent(locale)),
-    },
+    props: await getContent("pl"),
     revalidate: 60,
   };
 }

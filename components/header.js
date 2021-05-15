@@ -26,11 +26,17 @@ MenuItem.defaultProps = {};
 
 const LanguageSwitcher = (props) => {
   const router = useRouter();
-  return router.locales.map((locale) => {
-    return locale == router.locale ? undefined : (
+  const locales = {
+    pl: "",
+    en: "en",
+  };
+  const curr = router.route.slice(1);
+  return Object.entries(locales).map(([locale, url]) => {
+    console.log(locale);
+    return url == curr ? undefined : (
       <Link
         {...props}
-        href={`/${locale}`}
+        href={`/${url}`}
         display="flex"
         alignItems="center"
         locale={false}
