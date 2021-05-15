@@ -31,9 +31,8 @@ const LanguageSwitcher = (props) => {
     en: "en",
   };
   const curr = router.route.slice(1);
-  return Object.entries(locales).map(([locale, url]) => {
-    console.log(locale);
-    return url == curr ? undefined : (
+  return Object.entries(locales).map(([locale, url]) =>
+    url == curr ? undefined : (
       <Link
         {...props}
         href={`/${url}`}
@@ -43,8 +42,8 @@ const LanguageSwitcher = (props) => {
       >
         <Icon as={FaGlobeAfrica} mr="2" /> {locale.toLocaleUpperCase()}
       </Link>
-    );
-  });
+    )
+  );
 };
 
 const useBreakpoint = (breakpoint, value) => {
