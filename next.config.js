@@ -22,5 +22,6 @@ module.exports = withPlugins(
       defaultLocale: "pl",
     },
     target: "serverless",
+    webpack5: true,
   }
 );
