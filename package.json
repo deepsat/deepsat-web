@@ -37,5 +37,7 @@
     "sharp": "^0.26.3",
     "webp-loader": "^0.6.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@netlify/plugin-nextjs": "^3.4.2"
+  }
 }
