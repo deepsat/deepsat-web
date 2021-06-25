@@ -21,5 +21,6 @@ module.exports = withPlugins(
       locales: ["en", "pl"],
       defaultLocale: "pl",
     },
+    target: "serverless",
   }
 );
