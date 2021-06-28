@@ -1,13 +1,12 @@
-import { useStyleConfig, Container, theme, useTheme } from "@chakra-ui/react";
+import { useStyleConfig, Container } from "@chakra-ui/react";
 
 const ResponsiveContainer = ({ size, variant, ...props }) => {
   const styles = useStyleConfig("ResponsiveContainer", { size, variant });
-  const theme = useTheme();
   return (
     <Container
       sx={styles}
       {...props}
-      maxWidth={["full", ...theme.breakpoints.slice(1)]}
+      maxWidth={["full", "30em", "48em", "62em", "80em", "96em"]}
     ></Container>
   );
 };

@@ -33,7 +33,7 @@ const LanguageSwitcher = (props) => {
         href={`/${locale}`}
         display="flex"
         alignItems="center"
-        locale={false}
+        locale={undefined}
       >
         <Icon as={FaGlobeAfrica} mr="2" /> {locale.toLocaleUpperCase()}
       </Link>
@@ -143,6 +143,7 @@ const Header = ({ menu }) => {
                 pb="4"
                 color={useBreakpoint(bp, isTop ? "white" : undefined)}
                 display="block"
+                key={label}
               >
                 {label}
               </MenuItem>

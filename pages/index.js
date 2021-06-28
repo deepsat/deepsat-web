@@ -109,7 +109,7 @@ export default function Index({ statics, sections, team, menu, partners }) {
         </Heading>
         <Wrap spacing="4" mt="auto" flexWrap="wrap" justify="center">
           {socials.map(({ href, icon, bgColor, color, text }) => (
-            <WrapItem>
+            <WrapItem key={href}>
               <NextLink href={href} passHref>
                 <Button
                   target="_blank"
