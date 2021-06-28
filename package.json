@@ -19,6 +19,7 @@
     "@emotion/styled": "^11.0.0",
     "@fontsource/montserrat": "^4.4.5",
     "@fontsource/open-sans": "^4.4.5",
+    "@netlify/plugin-nextjs": "^3.5.0",
     "contentful": "^8",
     "focus-visible": "^5.2.0",
     "framer-motion": "^4.1.17",
