@@ -738,6 +738,16 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
+"@fontsource/montserrat@^4.4.5":
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-4.4.5.tgz#f97ebea605f4a2d6b9b23a19bc9bf8fc6f4c79d5"
+  integrity sha512-1F3cR9OIp4Qi1AJHFg/SeFeUWLYemMgI3ldetx0mrlHoWeMuK+p2YentYIIZVkV9ogXOIE2QEw7VnHlGBPo7iw==
+
+"@fontsource/open-sans@^4.4.5":
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-4.4.5.tgz#07b31617e62ed753c94cabcf552ebaed4de497ce"
+  integrity sha512-PDWEvO1/p8OAHHiielvEmwGXHNbZhrZn96ojV7+/mKgFu+cCUcGVJl9sFs97rCWLe3hKQsYLEsJs4EiLjwa+UQ==
+
 "@hapi/accept@5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@hapi/accept/-/accept-5.0.1.tgz#068553e867f0f63225a506ed74e899441af53e10"
@@ -3228,16 +3238,6 @@ follow-redirects@^1.10.0:
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.1.tgz#5f69b813376cee4fd0474a3aba835df04ab763b7"
   integrity sha512-SSG5xmZh1mkPGyKzjZP8zLjltIfpW32Y5QpdNJyjcfGxK3qo3NDDkZOZSFiGn1A6SclQxY9GzEwAHQ3dmYRWpg==
-
-fontsource-montserrat@^3.0.9:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/fontsource-montserrat/-/fontsource-montserrat-3.1.5.tgz#766d71f9255a4abe9abb628e47e95a8912b45897"
-  integrity sha512-wLmozvb4j/yDbPEBrzHmkAM2PDHp+GV7l6T/GzrmiM8rHeLDIQuUfWJ3b05pAu7q5xRhuG2cDqr+bCagaKws0w==
-
-fontsource-open-sans@^3.0.9:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/fontsource-open-sans/-/fontsource-open-sans-3.1.5.tgz#93d0040633d37215658d72565bd2a12d9a8fa854"
-  integrity sha512-tculQB3D6GHLPcbY1+WduZJM3bitV7GptWuKBAU7emfagJ/D5jtMCMd4i4JOGEzk0n416fdo5vLC0zYHxBYxzg==
 
 for-in@^1.0.2:
   version "1.0.2"
