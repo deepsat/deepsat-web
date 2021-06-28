@@ -21,5 +21,8 @@ module.exports = withPlugins(
       locales: ["en", "pl"],
       defaultLocale: "pl",
     },
+    future: {
+      webpack5: true,
+    },
   }
 );
