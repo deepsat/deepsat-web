@@ -6,13 +6,7 @@ import RTF from "../components/rtf";
 import { DefaultSeo } from "next-seo";
 import seoConfig from "../next-seo.config";
 import { MdEmail, MdExpandMore } from "react-icons/md";
-import {
-  FaFacebook,
-  FaGithub,
-  FaInstagramSquare,
-  FaLinkedinIn,
-  FaRocket,
-} from "react-icons/fa";
+import { FaFacebook, FaGithub, FaLinkedinIn, FaRocket } from "react-icons/fa";
 import {
   Box,
   Button,
@@ -34,9 +28,17 @@ import CustomLink from "../components/link";
 import TeamMember from "../components/teamMember";
 import ParticlesBase from "react-tsparticles";
 import particlesConfig from "../theme/particlesjs-config.json";
+import Head from "next/head";
 const logo = require("../images/logo_web.svg");
 const Particles = chakra(ParticlesBase);
-export default function Index({ statics, sections, team, menu, partners }) {
+export default function Index({
+  statics,
+  sections,
+  team,
+  menu,
+  partners,
+  locale,
+}) {
   const theme = useTheme();
   const socials = [
     {
@@ -79,6 +81,13 @@ export default function Index({ statics, sections, team, menu, partners }) {
   const bounce = keyframes`${theme.animations.bounce}`;
   return (
     <Layout menu={menu} logoHref={statics.indexurl}>
+      <Head>
+        <meta
+          httpEquiv="content-language"
+          content={locale}
+          key="content-language"
+        />
+      </Head>
       <DefaultSeo {...seoConfig} canonical={statics.indexurl} />
       <Flex
         minHeight="100vh"
@@ -264,6 +273,7 @@ export async function getContent(locale) {
     team,
     partners,
     menu: menu[0].content,
+    locale: locale,
   };
 }
 

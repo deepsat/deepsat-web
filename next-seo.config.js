@@ -8,7 +8,7 @@ export default {
     site_name: "DeepSat",
     images: [
       {
-        url: "http://deepsat.pl/og.png",
+        url: `${url}/og.png`,
         width: 1200,
         height: 630,
         alt: "DeepSat OG image",
