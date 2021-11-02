@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p $PORT",
-    "deploy": "next build; next export; gh-pages -d out"
+    "deploy": "next build; next export; gh-pages -d out -r https://github.com/deepsat/deepsat.github.io.git"
   },
   "engines": {
     "node": "14.x",
