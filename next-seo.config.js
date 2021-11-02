@@ -1,4 +1,4 @@
-const url = "https://deepsat.pl";
+const url = "https://deepsat.github.io";
 
 export default {
   openGraph: {
