@@ -98,6 +98,21 @@ export const query = graphql`
         title
       }
     }
+    team: allContentfulTeamMember(
+      filter: {node_locale: {eq: $locale}}
+      sort: {fields: order}
+    ) {
+      nodes {
+        job
+        name
+        description {
+          raw
+        }
+        image {
+          gatsbyImageData
+        }
+      }
+    }
   }
 `;
 
@@ -109,6 +124,7 @@ const Index = ({ data }) => {
     menu: { content: menu },
     statics: { nodes: staticsList },
     site: { siteMetadata },
+    team: { nodes: team },
   } = data;
   const statics = Object.fromEntries(
     staticsList.map((item) => [item.key, item.content.content])
@@ -247,16 +263,13 @@ const Index = ({ data }) => {
       <Section heading={hero.title} id="about">
         <RTF>{hero.content}</RTF>
       </Section>
-      
-      {
-      // TODO
-      /* <Section heading={statics["team"]} id="team">
+      <Section heading={statics["team"]} id="team">
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing="4">
           {team.map((member) => (
             <TeamMember {...member} />
           ))}
         </SimpleGrid>
-      </Section> */}
+      </Section>
       <Section heading={contact.title} id="contact">
         <Grid
           alignItems="center"

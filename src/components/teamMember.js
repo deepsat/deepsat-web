@@ -21,9 +21,11 @@ import {
 import { useClickable } from "@chakra-ui/clickable";
 import RTF from "./rtf";
 
-const TeamMember = ({ name, image, description, job }) => {
+const TeamMember = ({name, description, image, job}) => {
+  const imgProps = {...image.gatsbyImageData.images.sources[0], src: image.gatsbyImageData.images.fallback.src , title: image.title}
+
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const src = image.fields.file.url;
+  
   const clickable = useClickable({
     transition: "transform ease-in-out 200ms",
     _hover: { transform: "scale(1.1)", zIndex: "docked" },
@@ -45,7 +47,7 @@ const TeamMember = ({ name, image, description, job }) => {
           h="full"
         >
           <Image
-            src={src}
+            {...imgProps}
             w={{ base: 24, md: 48 }}
             objectFit="cover"
             borderRadius="full"
@@ -66,7 +68,7 @@ const TeamMember = ({ name, image, description, job }) => {
         <ModalContent>
           <ModalHeader>
             <HStack spacing="4">
-              <Avatar src={src} />
+              <Avatar {...imgProps} />
               <Flex direction="column">
                 <Text fontSize="lg" fontWeight="initial">
                   {name}
@@ -87,7 +89,5 @@ const TeamMember = ({ name, image, description, job }) => {
     </>
   );
 };
-TeamMember.defaultProps = {
-  image: { fields: { file: { url: null } } },
-};
+
 export default TeamMember;
