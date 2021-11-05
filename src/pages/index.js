@@ -31,6 +31,7 @@ import { graphql } from "gatsby";
 import logo from "../images/logo_web.svg";
 import { Helmet } from "react-helmet";
 import ExternalLink from "../components/externalLink";
+import { LocalizedLink } from "gatsby-theme-i18n";
 
 const Particles = chakra(ParticlesBase);
 
@@ -221,8 +222,9 @@ const Index = ({ data }) => {
           ))}
         </Wrap>
         <Link
+          as={LocalizedLink}
           display="block"
-          href="#partners"
+          to="#partners"
           mt="auto"
           mb="16"
           transition="transform ease-in-out 200ms"
