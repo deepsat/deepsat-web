@@ -34,7 +34,7 @@ import { Helmet } from "react-helmet";
 const Particles = chakra(ParticlesBase);
 
 export const query = graphql`
-  query MyQuery($locale: String = "pl") {
+  query MyQuery($locale: String) {
     menu: contentfulMenu(node_locale: { eq: $locale }) {
       content {
         href
@@ -58,7 +58,7 @@ export const query = graphql`
       }
     }
 
-    hero: contentfulPost(slug: { eq: "hero" }, content: {}) {
+    hero: contentfulPost(slug: { eq: "hero" }, node_locale: { eq: $locale }) {
       title
       contentful_id
       content {
@@ -71,7 +71,7 @@ export const query = graphql`
         }
       }
     }
-    contact: contentfulPost(slug: { eq: "contact" }, content: {}) {
+    contact: contentfulPost(slug: { eq: "contact" }, node_locale: { eq: $locale }) {
       title
       contentful_id
       content {

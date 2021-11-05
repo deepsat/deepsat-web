@@ -3,7 +3,7 @@ module.exports = {
     siteUrl: "https://deepsat.github.io",
     title: "DeepSat",
     description: "A CanSat 2020/21 project",
-    image: "/og.png"
+    image: "/og.png",
   },
   plugins: [
     {
@@ -38,6 +38,13 @@ module.exports = {
         path: "./src/images/",
       },
       __key: "images",
+    },
+    {
+      resolve: `gatsby-theme-i18n`,
+      options: {
+        defaultLang: `pl`,
+        configPath: require.resolve(`./i18n/config.json`),
+      },
     },
   ],
 };
