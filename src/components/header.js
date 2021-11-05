@@ -1,49 +1,36 @@
-import {
-  Box,
-  Link,
-  Flex,
-  Spacer,
-  Image,
-  Icon,
-  IconButton,
-} from "@chakra-ui/react";
+import React from "react";
+
+import { Box, Flex, Spacer, Image, Icon, IconButton } from "@chakra-ui/react";
 import ResponsiveContainer from "./responsiveContainer";
 import { useEffect, useState } from "react";
 import { MdMenu } from "react-icons/md";
-import CustomLink from "./link";
-import { useRouter } from "next/router";
+import Link from "./link";
 import { FaGlobeAfrica } from "react-icons/fa";
-const logo = require("../images/logo_web_brand.svg");
+import logo from "../images/logo_web_brand.svg";
 
-const MenuItem = ({ href, locale, children, ...props }) => {
-  return (
-    <CustomLink key={href} {...{ href, locale }} {...props}>
-      {children}
-    </CustomLink>
-  );
-};
-MenuItem.defaultProps = {};
-
-const LanguageSwitcher = (props) => {
-  const router = useRouter();
-  return router.locales.map((locale) => {
-    return locale == router.locale ? undefined : (
-      <Link
-        {...props}
-        href={`/${locale}`}
-        display="flex"
-        alignItems="center"
-        locale={undefined}
-      >
-        <Icon as={FaGlobeAfrica} mr="2" /> {locale.toLocaleUpperCase()}
-      </Link>
-    );
-  });
-};
-
-const useBreakpoint = (breakpoint, value) => {
-  return { [breakpoint]: value };
-};
+// TODO
+const LanguageSwitcher = () => null;
+// const LanguageSwitcher = (props) => {
+//   const router = useRouter();
+//   const locales = {
+//     pl: "",
+//     en: "en",
+//   };
+//   const curr = router.route.slice(1);
+//   return Object.entries(locales).map(([locale, url]) =>
+//     url == curr ? undefined : (
+//       <Link
+//         {...props}
+//         href={`/${url}`}
+//         display="flex"
+//         alignItems="center"
+//         locale={false}
+//       >
+//         <Icon as={FaGlobeAfrica} mr="2" /> {locale.toLocaleUpperCase()}
+//       </Link>
+//     )
+//   );
+// };
 
 const Header = ({ menu }) => {
   const [isTop, setTop] = useState(true);
@@ -74,9 +61,8 @@ const Header = ({ menu }) => {
     >
       <ResponsiveContainer>
         <Flex px={{ base: 8, md: 16 }} align="center" h="24" pos="relative">
-          <CustomLink
+          <Link
             href="/#hero"
-            passHref
             transition={
               isTop
                 ? "opacity ease-in-out 200ms, visibility 0s 200ms"
@@ -87,7 +73,7 @@ const Header = ({ menu }) => {
             flexShrink="0"
           >
             <Image h="10" src={logo} srcSet={logo.srcSet} />
-          </CustomLink>
+          </Link>
           <Spacer />
           <IconButton
             minW="auto"
@@ -95,7 +81,7 @@ const Header = ({ menu }) => {
             variant="link"
             onClick={toggleOpen}
             icon={<Icon as={MdMenu} w="6" h="6" />}
-            display={useBreakpoint(bp, "none")}
+            display={{ [bp]: "none" }}
             color={isTop ? "white" : "brand.default"}
             ml="4"
           ></IconButton>
@@ -105,24 +91,24 @@ const Header = ({ menu }) => {
             as="nav"
             direction={{
               base: "column",
-              ...useBreakpoint(bp, "row"),
+              [bp]: "row",
             }}
-            position={{ base: "absolute", ...useBreakpoint(bp, "static") }}
+            position={{ base: "absolute", [bp]: "static" }}
             left="0"
             right="0"
             top="100%"
-            bg={{ base: "white", ...useBreakpoint(bp, "none") }}
+            bg={{ base: "white", [bp]: "none" }}
             overflowY={{
               base: "hidden",
-              ...useBreakpoint(bp, undefined),
+              [bp]: undefined,
             }}
             transform={{
               base: isOpen ? null : "scaleY(0)",
-              ...useBreakpoint(bp, "unset"),
+              [bp]: "unset",
             }}
             transformOrigin="top"
             aria-hidden={!isOpen}
-            boxShadow={{ base: "lg", ...useBreakpoint(bp, "none") }}
+            boxShadow={{ base: "lg", [bp]: "none" }}
             borderRadius="base"
             transition={
               isOpen
@@ -131,29 +117,28 @@ const Header = ({ menu }) => {
             }
             visibility={{
               base: isOpen ? "unset" : "hidden",
-              ...useBreakpoint(bp, "unset"),
+              [bp]: "unset",
             }}
           >
-            {menu.map(({ label, ...item }) => (
-              <MenuItem
-                {...item}
-                mx={useBreakpoint(bp, "4")}
-                pl={{ base: "8", ...useBreakpoint(bp, "0") }}
+            {menu.map(({ label, href }) => (
+              <Link
+                to={href}
+                mx={{ [bp]: "4" }}
+                pl={{ base: "8", [bp]: "0" }}
                 pt="4"
                 pb="4"
-                color={useBreakpoint(bp, isTop ? "white" : undefined)}
+                color={{ [bp]: isTop ? "white" : undefined }}
                 display="block"
-                key={label}
               >
                 {label}
-              </MenuItem>
+              </Link>
             ))}
             <LanguageSwitcher
-              mx={useBreakpoint(bp, "4")}
-              pl={{ base: "8", ...useBreakpoint(bp, "0") }}
+              mx={{ [bp]: "4" }}
+              pl={{ base: "8", [bp]: "0" }}
               pt="4"
               pb="4"
-              color={useBreakpoint(bp, isTop ? "white" : undefined)}
+              color={{ [bp]: isTop ? "white" : undefined }}
               display="block"
             />
           </Flex>
