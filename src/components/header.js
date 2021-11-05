@@ -49,6 +49,7 @@ const Header = ({ menu }) => {
       <ResponsiveContainer>
         <Flex px={{ base: 8, md: 16 }} align="center" h="24" pos="relative">
           <Link
+            as={LocalizedLink}
             to="/#hero"
             transition={
               isTop
