@@ -16,23 +16,20 @@ const options = {
         </Link>
       );
     },
-    [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      console.log(node.data)
-      return (
-        <Box w="100%" mb="4">
-          <ImgWithModal
-            src={node.data.target.gatsbyImageData.images.fallback.src}
-            srcSet={node.data.target.gatsbyImageData.images.fallback.srcSet}
-            alt={node.data.target.title}
-            maxW="100%"
-            maxH="36"
-            width="auto"
-            height="auto"
-            mx="auto"
-          />
-        </Box>
-      );
-    },
+    [BLOCKS.EMBEDDED_ASSET]: (node) => (
+      <Box w="100%" mb="4">
+        <ImgWithModal
+          src={node.data.target.gatsbyImageData.images.fallback.src}
+          srcSet={node.data.target.gatsbyImageData.images.fallback.srcSet}
+          alt={node.data.target.title}
+          maxW="100%"
+          maxH="36"
+          width="auto"
+          height="auto"
+          mx="auto"
+        />
+      </Box>
+    ),
     [BLOCKS.PARAGRAPH]: (node, children) => (
       <Text mb="4" whiteSpace="pre-wrap">
         {children}

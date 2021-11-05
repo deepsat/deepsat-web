@@ -7,30 +7,17 @@ import { MdMenu } from "react-icons/md";
 import Link from "./link";
 import { FaGlobeAfrica } from "react-icons/fa";
 import logo from "../images/logo_web_brand.svg";
+import { useLocalization, LocalizedLink } from "gatsby-theme-i18n";
 
-// TODO
-const LanguageSwitcher = () => null;
-// const LanguageSwitcher = (props) => {
-//   const router = useRouter();
-//   const locales = {
-//     pl: "",
-//     en: "en",
-//   };
-//   const curr = router.route.slice(1);
-//   return Object.entries(locales).map(([locale, url]) =>
-//     url == curr ? undefined : (
-//       <Link
-//         {...props}
-//         href={`/${url}`}
-//         display="flex"
-//         alignItems="center"
-//         locale={false}
-//       >
-//         <Icon as={FaGlobeAfrica} mr="2" /> {locale.toLocaleUpperCase()}
-//       </Link>
-//     )
-//   );
-// };
+const LanguageSwitcher = (props) => {
+  const { locale, config, defaultLang } = useLocalization();
+  const dest = locale == "pl" ? "en" : "pl";
+  return (
+    <Link as={LocalizedLink} to="/" language={dest} {...props}>
+      <Icon as={FaGlobeAfrica} mr="2" /> {dest.toUpperCase()}
+    </Link>
+  );
+};
 
 const Header = ({ menu }) => {
   const [isTop, setTop] = useState(true);
@@ -62,7 +49,7 @@ const Header = ({ menu }) => {
       <ResponsiveContainer>
         <Flex px={{ base: 8, md: 16 }} align="center" h="24" pos="relative">
           <Link
-            href="/#hero"
+            to="/#hero"
             transition={
               isTop
                 ? "opacity ease-in-out 200ms, visibility 0s 200ms"

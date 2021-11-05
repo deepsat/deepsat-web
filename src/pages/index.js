@@ -30,6 +30,7 @@ import particlesConfig from "../particles-config.json";
 import { graphql } from "gatsby";
 import logo from "../images/logo_web.svg";
 import { Helmet } from "react-helmet";
+import ExternalLink from "../components/externalLink";
 
 const Particles = chakra(ParticlesBase);
 
@@ -71,7 +72,10 @@ export const query = graphql`
         }
       }
     }
-    contact: contentfulPost(slug: { eq: "contact" }, node_locale: { eq: $locale }) {
+    contact: contentfulPost(
+      slug: { eq: "contact" }
+      node_locale: { eq: $locale }
+    ) {
       title
       contentful_id
       content {
@@ -99,8 +103,8 @@ export const query = graphql`
       }
     }
     team: allContentfulTeamMember(
-      filter: {node_locale: {eq: $locale}}
-      sort: {fields: order}
+      filter: { node_locale: { eq: $locale } }
+      sort: { fields: order }
     ) {
       nodes {
         job
@@ -241,10 +245,9 @@ const Index = ({ data }) => {
         <Wrap spacing="4" justify="space-evenly">
           {partners.map(({ image, link, title }) => (
             <WrapItem>
-              <Link
+              <ExternalLink
                 title={title ?? undefined}
                 href={link}
-                target="_blank"
                 transition="transform ease-in-out 200ms"
                 _hover={{ transform: "scale(1.1)", zIndex: "docked" }}
               >
@@ -255,7 +258,7 @@ const Index = ({ data }) => {
                   h="32"
                   objectFit="contain"
                 />
-              </Link>
+              </ExternalLink>
             </WrapItem>
           ))}
         </Wrap>
