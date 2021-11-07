@@ -1,18 +1,11 @@
+import React from "react";
+
 import Layout from "../components/layout";
-import NextLink from "next/link";
 import Section from "../components/section";
 import { createClient } from "contentful";
 import RTF from "../components/rtf";
-import { DefaultSeo } from "next-seo";
-import seoConfig from "../next-seo.config";
 import { MdEmail, MdExpandMore } from "react-icons/md";
-import {
-  FaFacebook,
-  FaGithub,
-  FaInstagramSquare,
-  FaLinkedinIn,
-  FaRocket,
-} from "react-icons/fa";
+import { FaFacebook, FaGithub, FaLinkedinIn, FaRocket } from "react-icons/fa";
 import {
   Box,
   Button,
@@ -27,16 +20,120 @@ import {
   Grid,
   Img,
   useTheme,
-  keyframes,
   chakra,
 } from "@chakra-ui/react";
-import CustomLink from "../components/link";
+import { keyframes } from "@chakra-ui/system";
+import Link from "../components/link";
 import TeamMember from "../components/teamMember";
 import ParticlesBase from "react-tsparticles";
-import particlesConfig from "../theme/particlesjs-config.json";
-const logo = require("../images/logo_web.svg");
+import particlesConfig from "../particles-config.json";
+import { graphql } from "gatsby";
+import logo from "../images/logo_web.svg";
+import { Helmet } from "react-helmet";
+import ExternalLink from "../components/externalLink";
+import { LocalizedLink } from "gatsby-theme-i18n";
+
 const Particles = chakra(ParticlesBase);
-export default function Index({ statics, sections, team, menu, partners }) {
+
+export const query = graphql`
+  query MyQuery($locale: String) {
+    menu: contentfulMenu(node_locale: { eq: $locale }) {
+      content {
+        href
+        label
+      }
+    }
+    partners: allContentfulPartner(
+      sort: { fields: order }
+      filter: { node_locale: { eq: $locale } }
+    ) {
+      nodes {
+        order
+        link
+        title
+        image {
+          title
+          file {
+            url
+          }
+        }
+      }
+    }
+
+    hero: contentfulPost(slug: { eq: "hero" }, node_locale: { eq: $locale }) {
+      title
+      contentful_id
+      content {
+        raw
+        references {
+          __typename
+          contentful_id
+          title
+          gatsbyImageData
+        }
+      }
+    }
+    contact: contentfulPost(
+      slug: { eq: "contact" }
+      node_locale: { eq: $locale }
+    ) {
+      title
+      contentful_id
+      content {
+        raw
+        references {
+          __typename
+          contentful_id
+          title
+          gatsbyImageData
+        }
+      }
+    }
+
+    statics: allContentfulStatic(filter: { node_locale: { eq: $locale } }) {
+      nodes {
+        content {
+          content
+        }
+        key
+      }
+    }
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    team: allContentfulTeamMember(
+      filter: { node_locale: { eq: $locale } }
+      sort: { fields: order }
+    ) {
+      nodes {
+        job
+        name
+        description {
+          raw
+        }
+        image {
+          gatsbyImageData
+        }
+      }
+    }
+  }
+`;
+
+const Index = ({ data }) => {
+  const {
+    partners: { nodes: partners },
+    hero,
+    contact,
+    menu: { content: menu },
+    statics: { nodes: staticsList },
+    site: { siteMetadata },
+    team: { nodes: team },
+  } = data;
+  const statics = Object.fromEntries(
+    staticsList.map((item) => [item.key, item.content.content])
+  );
   const theme = useTheme();
   const socials = [
     {
@@ -75,11 +172,10 @@ export default function Index({ statics, sections, team, menu, partners }) {
       color: "#fff",
     },
   ];
-
   const bounce = keyframes`${theme.animations.bounce}`;
   return (
-    <Layout menu={menu} logoHref={statics.indexurl}>
-      <DefaultSeo {...seoConfig} canonical={statics.indexurl} />
+    <Layout menu={menu}>
+      <Helmet title={siteMetadata.title} />
       <Flex
         minHeight="100vh"
         direction="column"
@@ -92,9 +188,10 @@ export default function Index({ statics, sections, team, menu, partners }) {
           pos="absolute"
           width="95vw"
           insetY="0"
+          zIndex="-1"
         />
         <Box h={{ base: 24, md: 32 }} />
-        <Image src={logo} srcSet={logo.srcSet} mt="auto" w="64rem" />
+        <Image src={logo} mt="auto" w="64rem" />
         <Heading
           mt="auto"
           textAlign="center"
@@ -109,25 +206,25 @@ export default function Index({ statics, sections, team, menu, partners }) {
         </Heading>
         <Wrap spacing="4" mt="auto" flexWrap="wrap" justify="center">
           {socials.map(({ href, icon, bgColor, color, text }) => (
-            <WrapItem key={href}>
-              <NextLink href={href} passHref>
-                <Button
-                  target="_blank"
-                  as="a"
-                  leftIcon={icon}
-                  color={color}
-                  bgColor={bgColor}
-                  variant="custom"
-                >
-                  {text}
-                </Button>
-              </NextLink>
+            <WrapItem>
+              <Button
+                target="_blank"
+                as="a"
+                href={href}
+                leftIcon={icon}
+                color={color}
+                bgColor={bgColor}
+                variant="custom"
+              >
+                {text}
+              </Button>
             </WrapItem>
           ))}
         </Wrap>
-        <CustomLink
+        <Link
+          as={LocalizedLink}
           display="block"
-          href="#partners"
+          to="#partners"
           mt="auto"
           mb="16"
           transition="transform ease-in-out 200ms"
@@ -144,33 +241,32 @@ export default function Index({ statics, sections, team, menu, partners }) {
             display="block"
             animation={`${bounce} 2s ease infinite`}
           />
-        </CustomLink>
+        </Link>
       </Flex>
       <Section heading={statics["partners"]} id="partners">
         <Wrap spacing="4" justify="space-evenly">
           {partners.map(({ image, link, title }) => (
             <WrapItem>
-              <CustomLink
+              <ExternalLink
                 title={title ?? undefined}
                 href={link}
-                target="_blank"
                 transition="transform ease-in-out 200ms"
                 _hover={{ transform: "scale(1.1)", zIndex: "docked" }}
               >
                 <Img
-                  alt={image.fields.title}
-                  src={image.fields.file.url}
+                  alt={image.title}
+                  src={image.file.url}
                   w="32"
                   h="32"
                   objectFit="contain"
                 />
-              </CustomLink>
+              </ExternalLink>
             </WrapItem>
           ))}
         </Wrap>
       </Section>
-      <Section heading={sections.hero.title} id="about">
-        <RTF>{sections.hero.content}</RTF>
+      <Section heading={hero.title} id="about">
+        <RTF>{hero.content}</RTF>
       </Section>
       <Section heading={statics["team"]} id="team">
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing="4">
@@ -179,13 +275,13 @@ export default function Index({ statics, sections, team, menu, partners }) {
           ))}
         </SimpleGrid>
       </Section>
-      <Section heading={sections.contact.title} id="contact">
+      <Section heading={contact.title} id="contact">
         <Grid
           alignItems="center"
           gap="4"
           templateColumns={{ base: "1fr", md: "1fr 2fr" }}
         >
-          <RTF>{sections.contact.content}</RTF>
+          <RTF>{contact.content}</RTF>
           <AspectRatio
             ratio={16 / 9}
             borderRadius="base"
@@ -195,20 +291,17 @@ export default function Index({ statics, sections, team, menu, partners }) {
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2444.2996099716706!2d21.000510215546136!3d52.219774266187905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecceb1d68be95%3A0x4f318f2440542625!2sNowowiejska%2037A%2C%2002-010%20Warszawa!5e0!3m2!1spl!2spl!4v1606862385918!5m2!1spl!2spl"
               alt="Map"
+              title="Map"
             ></iframe>
           </AspectRatio>
         </Grid>
       </Section>
     </Layout>
   );
-}
-Index.defaultProps = {
-  team: [],
-  sections: {},
-  statics: {},
 };
+export default Index;
 
-export async function getContent(locale) {
+async function getContent(locale) {
   // contentful
   let client = createClient({
     space: process.env.CONTENTFUL_SPACE,
@@ -264,14 +357,6 @@ export async function getContent(locale) {
     team,
     partners,
     menu: menu[0].content,
-  };
-}
-
-export async function getStaticProps({ locale }) {
-  return {
-    props: {
-      ...(await getContent(locale)),
-    },
-    revalidate: 60,
+    locale: locale,
   };
 }

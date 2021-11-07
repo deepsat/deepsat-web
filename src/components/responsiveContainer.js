@@ -1,7 +1,10 @@
-import { useStyleConfig, Container } from "@chakra-ui/react";
+import React from "react";
+
+import { useStyleConfig, Container, useTheme } from "@chakra-ui/react";
 
 const ResponsiveContainer = ({ size, variant, ...props }) => {
   const styles = useStyleConfig("ResponsiveContainer", { size, variant });
+  const theme = useTheme();
   return (
     <Container
       sx={styles}

@@ -1,3 +1,4 @@
+import React from "react";
 import { Box, Heading, useStyleConfig } from "@chakra-ui/react";
 
 const Section = ({ children, heading, size, variant, ...props }) => {
