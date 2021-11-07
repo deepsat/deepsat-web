@@ -123,9 +123,8 @@ const Header = ({ menu }) => {
             ))}
             <LanguageSwitcher
               mx={{ [bp]: "4" }}
+              my="4"
               pl={{ base: "8", [bp]: "0" }}
-              pt="4"
-              pb="4"
               color={{ [bp]: isTop ? "white" : undefined }}
               display="block"
             />
