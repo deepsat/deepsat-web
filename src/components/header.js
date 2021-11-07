@@ -112,9 +112,8 @@ const Header = ({ menu }) => {
               <Link
                 to={href}
                 mx={{ [bp]: "4" }}
+                py="4"
                 pl={{ base: "8", [bp]: "0" }}
-                pt="4"
-                pb="4"
                 color={{ [bp]: isTop ? "white" : undefined }}
                 display="block"
               >
@@ -123,7 +122,7 @@ const Header = ({ menu }) => {
             ))}
             <LanguageSwitcher
               mx={{ [bp]: "4" }}
-              my="4"
+              py="4"
               pl={{ base: "8", [bp]: "0" }}
               color={{ [bp]: isTop ? "white" : undefined }}
               display="block"
