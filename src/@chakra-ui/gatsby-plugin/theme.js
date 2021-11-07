@@ -43,7 +43,7 @@ const theme = extendTheme({
       },
     },
   },
-  shadows: { outline: "0 0 0 2px #9F5FFF99" },
+  shadows: { outline: "0 0 0 2px #9F5FFF88" },
   components: {
     Link: {
       baseStyle: {
